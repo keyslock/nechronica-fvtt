@@ -1,0 +1,36 @@
+{
+  "id": "nechronica",
+  "title": "Nechronica",
+  "description": "『永い後日談ネクロニカ』",
+  "version": "0.1.0",
+  "compatibility": {
+    "minimum": 11,
+    "verified": 12
+  },
+  "authors": [{
+    "name": "Key"
+  }],
+  "esmodules": ["module/nechronica.mjs"],
+  "styles": ["styles/nechronica.css"],
+  "languages": [{
+    "lang": "en",
+    "name": "English",
+    "path": "lang/en.json"
+  },
+  {
+    "lang": "ja",
+    "name": "日本語",
+    "path": "lang/ja.json"
+  }],
+  "socket": false,
+  "initiative": "1d20",
+  "grid": {
+    "distance": 10,
+    "units": "ft"
+  },
+  "primaryTokenAttribute": "resources.health",
+  "secondaryTokenAttribute": "resources.power",
+  "url": "https://your/hosted/system/repo/",
+  "manifest": "https://your/hosted/system/repo/system.json",
+  "download": "https://your/packaged/download/archive.zip"
+}

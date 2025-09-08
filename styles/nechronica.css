@@ -1,0 +1,522 @@
+@charset "UTF-8";
+:root {
+    --colorTan: #7a7971;
+}
+.hidden {
+    display: none;
+}
+.small-img {
+    flex: 0 0 64px;
+    height: 64px !important;
+    max-width: 64px;
+}
+.small-sheet-header {
+    height: unset !important;
+}
+.small-header {
+    height: calc(100% - 110px) !important;
+}
+.nechronica.sheet.actor.doll .small-header {
+    height: calc(100% - 120px) !important;
+    overflow-y: unset;
+}
+.nechronica.sheet.actor.doll .sheet-body {
+    height: calc(100% - 300px);
+}
+.circle-row {
+    display: flex;
+    flex-direction: row;
+}
+.circle {
+    height: 9px;
+    width: 9px;
+    border: 1px solid black;
+    border-radius: 50%;
+    margin: 0px 2px 0px 2px;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    top: 20%;
+}
+.circle.black {
+    background-color: black;
+}
+.window-app .window-content {
+    background: #e1e1e1;
+}
+.chat-message {
+    background: #e1e1e1;
+}
+.nechronica.sheet.actor {
+    min-width: 700px;
+    min-height: 800px;
+}
+.nechronica.sheet.actor > .window-content {
+    box-shadow: inset 0 0 10px #000000;
+}
+.nechronica.sheet.actor h3, .nechronica.sheet.actor h4 {
+    font-weight: bold;
+    margin: 0 0 0.25em;
+}
+.nechronica.sheet.actor .sheet-tabs {
+    font-weight: bold;
+}
+.nechronica.sheet.actor .max-ap {
+    white-space: nowrap;
+}
+.nechronica.sheet.actor .max-ap label {
+    background: rgba(0, 0, 0, 0.1);
+}
+.nechronica.sheet.actor .max-ap input {
+    border-radius: 0;
+    border: 2px solid rgba(0, 0, 0, 0.2);
+}
+.nechronica.sheet.actor.horror .sheet-header, .nechronica.sheet.actor.savant .sheet-header, .nechronica.sheet.actor.legion .sheet-header {
+    height: 320px;
+}
+.nechronica.sheet.actor.horror .sheet-header img, .nechronica.sheet.actor.savant .sheet-header img, .nechronica.sheet.actor.legion .sheet-header img {
+    height: 320px;
+}
+.nechronica.sheet.actor.horror .sheet-header .description-group, .nechronica.sheet.actor.savant .sheet-header .description-group, .nechronica.sheet.actor.legion .sheet-header .description-group {
+    flex: 1 0 180px;
+}
+.nechronica.sheet.actor.horror .sheet-header .editor, .nechronica.sheet.actor.savant .sheet-header .editor, .nechronica.sheet.actor.legion .sheet-header .editor {
+    height: 220px;
+}
+.nechronica.sheet.actor.horror .sheet-header .threat, .nechronica.sheet.actor.savant .sheet-header .threat, .nechronica.sheet.actor.legion .sheet-header .threat {
+    margin-right: 40px;
+    margin-left: 15px;
+}
+.nechronica.sheet.actor .item-control:hover {
+    color: #000;
+    text-shadow: 0 0 10px red;
+    cursor: pointer;
+}
+.nechronica.sheet.actor form {
+    overflow: hidden;
+    height: 100%;
+    padding: 2px;
+}
+.nechronica.sheet.actor form .sheet-header {
+    max-height: fit-content;
+}
+.nechronica.sheet.actor form .sheet-body {
+    height: calc(100% - 340px);
+}
+.nechronica.sheet.actor form .tab.active {
+    height: 100%;
+}
+.nechronica.sheet.actor form .parts-body {
+    height: calc(100% - 30px);
+    overflow-y: auto;
+}
+.nechronica.sheet.actor form .bodyParts-all {
+    height: calc(100% - 30px);
+    overflow-y: auto;
+}
+.nechronica.sheet.actor form .tab.biography.active {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.nechronica.sheet.actor form .tab.biography.active .biography.body {
+    height: calc(100% - 320px);
+    overflow-y: auto;
+}
+.nechronica.sheet.actor form .tab.biography.active .editor {
+    height: calc(100% - 200px);
+    overflow: visible;
+}
+.nechronica.sheet.actor form .tab.biography.active .editor .editor-content {
+    overflow-y: visible;
+}
+.nechronica.sheet.actor .max-ap input {
+    max-width: 40px;
+}
+.nechronica.sheet.actor .max-ap .form-fields {
+    justify-content: center;
+}
+.nechronica.sheet.actor .source {
+    line-height: 18px;
+}
+.nechronica.sheet.actor .source .attribute {
+    text-align: center;
+}
+.nechronica.sheet.actor .align-end {
+    text-align: end;
+}
+.nechronica.sheet.actor .actor-details {
+    max-width: 20%;
+}
+.nechronica.sheet.actor .position, .nechronica.sheet.actor .class {
+    margin: 4px;
+    background: rgba(0, 0, 0, 0.1);
+}
+.nechronica.sheet.actor .position .name .item-controls, .nechronica.sheet.actor .class .name .item-controls {
+    flex: 0 1 36px;
+    visibility: hidden;
+}
+.nechronica.sheet.actor .position .name:hover h4, .nechronica.sheet.actor .class .name:hover h4 {
+    color: #000;
+    text-shadow: 0 0 10px red;
+    cursor: pointer;
+}
+.nechronica.sheet.actor .position .name:hover .item-controls, .nechronica.sheet.actor .class .name:hover .item-controls {
+    visibility: visible;
+}
+.nechronica.sheet.actor .experience input {
+    max-width: 24px;
+}
+.nechronica.sheet.actor .regrets, .nechronica.sheet.actor .memories, .nechronica.sheet.actor .bodyParts-all, .nechronica.sheet.actor .locations {
+    list-style: none;
+    padding: 0 0 0 0.5em;
+}
+.nechronica.sheet.actor .regrets h4, .nechronica.sheet.actor .memories h4, .nechronica.sheet.actor .bodyParts-all h4, .nechronica.sheet.actor .locations h4 {
+    margin-bottom: 1px;
+}
+.nechronica.sheet.actor .regrets, .nechronica.sheet.actor .memories, .nechronica.sheet.actor .location {
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+.nechronica.sheet.actor .regrets p, .nechronica.sheet.actor .memories p, .nechronica.sheet.actor .location p {
+    margin: 0;
+}
+.nechronica.sheet.actor .regrets .range, .nechronica.sheet.actor .regrets .cost, .nechronica.sheet.actor .regrets .number, .nechronica.sheet.actor .memories .range, .nechronica.sheet.actor .memories .cost, .nechronica.sheet.actor .memories .number, .nechronica.sheet.actor .location .range, .nechronica.sheet.actor .location .cost, .nechronica.sheet.actor .location .number {
+    flex: 0 0 40px;
+    text-align: center;
+}
+.nechronica.sheet.actor .regrets .cost, .nechronica.sheet.actor .regrets .range, .nechronica.sheet.actor .memories .cost, .nechronica.sheet.actor .memories .range, .nechronica.sheet.actor .location .cost, .nechronica.sheet.actor .location .range {
+    text-align: center;
+}
+.nechronica.sheet.actor .regrets .type, .nechronica.sheet.actor .memories .type, .nechronica.sheet.actor .location .type {
+    max-width: 150px;
+    flex: 0 0 90px;
+}
+.nechronica.sheet.actor .regrets .madness, .nechronica.sheet.actor .memories .madness, .nechronica.sheet.actor .location .madness {
+    max-width: 90px;
+}
+.nechronica.sheet.actor .regrets .target, .nechronica.sheet.actor .regrets .name, .nechronica.sheet.actor .memories .target, .nechronica.sheet.actor .memories .name, .nechronica.sheet.actor .location .target, .nechronica.sheet.actor .location .name {
+    flex: 0 0 120px;
+}
+.nechronica.sheet.actor .regrets .broken, .nechronica.sheet.actor .memories .broken, .nechronica.sheet.actor .location .broken {
+    margin: 0px;
+    max-width: 25px;
+}
+.nechronica.sheet.actor .regrets .timing, .nechronica.sheet.actor .memories .timing, .nechronica.sheet.actor .location .timing {
+    flex: 0 0 75px;
+}
+.nechronica.sheet.actor .regrets .timing input, .nechronica.sheet.actor .memories .timing input, .nechronica.sheet.actor .location .timing input {
+    margin: 3px;
+}
+.nechronica.sheet.actor .regrets .checkbox, .nechronica.sheet.actor .memories .checkbox, .nechronica.sheet.actor .location .checkbox {
+    max-width: 25px;
+    display: flex;
+    place-content: space-evenly;
+}
+.nechronica.sheet.actor .regrets .item.broken, .nechronica.sheet.actor .memories .item.broken, .nechronica.sheet.actor .location .item.broken {
+    background: red;
+}
+.nechronica.sheet.actor .regrets .item .target:hover, .nechronica.sheet.actor .regrets .item .name:hover, .nechronica.sheet.actor .memories .item .target:hover, .nechronica.sheet.actor .memories .item .name:hover, .nechronica.sheet.actor .location .item .target:hover, .nechronica.sheet.actor .location .item .name:hover {
+    color: #000;
+    text-shadow: 0 0 10px red;
+    cursor: pointer;
+}
+.nechronica.sheet.actor .regrets .item-controls, .nechronica.sheet.actor .memories .item-controls, .nechronica.sheet.actor .location .item-controls {
+    min-width: 48px;
+    max-width: fit-content;
+    display: flex;
+    justify-content: flex-end;
+    flex: 0 0 48px;
+}
+.nechronica.sheet.actor .regrets .rollable, .nechronica.sheet.actor .memories .rollable, .nechronica.sheet.actor .location .rollable {
+    flex: 0 0 50px;
+    display: inline-block;
+    background-size: 100%;
+    height: 50px;
+    place-self: flex-end;
+    background-size: 44px 44px;
+    background-repeat: no-repeat;
+    background-position: bottom;
+}
+.nechronica.sheet.actor .regrets .rollable:hover, .nechronica.sheet.actor .memories .rollable:hover, .nechronica.sheet.actor .location .rollable:hover {
+    background-image: url(../../../icons/dice/d10black.svg) !important;
+}
+.nechronica.sheet.actor .location .partsicon {
+    flex: 0 0 50px;
+    display: inline-block;
+    background-size: 100%;
+    height: 50px;
+    place-self: flex-end;
+    background-size: 44px 44px;
+    background-repeat: no-repeat;
+    background-position: bottom;
+}
+.nechronica.sheet.actor .regrets .location-header-details, .nechronica.sheet.actor .regrets .skill-header-details, .nechronica.sheet.actor .memories .location-header-details, .nechronica.sheet.actor .memories .skill-header-details, .nechronica.sheet.actor .location .location-header-details, .nechronica.sheet.actor .location .skill-header-details {
+    padding-top: 13px;
+    margin-left: 8px;
+}
+.nechronica.sheet.actor .regrets .location-header-details .label, .nechronica.sheet.actor .regrets .skill-header-details .label, .nechronica.sheet.actor .memories .location-header-details .label, .nechronica.sheet.actor .memories .skill-header-details .label, .nechronica.sheet.actor .location .location-header-details .label, .nechronica.sheet.actor .location .skill-header-details .label {
+    max-width: fit-content;
+    max-width: max-content;
+    margin-right: 10px;
+}
+.nechronica.sheet.actor .regrets .location-header-details .details, .nechronica.sheet.actor .regrets .skill-header-details .details, .nechronica.sheet.actor .memories .location-header-details .details, .nechronica.sheet.actor .memories .skill-header-details .details, .nechronica.sheet.actor .location .location-header-details .details, .nechronica.sheet.actor .location .skill-header-details .details {
+    font-size: 10pt;
+    line-height: 7px;
+}
+.nechronica.sheet.actor .regrets .item-actions, .nechronica.sheet.actor .memories .item-actions, .nechronica.sheet.actor .location .item-actions {
+    flex: 0 0 56px;
+    text-align: center;
+}
+.nechronica.sheet.actor .regrets .memory .details, .nechronica.sheet.actor .regrets .regret .details, .nechronica.sheet.actor .memories .memory .details, .nechronica.sheet.actor .memories .regret .details, .nechronica.sheet.actor .location .memory .details, .nechronica.sheet.actor .location .regret .details {
+    font-size: 10pt;
+    line-height: 10px;
+}
+.nechronica.sheet.actor .regrets .regret-list, .nechronica.sheet.actor .regrets .memory-list, .nechronica.sheet.actor .regrets .skill-list, .nechronica.sheet.actor .regrets .bodyParts.list, .nechronica.sheet.actor .memories .regret-list, .nechronica.sheet.actor .memories .memory-list, .nechronica.sheet.actor .memories .skill-list, .nechronica.sheet.actor .memories .bodyParts.list, .nechronica.sheet.actor .location .regret-list, .nechronica.sheet.actor .location .memory-list, .nechronica.sheet.actor .location .skill-list, .nechronica.sheet.actor .location .bodyParts.list {
+    padding: 0px;
+    margin: 0px;
+}
+.nechronica.sheet.actor .regrets .regret-list .details, .nechronica.sheet.actor .regrets .memory-list .details, .nechronica.sheet.actor .regrets .skill-list .details, .nechronica.sheet.actor .regrets .bodyParts.list .details, .nechronica.sheet.actor .memories .regret-list .details, .nechronica.sheet.actor .memories .memory-list .details, .nechronica.sheet.actor .memories .skill-list .details, .nechronica.sheet.actor .memories .bodyParts.list .details, .nechronica.sheet.actor .location .regret-list .details, .nechronica.sheet.actor .location .memory-list .details, .nechronica.sheet.actor .location .skill-list .details, .nechronica.sheet.actor .location .bodyParts.list .details {
+    line-height: 24px;
+}
+.nechronica.sheet.actor .regrets .regret-list .details:nth-child(odd), .nechronica.sheet.actor .regrets .memory-list .details:nth-child(odd), .nechronica.sheet.actor .regrets .skill-list .details:nth-child(odd), .nechronica.sheet.actor .regrets .bodyParts.list .details:nth-child(odd), .nechronica.sheet.actor .memories .regret-list .details:nth-child(odd), .nechronica.sheet.actor .memories .memory-list .details:nth-child(odd), .nechronica.sheet.actor .memories .skill-list .details:nth-child(odd), .nechronica.sheet.actor .memories .bodyParts.list .details:nth-child(odd), .nechronica.sheet.actor .location .regret-list .details:nth-child(odd), .nechronica.sheet.actor .location .memory-list .details:nth-child(odd), .nechronica.sheet.actor .location .skill-list .details:nth-child(odd), .nechronica.sheet.actor .location .bodyParts.list .details:nth-child(odd) {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+.nechronica.sheet.actor .regrets .regret-list .details:not(:last-of-type), .nechronica.sheet.actor .regrets .memory-list .details:not(:last-of-type), .nechronica.sheet.actor .regrets .skill-list .details:not(:last-of-type), .nechronica.sheet.actor .regrets .bodyParts.list .details:not(:last-of-type), .nechronica.sheet.actor .memories .regret-list .details:not(:last-of-type), .nechronica.sheet.actor .memories .memory-list .details:not(:last-of-type), .nechronica.sheet.actor .memories .skill-list .details:not(:last-of-type), .nechronica.sheet.actor .memories .bodyParts.list .details:not(:last-of-type), .nechronica.sheet.actor .location .regret-list .details:not(:last-of-type), .nechronica.sheet.actor .location .memory-list .details:not(:last-of-type), .nechronica.sheet.actor .location .skill-list .details:not(:last-of-type), .nechronica.sheet.actor .location .bodyParts.list .details:not(:last-of-type) {
+    border-bottom: 1px solid rgba(1, 1, 1, 0.3);
+}
+.nechronica.sheet.actor .regrets .regret-list .regret.details, .nechronica.sheet.actor .regrets .regret-list .memory.details, .nechronica.sheet.actor .regrets .memory-list .regret.details, .nechronica.sheet.actor .regrets .memory-list .memory.details, .nechronica.sheet.actor .regrets .skill-list .regret.details, .nechronica.sheet.actor .regrets .skill-list .memory.details, .nechronica.sheet.actor .regrets .bodyParts.list .regret.details, .nechronica.sheet.actor .regrets .bodyParts.list .memory.details, .nechronica.sheet.actor .memories .regret-list .regret.details, .nechronica.sheet.actor .memories .regret-list .memory.details, .nechronica.sheet.actor .memories .memory-list .regret.details, .nechronica.sheet.actor .memories .memory-list .memory.details, .nechronica.sheet.actor .memories .skill-list .regret.details, .nechronica.sheet.actor .memories .skill-list .memory.details, .nechronica.sheet.actor .memories .bodyParts.list .regret.details, .nechronica.sheet.actor .memories .bodyParts.list .memory.details, .nechronica.sheet.actor .location .regret-list .regret.details, .nechronica.sheet.actor .location .regret-list .memory.details, .nechronica.sheet.actor .location .memory-list .regret.details, .nechronica.sheet.actor .location .memory-list .memory.details, .nechronica.sheet.actor .location .skill-list .regret.details, .nechronica.sheet.actor .location .skill-list .memory.details, .nechronica.sheet.actor .location .bodyParts.list .regret.details, .nechronica.sheet.actor .location .bodyParts.list .memory.details {
+    padding-left: 0px;
+}
+.nechronica.sheet.actor .regrets .regret-list .madness, .nechronica.sheet.actor .regrets .memory-list .madness, .nechronica.sheet.actor .regrets .skill-list .madness, .nechronica.sheet.actor .regrets .bodyParts.list .madness, .nechronica.sheet.actor .memories .regret-list .madness, .nechronica.sheet.actor .memories .memory-list .madness, .nechronica.sheet.actor .memories .skill-list .madness, .nechronica.sheet.actor .memories .bodyParts.list .madness, .nechronica.sheet.actor .location .regret-list .madness, .nechronica.sheet.actor .location .memory-list .madness, .nechronica.sheet.actor .location .skill-list .madness, .nechronica.sheet.actor .location .bodyParts.list .madness {
+    display: flex;
+}
+.nechronica.sheet.actor .regrets .regret-list .rollable, .nechronica.sheet.actor .regrets .memory-list .rollable, .nechronica.sheet.actor .regrets .skill-list .rollable, .nechronica.sheet.actor .regrets .bodyParts.list .rollable, .nechronica.sheet.actor .memories .regret-list .rollable, .nechronica.sheet.actor .memories .memory-list .rollable, .nechronica.sheet.actor .memories .skill-list .rollable, .nechronica.sheet.actor .memories .bodyParts.list .rollable, .nechronica.sheet.actor .location .regret-list .rollable, .nechronica.sheet.actor .location .memory-list .rollable, .nechronica.sheet.actor .location .skill-list .rollable, .nechronica.sheet.actor .location .bodyParts.list .rollable {
+    flex: 0 0 24px;
+    display: inline-block;
+    background-size: 100%;
+    height: 24px;
+    place-self: baseline;
+}
+.nechronica.sheet.actor .bodyPart img {
+    max-width: 24px;
+}
+.nechronica.sheet.item {
+    min-width: 580px;
+    min-height: 620px;
+    max-height: calc(100% - 24px);
+}
+.nechronica.sheet.item .form-group button {
+    max-width: 200px;
+}
+.nechronica.sheet.item .effect-group {
+    min-height: 100px;
+}
+.nechronica.sheet.item .description-group {
+    min-height: 300px;
+}
+.nechronica.sheet.item .editor, .nechronica.sheet.item .editor-content {
+    height: 100%;
+}
+.nechronica.sheet.item .editor .tox-toolbar-overlord, .nechronica.sheet.item .editor .tox-toolbar__primary, .nechronica.sheet.item .editor-content .tox-toolbar-overlord, .nechronica.sheet.item .editor-content .tox-toolbar__primary {
+    background: none;
+}
+.nechronica.sheet.item .editor .tox-tinymce, .nechronica.sheet.item .editor-content .tox-tinymce {
+    min-height: 300px;
+}
+.locked .sheet-header {
+    max-height: 70px;
+}
+.locked img.sheet-profile {
+    max-height: 360px;
+    max-width: 240px;
+    float: left;
+}
+.radio-circles {
+    float: right;
+}
+.radio-circles:not(:checked) > input {
+    position: absolute;
+    top: -9999px;
+    clip: rect(0, 0, 0, 0);
+}
+.radio-circles:not(:checked) > label {
+    float: right;
+    width: 1em;
+    margin: 0 0.1em;
+    overflow: hidden;
+    white-space: nowrap;
+    cursor: pointer;
+    font-size: 200%;
+    line-height: 1.2;
+    height: 0.5em;
+    width: 0.5em;
+    border: 1px solid black;
+    border-radius: 50%;
+}
+.radio-circles > input:checked ~ label {
+    background-color: black;
+}
+.modifier-control {
+    min-width: 15px;
+    max-width: fit-content;
+    display: flex;
+    justify-content: flex-end;
+}
+.modifier-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+.item-card {
+    font-style: normal;
+    font-size: 14px;
+}
+.item-card .card-header {
+    padding: 3px 0;
+    border-top: 2px groove #fff;
+    border-bottom: 2px groove #fff;
+}
+.item-card .card-header img {
+    flex: 0 0 36px;
+    margin-right: 5px;
+}
+.item-card .card-header h3 {
+    flex: 1;
+    margin: 0;
+    line-height: 28px;
+}
+.item-card .card-content {
+    margin: 5px 0;
+}
+.item-card .card-content h3 {
+    font-size: 12px;
+    margin: 0;
+    font-weight: bold;
+}
+.item-card .card-content .effect > *, .item-card .card-content .description > * {
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+}
+.item-card .nechronica-damage-location, .item-card .roll-result {
+    line-height: 30px;
+    font-weight: bold;
+}
+.item-card .nechronica-damage-total {
+    position: relative;
+    margin: 0;
+    line-height: 24px;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.1);
+    border: 1px solid #999;
+    border-radius: 3px;
+    box-shadow: 0 0 2px #fff inset;
+    word-break: break-all;
+    font-size: 20px;
+    font-weight: bold;
+}
+.item-card .dice-roll .dice-total.success {
+    color: blue;
+}
+.item-card .dice-roll .dice-total.critical {
+    color: green;
+}
+.item-card .dice-roll .dice-total.failure, .item-card .dice-roll .dice-total.fumble {
+    color: red;
+}
+.item-card .property-group {
+    flex: 0 0 24px;
+}
+.item-card .property-group .tag {
+    display: inline-block;
+    margin: 0 2px 1px 0;
+    padding: 1px 3px;
+    font-size: 12px;
+    line-height: 16px;
+    border: 1px solid #999;
+    border-radius: 3px;
+    background: rgba(0, 0, 0, 0.05);
+    flex: 0 1 auto;
+}
+.token-tooltip-alt-tooltip-column {
+    max-width: 40rem !important;
+}
+.token-tooltip-alt-tooltip-item {
+    grid-template-columns: 0px auto !important;
+    align-items: start !important;
+}
+.token-tooltip-alt-tooltip-item .fas {
+    margin-top: 3px;
+}
+.token-tooltip-alt-tooltip-item .nechronica .tooltip-header {
+    font-weight: bold;
+}
+.token-tooltip-alt-tooltip-item .nechronica dt {
+    text-decoration: underline;
+}
+.token-tooltip-alt-tooltip-item .nechronica dd {
+    line-height: 20px;
+    padding-left: 0px;
+}
+.token-tooltip-alt-tooltip-item .nechronica dd.used {
+    color: darkred;
+}
+.token-tooltip-alt-tooltip-item .nechronica dd.used span {
+    color: darkred;
+}
+.token-tooltip-alt-tooltip-item .nechronica dd span {
+    font-weight: bold;
+    color: inherit;
+}
+.token-tooltip-alt-tooltip-item .nechronica dd:not(:first-child) {
+    margin-top: 3px;
+}
+.token-tooltip-alt-tooltip-container.default {
+    background: #e1e1e1 !important;
+}
+span:hover .item-controls {
+    visibility: visible;
+}
+.doll-content > .svelte-tabs li.svelte-tabs__selected {
+    border-bottom: 2px solid #782e22;
+    text-shadow: 0 0 8px red;
+    color: black;
+}
+.doll-content > .svelte-tabs li.svelte-tabs__tab:focus {
+    outline: none;
+}
+.doll-content > .svelte-tabs ul {
+    border-top: 1px solid #cccccc;
+    margin-top: 1em;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-around;
+}
+
+.effect {
+  max-width: 250px; /* 必要なら親の幅制限 */
+  word-break: break-word;
+}
+
+.effect-toggle {
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+.effect-summary {
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+  width: 100%;
+  font-weight: normal;
+  color: #444;
+}
+
+.effect-full {
+  margin-top: 0.3em;
+  padding-left: 1em;
+}

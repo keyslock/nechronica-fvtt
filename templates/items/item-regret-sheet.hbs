@@ -1,0 +1,59 @@
+<form class="{{cssClass}}" flexcol autocomplete="off">
+  {{!-- Item Sheet Header --}}
+  <header class="sheet-header flexrow">
+    <img class="profile" src="{{item.img}}" title="{{item.name}}" data-edit="img"/>
+
+    <div class="header-details flexrow">
+      <h1 class="charname">
+        <input name="name" type="text" value="{{item.name}}" placeholder="{{localize "NECH.ItemName"}}"/>
+      </h1>
+    </div>
+  </header>
+
+  {{!-- Sheet content --}}
+
+  <div class="form-group">
+    <label>{{localize "NECH.Target"}}</label>
+    <input class="form-fields" name="system.target" placeholder="{{localize "NECH.Target"}}" value="{{item.system.target}}" data-dtype="String" type="text">
+
+    <label>{{localize "NECH.Type"}}</label>
+    <input class="form-fields" name="system.content" placeholder="{{localize "NECH.Content"}}" value="{{item.system.content}}" data-dtype="String" type="text">
+
+    {{#if hasActor}}
+      {{!-- Madness circles --}}
+      <label>{{localize "NECH.Madness"}}</label>
+      <div class="circle-position madness">
+        <div class="circle-row" data-target="system.madness">
+          {{#each circles as |circle index|}}
+            {{#if circle.filled}}
+              <a class="circles" data-index={{index}}>
+                <div class="circle black"></div>
+              </a>
+            {{else}}
+              <a class="circles" data-index={{index}}>
+                <div class="circle"></div>
+              </a>
+            {{/if}}
+          {{/each}}
+        </div>
+      </div>
+    {{/if}}
+  </div>
+
+  <section class="effect-body">
+    <h4>{{localize "NECH.Effect"}}</h4>
+    <div class="effect-group flexcol" data-group="effect">
+      {{editor system.effect target="system.effect" rollData=rollData button=true owner=owner editable=editable}}
+    </div>
+  </section>
+
+  <hr>
+
+  <section class="description-body">
+    <h4>{{localize "NECH.Description"}}</h4>
+    <div class="description-group flexcol" data-group="description">
+      {{editor system.description target="system.description" rollData=rollData button=true owner=owner editable=editable}}
+    </div>
+  </section>
+</form>
+

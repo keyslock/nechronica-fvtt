@@ -1,0 +1,62 @@
+<form>
+  {{#if isCheck}}
+    {{!-- Dice circles --}}
+    <div class="form-group">
+      <label>{{localize "NECH.Dice"}}</label>
+      <div class="radio-circles">
+          <input type="radio" id="die4" name="dice" value="4"/><label for="die4"></label>
+          <input type="radio" id="die3" name="dice" value="3"/><label for="die3"></label>
+          <input type="radio" id="die2" name="dice" value="2"/><label for="die2"></label>
+          <input type="radio" id="die1" name="dice" value="1"/><label for="die1"></label>
+      </div>
+    </div>
+  {{/if}}
+  {{!-- Roll bonus --}}
+  {{#if (or isCheck isAttack isRoll)}}
+    <div class="form-group">
+      <label>{{localize "NECH.RollBonus"}}</label>
+      <input type="text" name="roll-bonus" value="" placeholder=""/>
+    </div>
+  {{/if}}
+  {{!-- Damage bonus --}}
+  {{#if isAttack}}
+    <div class="form-group">
+      <label>{{localize "NECH.DamageBonus"}}</label>
+      <input type="text" name="damage-bonus" value="" placeholder=""/>
+    </div>
+    {{#if spineCounter}}
+      <div class="form-group">
+        <label>{{localize "NECH.UseSpineCounter" spineCounter=spineCounter}}
+          <input type="checkbox" name="spine-counter">
+        </label>
+      </div>
+    {{/if}}
+  {{/if}}
+
+  {{!-- Modifiers --}}
+  {{#if optionalModifiers}}
+    <div class="form-group stacked">
+      <label>{{localize "NECH.OptionalModifiers"}}</label>
+      <div class="modifier-grid">
+        {{#each optionalModifiers as |modifier m|}}
+          <label class="checkbox">
+            <input type="checkbox" name="modifier.{{m}}" class="modifier"> {{name}}
+          </label>
+        {{/each}}
+      </div>
+    </div>
+  {{/if}}
+
+  {{!-- Roll Modes --}}
+  <div class="form-group">
+    <label>{{localize "NECH.RollMode"}}</label>
+    <select name="rollMode">
+      {{#select rollMode}}
+        {{#each rollModes as |label mode|}}
+          <option value="{{mode}}">{{localize label}}</option>
+        {{/each}}
+      {{/select}}
+    </select>
+  </div>
+</form>
+

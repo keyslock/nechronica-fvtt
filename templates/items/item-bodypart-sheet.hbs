@@ -1,0 +1,192 @@
+<form class="{{cssClass}}" flexcol autocomplete="off">
+  {{!-- Item Sheet Header --}}
+  <header class="sheet-header flexrow">
+    <img class="profile part" src="{{item.img}}" title="{{item.name}}"/>
+
+    <div class="header-details flexrow">
+      <h1 class="charname">
+        <input name="name" type="text" value="{{item.name}}" placeholder="{{localize "NECH.ItemName"}}"/>
+      </h1>
+    </div>
+  </header>
+
+  {{!-- Nav stuff --}}
+  <nav class="sheet-tabs tabs" data-group="primary">
+    <a class="item active" data-tab="details">{{localize "NECH.Details"}}</a>
+    <a class="item" data-tab="modifiers">{{localize "NECH.ModifierPlural"}}</a>
+  </nav>
+
+  <div class="sheet-body">
+
+    {{!-- Details --}}
+    <div class="tab details" data-tab="details">
+      <div class="form-group">
+        <label>{{localize "NECH.Type"}}</label>
+        <select name="system.partType" {{#if disableType}}disabled{{/if}}>
+          {{#select item.system.partType}}
+            <option value="skill">{{localize "NECH.Skill"}}</option>
+            <option value="bodypart">{{localize "NECH.BodyPart"}}</option>
+          {{/select}}
+        </select>
+
+          <label>{{localize "NECH.Location"}}</label>
+          <select name="system.location">
+            {{#select item.system.location}}
+              <option value="any">{{localize "NECH.Locations.Any"}}</option>
+              <option value="head">{{localize "NECH.Locations.Head"}}</option>
+              <option value="arms">{{localize "NECH.Locations.Arms"}}</option>
+              <option value="torso">{{localize "NECH.Locations.Torso"}}</option>
+              <option value="legs">{{localize "NECH.Locations.Legs"}}</option>
+            {{/select}}
+          </select>
+      </div>
+
+      <div class="form-group">
+        <label>{{localize "NECH.Categorie"}}</label>
+        <select name="system.categorie">
+          {{#select item.system.categorie}}
+            <option value="">-</option>
+            <option value="alice">{{localize "NECH.Categories.Alice"}}</option>
+            <option value="holic">{{localize "NECH.Categories.Holic"}}</option>
+            <option value="automaton">{{localize "NECH.Categories.Automaton"}}</option>
+            <option value="junk">{{localize "NECH.Categories.Junk"}}</option>
+            <option value="coat">{{localize "NECH.Categories.Coat"}}</option>
+            <option value="sorority">{{localize "NECH.Categories.Sorority"}}</option>
+            <option value="stacey">{{localize "NECH.Categories.Stacey"}}</option>
+            <option value="thanatos">{{localize "NECH.Categories.Thanatos"}}</option>
+            <option value="gothic">{{localize "NECH.Categories.Gothic"}}</option>
+            <option value="requiem">{{localize "NECH.Categories.Requiem"}}</option>
+            <option value="baroque">{{localize "NECH.Categories.Baroque"}}</option>
+            <option value="romanesque">{{localize "NECH.Categories.Romanesque"}}</option>
+            <option value="armed">{{localize "NECH.Categories.Armed"}}</option>
+            <option value="mutation">{{localize "NECH.Categories.Mutation"}}</option>
+            <option value="modification">{{localize "NECH.Categories.Modification"}}</option>
+            <option value="psychedelic">{{localize "NECH.Categories.Psychedelic"}}</option>
+            <option value="pawn">{{localize "NECH.Categories.Pawn"}}</option>
+          {{/select}}
+        </select>
+
+        <label>{{localize "NECH.Level"}}</label>
+        <input name="system.level" placeholder="{{localize "NECH.Level"}}" value="{{item.system.level}}" data-dtype="Number" type="number">
+      </div>
+
+      <div class="form-group">
+        <label>{{localize "NECH.Timing"}}</label>
+        <select name="system.timing">
+          {{#select item.system.timing}}
+            <option value="action">{{localize "NECH.Timings.Action"}}</option>
+            <option value="rapid">{{localize "NECH.Timings.Rapid"}}</option>
+            <option value="damage">{{localize "NECH.Timings.Damage"}}</option>
+            <option value="judge">{{localize "NECH.Timings.Judge"}}</option>
+            <option value="auto">{{localize "NECH.Timings.Auto"}}</option>
+          {{/select}}
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>{{localize "NECH.Cost"}}</label>
+        <input name="system.cost" placeholder="{{localize "NECH.Cost"}}" value="{{item.system.cost}}" data-dtype="Number" type="number">
+
+        <label>{{localize "NECH.Range"}}</label>
+        <input name="system.range" placeholder="{{localize "NECH.Range"}}" value="{{item.system.range}}" data-dtype="String" type="text">
+      </div>
+
+      <div class="form-group">
+        <label>{{localize "NECH.AttackType"}}</label>
+        <select name="system.attack">
+          {{#select item.system.attack}}
+            <option value="">-</option>
+            <option value="unarmed">{{localize "NECH.AttackTypes.Unarmed"}}</option>
+            <option value="melee">{{localize "NECH.AttackTypes.Melee"}}</option>
+            <option value="ranged">{{localize "NECH.AttackTypes.Ranged"}}</option>
+            <option value="blast">{{localize "NECH.AttackTypes.Blast"}}</option>
+            <option value="mental">{{localize "NECH.AttackTypes.Mental"}}</option>
+          {{/select}}
+        </select>
+        <label class="form-field">{{localize "NECH.Damage"}}</label>
+        <input name="system.damage" type="number" data-dtype="Number" value="{{item.system.damage}}">
+      </div>
+
+      <div class="form-group">
+        <label>{{localize "NECH.Threat"}}</label>
+        <input name="system.threat" placeholder="{{localize "NECH.Threat"}}" value="{{item.system.threat}}" data-dtype="Number" type="number">
+        <label>{{localize "NECH.APBonus"}}</label>
+        <input name="system.apBonus" placeholder="{{localize "NECH.APBonus"}}" value="{{item.system.apBonus}}" data-dtype="Number" type="number">
+      </div>
+
+      {{!-- Special Qualities --}}
+      <div class="form-group-stacked">
+        <label>{{localize "NECH.Effects"}}</label>
+
+
+        <label class="checkbox">
+          <input type="checkbox" name="system.effects.dismember" data-dtype="Boolean" {{#if item.system.effects.dismember}} checked {{/if}}/> {{ localize "NECH.EffectTypes.Dismember" }}
+        </label>
+        <label class="checkbox">
+          <input type="checkbox" name="system.effects.explosive" data-dtype="Boolean" {{#if item.system.effects.explosive}} checked {{/if}}/> {{ localize "NECH.EffectTypes.Explosive" }}
+        </label>
+        <label class="checkbox">
+          <input type="checkbox" name="system.effects.areaAttack" data-dtype="Boolean" {{#if item.system.effects.areaAttack}} checked {{/if}}/> {{ localize "NECH.EffectTypes.AreaAttack" }}
+        </label>
+        <label class="checkbox">
+          <input type="checkbox" name="system.effects.chain" data-dtype="Boolean" {{#if item.system.effects.chain}} checked {{/if}}/> {{ localize "NECH.EffectTypes.Chain" }}
+        </label>
+        <label class="checkbox">
+          <input type="checkbox" name="system.effects.stagger" data-dtype="Boolean" {{#if item.system.effects.stagger}} checked {{/if}}/> {{ localize "NECH.EffectTypes.Stagger" }}
+        </label>
+      </div>
+
+      <hr>
+
+      <section class="effect-body">
+        <h4>{{localize "NECH.Effect"}}</h4>
+        <div class="effect-group flexcol" data-group="effect">
+          {{editor system.effect target="system.effect" rollData=rollData button=true owner=owner editable=editable}}
+        </div>
+      </section>
+
+      <hr>
+
+      <section class="description-body">
+        <h4>{{localize "NECH.Description"}}</h4>
+        <div class="description-group flexcol" data-group="description">
+          {{editor system.description target="system.description" rollData=rollData button=true owner=owner editable=editable}}
+        </div>
+      </section>
+    </div>
+
+    <div class="tab modifiers" data-tab="modifiers">
+      <ol class="modifiers flexcol">
+        {{#each system.modifiers as |modifier m|}}
+          <li class="modifier flexrow" data-modifier="{{m}}">
+              <input class="tag" type="text" name="system.modifiers.{{m}}.tag" value="{{tag}}" placeholder="{{../item.name}}">
+              <input class="formula" type="text" name="system.modifiers.{{m}}.formula" value="{{formula}}" placeholder="{{localize "NECH.Formula"}}">
+              <select class="optional" name="system.modifiers.{{m}}.optional">
+                  {{#select optional}}
+                    <option value="0" data-dtype="Boolean">{{localize "NECH.Modifiers.AlwaysOn"}}</option>
+                    <option value="1" data-dtype="Boolean">{{localize "NECH.Modifiers.Optional"}}</option>
+                  {{/select}}
+              </select>
+              <select class="target" name="system.modifiers.{{m}}.target">
+                  {{#select target}}
+                    {{#each ../modifierGlobals.targets as |target t|}}
+                      <option value="{{t}}">{{localize target}}</option>
+                    {{/each}}
+                  {{/select}}
+              </select>
+              <select class="type" name="system.modifiers.{{m}}.type">
+                  {{#select type}}
+                    {{#each ../modifierGlobals.types as |type t|}}
+                      <option value="{{t}}">{{localize type}}</option>
+                    {{/each}}
+                  {{/select}}
+              </select>
+              <a class="modifier-control delete"><i class="fas fa-trash"></i></a>
+          </li>
+        {{/each}}
+        <li class="modifier flexrow"><a class="modifier-control add"><i class="fas fa-plus"></i> {{localize "NECH.Modifiers.Add"}}</a></li>
+      </ol>
+    </div>
+
+</form>
+

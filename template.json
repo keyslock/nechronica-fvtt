@@ -1,0 +1,111 @@
+{
+  "Actor": {
+    "types": ["doll", "savant", "legion", "horror"],
+    "templates": {
+      "common": {
+        "details": {
+          "notes": ""
+        },
+        "ap": {
+          "value": 0
+        },
+        "spineCounter": {
+          "value": 0
+        }
+      },
+      "npc": {
+        "threat": 0
+      }
+    },
+    "doll": {
+      "templates": ["common"],
+      "details": {
+        "age": 0,
+        "experience": 0,
+        "biography": "",
+        "premonitions": ""
+      },
+      "ap": {
+        "bonus": 0
+      },
+      "class": "",
+      "subClass": "",
+      "placement": "",
+      "position": "",
+      "attributes": {
+        "armament": {
+          "bonus": 0,
+          "experience": 0
+        },
+        "mutation": {
+          "bonus": 0,
+          "experience": 0
+        },
+        "enhancement": {
+          "bonus": 0,
+          "experience": 0
+        }
+      }
+    },
+    "savant": {
+      "templates": ["common", "npc"]
+    },
+    "legion": {
+      "templates": ["common", "npc"],
+      "remaining": 0
+    },
+    "horror": {
+      "templates": ["common", "npc"]
+    }
+  },
+  "Item": {
+    "types": ["bodypart","memory","position","class","regret"],
+    "templates": {
+      "common": {
+        "description": "",
+        "effect": ""
+      }
+    },
+    "bodypart": {
+      "templates": ["common", "part"],
+      "location": "head",
+      "timing": "auto",
+      "effects": {},
+      "cost": 0,
+      "range": "0",
+      "attack": "",
+      "threat": 0,
+      "apBonus": 0,
+      "used": false,
+      "type": "bodypart",
+      "broken": false,
+      "damage": 0,
+      "rollModifier": 0,
+      "checkModifier": 0,
+      "modifiers": []
+    },
+    "class": {
+      "templates": ["common"],
+      "parameter": {
+        "armament": 0,
+        "mutation": 0,
+        "enhancement": 0
+      }
+    },
+    "position": {
+      "templates": ["common"]
+    },
+    "memory": {
+      "templates": ["common"],
+      "number": 0
+    },
+    "regret": {
+      "templates": ["common"],
+      "target": "",
+      "type": "",
+      "madness": 3
+    }
+
+  }
+}
+  

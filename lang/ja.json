@@ -1,0 +1,205 @@
+{
+  "NECH": {
+    "System": {
+      "Title": "ネクロニカ",
+      "Description": "Nechronica game system for FoundryVTT"
+    },
+
+    "Location": "部位",
+    "Locations": {
+      "Head": "頭部",
+      "Arms": "腕部",
+      "Torso": "胴部",
+      "Legs": "脚部",
+      "Any": "任意"
+    },
+    "Timing": "タイミング",
+    "Timings": {
+      "Action": "アクション",
+      "Rapid": "ラピッド",
+      "Damage": "ダメージ",
+      "Judge": "ジャッジ",
+      "Auto": "オート"
+    },
+    "Level": "レベル",
+    "Cost": "コスト",
+    "Range": "レンジ",
+    "AttackType": "攻撃種別",
+    "AttackTypes": {
+      "Unarmed": "肉弾",
+      "Melee": "白兵",
+      "Ranged": "射撃",
+      "Blast": "砲撃",
+      "Mental": "精神"
+    },
+    "Effects": "効果",
+    "EffectTypes": {
+      "Dismember": "切断",
+      "Explosive": "爆発",
+      "AreaAttack": "全体攻撃",
+      "Chain": "連撃",
+      "Stagger": "転倒"
+    },
+    "Threat": "悪意",
+    "APBonus": "行動値ボーナス",
+    "Effect": "効果",
+    "Description": "詳細",
+    "Broken": "損傷",
+    "Used": "使用",
+    "OptionalModifiers": "修正",
+    "ModifierPlural": "修正",
+    "Modifiers": {
+      "Roll": "ロール",
+      "Damage": "ダメージ",
+      "AlwaysOn": "常時",
+      "Optional": "限定",
+      "Add": "修正を追加"
+    },
+
+    "AP": "行動値",
+    "Age": "享年",
+    "Biography": "背景",
+    "BodyPart": "パーツ",
+    "BodyParts": "パーツ",
+    "Bonus": "ボーナス",
+    "Class": "クラス",
+    "ContentOfMemory": "内容",
+    "CurrentAP": "現在行動値",
+    "Details": "詳細",
+    "Dice": "ダイス",
+    "Experience": "寵愛",
+    "Favour": "寵愛",
+    "Regret": "未練",
+    "Regrets": "未練",
+    "FragmentsOfMemory": "記憶の欠片",
+    "Madness": "狂気",
+    "MaxAP": "最大行動値",
+    "Memory": "記憶の欠片",
+    "Name": "名前",
+    "Notes": "ノート",
+    "Number": "番号",
+    "Parts": "パーツ",
+    "Placement": "初期配置",
+    "Placements": {
+      "Limbo": "煉獄",
+      "Elysium": "花園",
+      "Eden": "楽園"
+    },
+    "Position": "ポジション",
+    "Premonitions": "暗示",
+    "Remaining": "残り数",
+    "Skill": "スキル",
+    "Skills": "スキル",
+    "SpineCounter": "せぼね",
+    "Target": "対象",
+    "Content": "内容",
+    "Title": "名称",
+    "Total": "合計",
+    "Type": "種別",
+    "UseSpineCounter": "溜まったせぼねを使用する({spineCounter} AP)",
+    "Categorie": "分類",
+    "Categories": {
+      "Alice" : "アリス",
+      "Holic" : "ホリック",
+      "Automaton" : "オートマトン",
+      "Junk" : "ジャンク",
+      "Coat" : "コート",
+      "Sorority" : "ソロリティ",
+      "Stacey" : "ステーシー",
+      "Thanatos" : "タナトス",
+      "Gothic" : "ゴシック",
+      "Requiem" : "レクイエム",
+      "Baroque" : "バロック",
+      "Romanesque" : "ロマネスク",
+      "Psychedelic" : "サイケデリック",
+      "Armed" : "武装",
+      "Mutation" : "変異",
+      "Modification" : "改造",
+      "Pawn" : "手駒専用"
+    },
+    "Armament": "武装",
+    "ArmamentAbbrev": "武装",
+    "Mutation": "変異",
+    "MutationAbbrev": "変異",
+    "Enhancement": "改造",
+    "EnhancementAbbrev": "改造",
+
+    "AddItem": "アイテムを追加",
+    "DeleteItem": "アイテムを削除",
+    "DeleteItemConfirmation": "本当にこのアイテムを削除しますか？",
+    "DeleteItemTitle": "{item}を削除",
+    "EditItem": "アイテムを編集",
+    "DuplicateItem": "アイテムを複製",
+    "NewItem": "新規{name}",
+
+    "Damage": "ダメージ",
+    "RollMode": "ロールモード",
+    "RollBonus": "判定修正",
+    "DamageBonus": "ダメージ修正",
+    "Tags": "タグ",
+    "Attack": "攻撃",
+    "Check": "判定",
+    "Roll": {
+      "Roll": "ロール",
+      "TargetsChoice": "防御側任意",
+      "AttackersChoice": "攻撃側任意",
+      "Fumble": "大失敗",
+      "Failure": "失敗",
+      "Success": "成功",
+      "Critical": "大成功",
+      "Dismemberment": "切断"
+    },
+    "WasBroken": "　損傷",
+
+    "Warnings": {
+      "MissingAP": "{actor}は{part}を使用するための行動値が不足しています。",
+      "AlreadyUsed": "{actor}はすでに{part}を使用しています。",
+      "WrongTiming": "You cannot use a part or skill with a timing of '{timing}' right now."
+    },
+
+    "DefaultItems":{
+      "name":{
+        "Precious":"たからもの",
+        "Brain": "のうみそ",
+        "Eye": "めだま",
+        "Chin":"あご",
+        "Fist":"こぶし",
+        "Arm":"うで",
+        "Shoulder":"かた",
+        "Spine":"せぼね",
+        "Guts":"はらわた",
+        "Bone":"ほね",
+        "Leg":"あし"
+      },
+      "effect":{
+        "Dependence":"依存",
+        "Regression":"幼児退行",
+        "MaxAp":"最大行動値",
+        "Self":"自身",
+        "UnarmedAttack":"肉弾攻撃",
+        "Support":"支援",
+        "Move":"移動",
+        "SpineEffect":"同ターンの次カウントで使うマニューバ1つのコスト-1（最低0）",
+        "None":"なし",
+        "Interference":"妨害"
+      }
+    }
+  },
+
+  "TYPES": {
+      "Actor": {
+        "doll": "ドール",
+        "legion": "レギオン",
+        "horror": "ホラー",
+        "savant": "サヴァント"
+      },
+      "Item": {
+          "bodypart": "パーツ・スキル",
+          "attack": "攻撃",
+          "memory": "記憶",
+          "position": "ポジション",
+          "class": "クラス",
+          "regret": "未練"
+      }
+    }
+}

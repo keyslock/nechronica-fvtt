@@ -1,0 +1,171 @@
+<form class="{{cssClass}}" autocomplete="off">
+  <header class="sheet-header">
+    <div class="flexrow">
+      <img src="{{actor.img}}" data-edit="img" title="{{actor.name}}"/>
+      <div class="flexcol">
+        <div class="flexrow">
+          <h1><input name="name" type="text" value="{{actor.name}}" placeholder="{{name}}"></h1>
+          <div class="hide-header flexrow" style="flex: 0 5 5%; align-items: center; margin-left: auto; text-align: right;">
+            <label><a class="hide-show"><i class="fas fa-cogs"></i></a></label>
+          </div>
+        </div>
+        <div class="doll-header {{#if (lookup this.hiddenElems "doll-header")}}hidden{{/if}}">
+          <div class="form-group">
+            <label><h4>{{localize "NECH.Age"}}</h4></label>
+            <input name="system.details.age" value="{{actor.system.details.age}}" type="text">
+            <label><h4>{{localize "NECH.Premonitions"}}</h4></label>
+            <input name="system.details.premonitions" value="{{actor.system.details.premonitions}}" type="text">
+          </div>
+          <div class="flexrow">
+            <div class="source item-list">
+              <div class="attributes flexrow">
+                {{!-- Position --}}
+                {{#if position}}
+                  <div class="position item flexrow" data-item-id="{{position._id}}">
+                    <div class="name flexrow">
+                      <h4>{{position.name}}</h4>
+                      <div class="item-controls">
+                        <a class="item-control item-edit" title="{{localize "NECH.EditItem"}}"><i class="fas fa-edit"></i></a>
+                        <a class="item-control item-delete" title="{{localize "NECH.DeleteItem"}}"><i class="fas fa-trash"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                {{else}}
+                  <div class="position flexrow">
+                    <div class="name flexrow">
+                      <a class="item-control item-add" title="{{localize "NECH.AddItem"}}" data-type="position"><i class="fas fa-plus"></i></a>
+                    </div>
+                  </div>
+                {{/if}}
+                <div class="attributes-row flexrow">
+                  <div class="attribute"><h4>{{localize "NECH.ArmamentAbbrev"}}</h4></div>
+                  <div class="attribute"><h4>{{localize "NECH.MutationAbbrev"}}</h4></div>
+                  <div class="attribute"><h4>{{localize "NECH.EnhancementAbbrev"}}</h4></div>
+                </div>
+              </div>
+              {{#if class}}
+                <div class="class item flexrow" data-item-id="{{class._id}}">
+                  <div class="name flexrow"><h4>{{class.name}}</h4>
+                    <div class="item-controls">
+                      <a class="item-control item-edit" title="{{localize "NECH.EditItem"}}"><i class="fas fa-edit"></i></a>
+                      <a class="item-control item-delete" title="{{localize "NECH.DeleteItem"}}"><i class="fas fa-trash"></i></a>
+                    </div>
+                  </div>
+                  <div class="attributes-row flexrow">
+                    <div class="attribute"><h4>{{class.system.parameter.armament}}</h4></div>
+                    <div class="attribute"><h4>{{class.system.parameter.mutation}}</h4></div>
+                    <div class="attribute"><h4>{{class.system.parameter.enhancement}}</h4></div>
+                  </div>
+                </div>
+              {{else}}
+                <div class="class flexrow" >
+                  <div class="name flexrow">
+                    <a class="item-control item-add" title="{{localize "NECH.AddItem"}}" data-type="class"><i class="fas fa-plus"></i></a>
+                  </div>
+                  <div class="attributes-row flexrow">
+                    <div class="attribute"><h4>–</h4></div>
+                    <div class="attribute"><h4>–</h4></div>
+                    <div class="attribute"><h4>–</h4></div>
+                  </div>
+                </div>
+              {{/if}}
+              {{#if subClass}}
+                <div class="class item flexrow" data-item-id="{{subClass._id}}">
+                  <div class="name flexrow"><h4>{{subClass.name}}</h4>
+                    <div class="item-controls">
+                      <a class="item-control item-edit" title="{{localize "NECH.EditItem"}}"><i class="fas fa-edit"></i></a>
+                      <a class="item-control item-delete" title="{{localize "NECH.DeleteItem"}}"><i class="fas fa-trash"></i></a>
+                    </div>
+                  </div>
+                  <div class="attributes-row flexrow">
+                    <div class="attribute"><h4>{{subClass.system.parameter.armament}}</h4></div>
+                    <div class="attribute"><h4>{{subClass.system.parameter.mutation}}</h4></div>
+                    <div class="attribute"><h4>{{subClass.system.parameter.enhancement}}</h4></div>
+                  </div>
+                </div>
+              {{else}}
+                <div class="class flexrow" data-type="class">
+                  <div class="name flexrow">
+                    <a class="item-control item-add" title="{{localize "NECH.AddItem"}}" data-type="class"><i class="fas fa-plus"></i></a>
+                  </div>
+                  <div class="attributes-row flexrow">
+                    <div class="attribute"><h4>–</h4></div>
+                    <div class="attribute"><h4>–</h4></div>
+                    <div class="attribute"><h4>–</h4></div>
+                  </div>
+                </div>
+              {{/if}}
+              <div class="attributes-bonus flexrow">
+                <div class="name align-end"><h4>{{localize "NECH.Bonus"}}</h4></div>
+                <div class="attributes-row flexrow">
+                  {{nechRadioBoxesRow "attribute bonusAttribute" system.attributes checked=system.bonusAttribute}}
+                </div>
+              </div>
+              <div class="experience flexrow">
+                <div class="name align-end"><h4>{{localize "NECH.Experience"}}</h4></div>
+                <div class="attributes-row flexrow">
+                  {{#each actor.system.attributes as |attribute key|}}
+                    <div class="attribute">
+                      <input name="system.attributes.{{key}}.experience" value="{{attribute.experience}}" data-dtype="Number" type="number">
+                    </div>
+                  {{/each}}
+                </div>
+              </div>
+              <div class="total flexrow">
+                <div class="name align-end"><h4>{{localize "NECH.Total"}}</h4></div>
+                <div class="attributes-row flexrow">
+                  {{#each actor.system.attributes as |attribute key|}}
+                    <div class="attribute">
+                      <h4>{{attribute.total}}</h4>
+                    </div>
+                  {{/each}}
+                </div>
+              </div>
+            </div>
+            <div class="flexcol actor-details">
+              <div class="favour">
+                <div class="form-group-stacked">
+                  <label><h4>{{localize "NECH.Favour"}}</h4></label>
+                  <input name="system.details.experience" value="{{actor.system.details.experience}}" data-dtype="Number" type="number">
+                </div>
+              </div>
+              <div class="placement">
+                <div class="form-group-stacked">
+                  <label><h4>{{localize "NECH.Placement"}}</h4></label>
+                  <div class="form-fields flexcol">
+                    {{radioBoxes "system.placement" config.placements checked=actor.system.placement localize=true}}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  {{!-- Nav stuff --}}
+  <nav class="sheet-tabs tabs" data-group="primary">
+    <a class="item active" data-tab="parts">{{localize "NECH.Parts"}}</a>
+    <a class="item" data-tab="biography">{{localize "NECH.Biography"}}</a>
+    <a class="item" data-tab="notes">{{localize "NECH.Notes"}}</a>
+  </nav>
+
+  <div class="sheet-body {{#if (lookup this.hiddenElems "doll-header")}}small-header{{/if}}">
+
+    {{!-- Parts --}}
+    <div class="tab parts" data-group="primary" data-tab="parts">
+      {{> "systems/nechronica/templates/actors/parts/parts-ol.hbs"}}
+    </div>
+
+    {{!-- Biography --}}
+    <div class="tab biography flexcol" data-group="primary" data-tab="biography">
+      {{> "systems/nechronica/templates/actors/parts/biography.hbs"}}
+    </div>
+
+    {{!-- Notes --}}
+    <div class="tab actor-notes flexcol" data-group="primary" data-tab="notes">
+      {{editor system.details.notes target="system.details.notes" rollData=rollData button=true owner=owner editable=editable}}
+    </div>
+
+  </div>
+</form>

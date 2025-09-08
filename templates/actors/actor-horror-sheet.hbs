@@ -1,0 +1,25 @@
+<form class="{{cssClass}}" autocomplete="off">
+  {{!-- Sheet Header --}}
+  {{> "systems/nechronica/templates/actors/parts/npc-header.hbs"}}
+
+  <hr>
+
+  {{!-- Sheet Body --}}
+  {{!-- Nav stuff --}}
+  <nav class="sheet-tabs tabs" data-group="primary">
+    <a class="item active" data-tab="parts">{{localize "NECH.Parts"}}</a>
+    <a class="item" data-tab="notes">{{localize "NECH.Notes"}}</a>
+  </nav>
+
+  <div class="sheet-body {{#if (lookup this.hiddenElems "npc-header")}}small-header{{/if}}">
+    {{!-- Parts --}}
+    <div class="tab parts" data-group="primary" data-tab="parts">
+      {{> "systems/nechronica/templates/actors/parts/parts-ul.hbs"}}
+    </div>
+
+    {{!-- Notes --}}
+    <div class="tab actor-notes flexcol" data-group="primary" data-tab="notes">
+      {{editor system.details.description target="system.details.description" rollData=rollData button=true owner=owner editable=editable}}
+    </div>
+  </div>
+</form>

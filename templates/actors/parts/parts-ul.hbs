@@ -1,0 +1,76 @@
+{{!-- AP Management --}}
+{{> "systems/nechronica/templates/actors/parts/ap-form.hbs"}}
+
+{{!-- BodyParts --}}
+<section class="bodyParts-all body">
+  <li class="location header">
+    <div class="location header flexrow" data-location="all">
+      <div class="partsicon" style="background-image: url(icons/dice/d10black.svg)"></div>
+      <div class="location-header-details flexcol">
+        <div class="flexrow">
+          <h3 class="label">{{localize "NECH.BodyParts"}}</h3>
+          <div class="header-controls">
+            <a class="break-location"><i class="fas fa-user-slash"></i></a>
+            <a class="use-location"><i class="fas fa-user-clock"></i></a>
+          </div>
+          <div class="item-controls">
+            <a class="item-control item-add" title="{{localize "NECH.AddItem"}}" data-type="bodypart"><i class="fas fa-plus"></i></a>
+          </div>
+        </div>
+        <div class="details flexrow">
+          <div class="name">{{localize "NECH.Name"}}</div>
+          <div class="broken"><i class="fa-solid fa-heart-crack"></i></div>
+          <div class="timing">{{localize "NECH.Timing"}}</div>
+          <div class="checkbox"><i class="fa-solid fa-bolt"></i></div>
+          <div class="cost">{{localize "NECH.Cost"}}</div>
+          <div class="range">{{localize "NECH.Range"}}</div>
+          <div class="effect">{{localize "NECH.Effect"}}</div>
+          <div class="item-controls"></div>
+        </div>
+      </div>
+    </div>
+    <ul class="bodyParts list item-list">
+      {{#each bodyParts as |part|}}
+        <li class="bodyPart item details flexrow{{#if part.used}}used{{/if}}" data-item-id="{{part._id}}">
+          <div class="item-actions flexrow">
+            <a class="item-action check rollable" style="background-image: url({{part.img}})" title="{{part.name}}" width="24" height="24"></a>
+            <a class="item-action attack"><i class="fas fa-fist-raised"></i></a>
+            <a class="item-action chat"><i class="fas fa-comment"></i></a>
+          </div>
+          <div class="name"><h4>{{part.name}}</h4></div>
+          <div class="broken checkbox">
+            <input class="item-quick-edit" type="checkbox" data-target="system.broken" title="{{localize "NECH.Broken"}}" {{checked part.system.broken}}>
+          </div>
+          <div class="timing">{{localize (lookup ../config.timings part.system.timing)}}</div>
+          <div class="checkbox">
+            {{#if part.showUsed}}
+              <div class="checkbox"><input class="item-quick-edit" type="checkbox" data-target="system.used" {{checked part.system.used}}></div>
+            {{/if}}
+          </div>
+          <div class="cost">{{part.system.cost}}</div>
+          <div class="range">{{part.system.range}}</div>
+          <div class="effect">
+            <details class="effect-toggle">
+              <summary class="effect-summary">
+                {{part.system.effect}}...
+              </summary>
+              <div class="effect-full">
+                {{{ part.system.effect }}}
+              </div>
+            </details>
+          </div>
+
+          {{#if ../isOwner}}
+            <div class="item-controls">
+              <a class="item-control item-edit" title="{{localize "NECH.EditItem"}}"><i class="fas fa-edit"></i></a>
+              <a class="item-control item-duplicate" title="{{localize "NECH.DuplicateItem"}}"><i class="fas fa-copy"></i></a>
+              <a class="item-control item-delete" title="{{localize "NECH.DeleteItem"}}"><i class="fas fa-trash"></i></a>
+            </div>
+          {{/if}}
+
+        </li>
+      {{/each}}
+    </ul>
+  </li>
+</section>
+

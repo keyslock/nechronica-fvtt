@@ -1,0 +1,63 @@
+<div class="nech chat-card item-card" data-actor-id="{{actor.id}}" {{#if item._id}}data-item-id="{{item.id}}"{{/if}} {{#if tokenId}}data-token-id="{{tokenId}}"{{/if}}>
+  <header class="card-header flexrow">
+    <img src="{{item.img}}" title="{{item.name}}" width="36" height="36"/>
+    {{#if item.name}}
+      <h3 class="item-name">{{item.name}}</h3>
+    {{else}}
+      {{#if (eq item.type "fetter")}}
+        <h3 class="item-name">{{item.system.target}}</h3>
+      {{/if}}
+    {{/if}}
+  </header>
+  {{#if (or item.system.effect item.system.description)}}
+    <div class="card-content">
+      {{#if item.system.effect}}<div class="effect">{{{item.system.effect}}}</div>{{/if}}
+      {{#if item.system.description}}<div class="description {{#if item.system.effect}}hidden{{/if}}">{{{item.system.description}}}</div>{{/if}}
+    </div>
+    <hr>
+  {{/if}}
+  {{#if (or roll damageRoll)}}
+      <div class="blindable" data-blind="{{system.roll.blindroll}}">
+        <div class="chat-details flexrow">
+          <div class="roll-result flexcol">
+            <div>{{{result.type}}}</div>
+            <div>{{{result.roll}}}</div>
+          </div>
+          {{#if roll}}<div class="nech-roll">{{{roll}}}</div>{{/if}}
+        </div>
+        {{#if damageRoll}}
+          <hr>
+          <div class="nech-damage flexrow">
+            <div class="nech-damage-location">{{{result.location}}}</div>
+            <div class="dice-roll">
+              <div class="nech-damage-total dice-result">{{damage.total}}</div>
+              <div class="dice-tooltip dice-formula">{{{damage.formula}}}</div>
+            </div>
+          </div>
+        {{/if}}
+        <hr>
+      </div>
+    {{/if}}
+  <footer class="card-footer">
+    {{#if system.props.length}}
+      <div class="flexcol property-group gm-sensitive">
+        <label>{{localize "NECH.Tags"}}</label>
+        <div class="flexrow">
+          {{#each system.props}}
+            <span class="tag">{{{this}}}</span>
+          {{/each}}
+        </div>
+      </div>
+    {{/if}}
+    {{#if system.extraProps.length}}
+      <div class="flexcol property-group gm-sensitive">
+        <label>{{localize "NECH.ModifierPlural"}}</label>
+        <div class="flexrow">
+          {{#each system.extraProps}}
+            <span class="tag">{{{this}}}</span>
+          {{/each}}
+        </div>
+      </div>
+    {{/if}}
+  </footer>
+</div>
