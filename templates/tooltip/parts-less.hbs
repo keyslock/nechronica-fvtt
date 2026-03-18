@@ -1,0 +1,40 @@
+<div id="token-tooltip" class="token-tooltip">
+  <div class="token-tooltip-content">
+    <div class="name">{{name}}</div>
+    <hr class="tooltipline">
+
+    {{#unless (eq type "doll")}}
+    <div class="threat">{{localize "NECH.Threat"}}: {{threat}}</div>
+    {{/unless}}
+
+    <div class="ap">
+      AP: {{apValue}} / {{apMax}}
+      ...{{localize "NECH.SpineCounter"}}: {{spine}}
+    </div>
+
+    <div class="hp">
+      HP: {{hpValue}} / {{hpMax}}
+    </div>
+
+    <div class="tooltip-manuva">
+      {{#each items}}
+      <div class="row">
+        <div class="itemname">
+          {{#if used}}
+          <i class="fa-solid fa-ban"></i>
+          {{else}}
+          <span class="icon-placeholder"></span>
+          {{/if}}
+          {{name}}
+        </div>
+
+        <div class="timing">{{timing}}</div>
+        <div class="cost">{{cost}}</div>
+        <div class="range">{{range}}</div>
+        <div class="effect">{{effect}}</div>
+      </div>
+      {{/each}}
+
+    </div>
+  </div>
+</div>

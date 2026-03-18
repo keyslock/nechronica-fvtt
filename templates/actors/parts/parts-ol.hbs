@@ -54,7 +54,7 @@
                 <div class="effect">
                   <details class="effect-toggle">
                     <summary class="effect-summary">
-                      {{skill.system.effect}}
+                      {{ stripHTML skill.system.effect }}...
                     </summary>
                     <div class="effect-full">
                       {{{ skill.system.effect }}}
@@ -126,7 +126,7 @@
                 <div class="effect">
                   <details class="effect-toggle">
                     <summary class="effect-summary">
-                      {{part.system.effect}}...
+                      {{ stripHTML part.system.effect }}...
                     </summary>
                     <div class="effect-full">
                       {{{ part.system.effect }}}

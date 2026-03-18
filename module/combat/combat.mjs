@@ -4,7 +4,7 @@
  */
 export class NechronicaCombat extends Combat {
     /**
-     * イニシアティブのロール処理をカスタマイズ
+     * custom initiative
      */
     async rollInitiative(ids, options = {}) {
         const combatants = ids.map((id) => this.combatants.get(id));
@@ -29,25 +29,21 @@ export class NechronicaCombat extends Combat {
         }
     }
     /**
-     * 戦闘開始時の処理
+     * start combat
      */
     async startCombat() {
-        // 戦闘開始時のデフォルト処理を呼び出す
         await super.startCombat();
 
-        // 戦闘に参加しているキャラクターに処理を適用
         for (let combatant of this.combatants) {
             const actor = combatant.actor;
             if (!actor) continue;
 
-            // APを最大値まで回復
+            // ap update.
             const ap = actor.system.ap.max;
             await actor.update({ "system.ap.value": ap });
-
-            // イニシアティブを新しい値で更新
             await this.setInitiative(combatant.id, ap);
 
-            // キャラクターが所持するアイテムを未使用状態に設定
+            // item update.
             for (let item of actor.items) {
                 if (item.system.used) {
                     await item.update({ "system.used": false });
@@ -56,22 +52,20 @@ export class NechronicaCombat extends Combat {
         }
     }
     /**
-     * ラウンド進行
+     * round activate
      */
     async nextRound() {
-        // 既存の nextRound メソッドを呼び出してラウンドを進める
         await super.nextRound();
 
-        // 戦闘に参加しているキャラクターをループ処理
         for (let combatant of this.combatants) {
             const actor = combatant.actor;
             if (!actor) continue;
 
-            // キャラクターのAPを更新
+            // ap update.
             const ap = actor.system.ap.value + actor.system.ap.max;
             await actor.update({ "system.ap.value": ap });
 
-            // キャラクターが所持するアイテムを未使用状態に設定
+            // item update.
             for (let item of actor.items) {
                 if (item.system.used) {
                     await item.update({ "system.used": false });

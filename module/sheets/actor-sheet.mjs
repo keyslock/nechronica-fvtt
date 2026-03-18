@@ -7,7 +7,13 @@ export class NechronicaActorSheet extends ActorSheet {
       classes: ["nechronica", "sheet", "actor"],
       width: 600,
       height: 400,
-      tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "attributes" }],
+      tabs: [
+        {
+          navSelector: ".sheet-tabs",
+          contentSelector: ".sheet-body",
+          initial: "attributes",
+        },
+      ],
     });
   }
 
@@ -19,12 +25,12 @@ export class NechronicaActorSheet extends ActorSheet {
   getData() {
     // Retrieve base data structure.
     const context = super.getData();
-    context.isOwner =  this.document.isOwner;
-    context.limited =  this.document.limited;
-    context.options =  this.options;
-    context.editable =  this.document.isEditable;
-    context.cssClass =  this.document.owner ?  "editable" : "locked";
-    context.isGM =   game.user?.isGM ?? false;
+    context.isOwner = this.document.isOwner;
+    context.limited = this.document.limited;
+    context.options = this.options;
+    context.editable = this.document.isEditable;
+    context.cssClass = this.document.owner ? "editable" : "locked";
+    context.isGM = game.user?.isGM ?? false;
     context.config = NECHRONICA;
 
     // Use a safe clone of the item data for further operations.
@@ -45,14 +51,12 @@ export class NechronicaActorSheet extends ActorSheet {
     } else if (actorData.type === "horror") {
       this._sortItemsSimple(context);
     }
-    console.log(context);
 
     return {
       ...context,
-      // 任意でデータを加工
     };
   }
-  
+
   activateListeners(html) {
     super.activateListeners(html);
 
@@ -74,8 +78,7 @@ export class NechronicaActorSheet extends ActorSheet {
     html.find(".circles").click((ev) => this._onCircleClick(ev));
 
     // Edit items directly from sheet
-    html.find(".item-quick-edit").change((ev) => this._onItemQuickEdit(ev));      
-
+    html.find(".item-quick-edit").change((ev) => this._onItemQuickEdit(ev));
   }
 
   /**
@@ -93,14 +96,14 @@ export class NechronicaActorSheet extends ActorSheet {
     const name = game.i18n.format("NECH.NewItem", {
       name: game.i18n.localize(NECHRONICA.itemTypes[typeName]),
     });
-    
+
     const itemData = {
       name,
       type,
       system: {},
       img: "icons/svg/item-bag.svg",
     };
-    
+
     if (type === "bodypart") {
       if (subType === "skill") {
         itemData.system.partType = "skill";
@@ -113,7 +116,7 @@ export class NechronicaActorSheet extends ActorSheet {
         }
       }
     }
-    
+
     return this.actor.createEmbeddedDocuments("Item", [itemData]);
   }
 
@@ -159,7 +162,7 @@ export class NechronicaActorSheet extends ActorSheet {
       });
     }
   }
-  
+
   /**
    * Sorts Item entities by their location
    *
@@ -169,7 +172,7 @@ export class NechronicaActorSheet extends ActorSheet {
     this.actor.system.position = "";
     this.actor.system.class = "";
     this.actor.system.subClass = "";
-    
+
     const bodyParts = [];
     for (let i of context.items) {
       bodyParts.push(i);
@@ -192,8 +195,11 @@ export class NechronicaActorSheet extends ActorSheet {
         item.showUsed = !["action", "auto"].includes(item.system.timing);
         // Skills don't need a location
         if (item.system.partType === "skill") {
-          // @TODO: Handle skills for savants?
-          context.skills.push(item);
+          if (this.actor.type === "savant") {
+            context.bodyParts["any"].parts.push(item);
+          } else {
+            context.skills.push(item);
+          }
         } else {
           // regular body parts do
           context.bodyParts[item.system.location].parts = [
@@ -209,7 +215,7 @@ export class NechronicaActorSheet extends ActorSheet {
       } else if (item.type === "memory") {
         context.memories.push(item);
       } else if (item.type === "class") {
-        if (this.actor.system.class == ""){
+        if (this.actor.system.class == "") {
           this.actor.system.class = item._id;
           context.class = item;
         } else if (this.actor.system.subClass == "") {
@@ -217,14 +223,19 @@ export class NechronicaActorSheet extends ActorSheet {
           context.subClass = item;
         }
       } else if (item.type === "position") {
-        if (this.actor.system.position == ""){
+        if (this.actor.system.position == "") {
           this.actor.system.position = item._id;
           context.position = item;
-        } 
+        }
       }
     }
   }
-  
+
+  /**
+   * Sorts Item entities
+   *
+   * @param {object} context - The data to be returned by the sheet's getData
+   */
   _sortItemsSimple(context) {
     context.bodyParts = [];
     for (const item of context.items) {
@@ -235,7 +246,6 @@ export class NechronicaActorSheet extends ActorSheet {
     }
   }
 
-    
   /**
    * Handle requests to update an OwnedItem's data from the owner's sheet
    *
@@ -252,8 +262,8 @@ export class NechronicaActorSheet extends ActorSheet {
       value = !getProperty(item, target);
     }
     let updateItem = {};
-    updateItem["_id"] = id;  // アイテムのIDを設定
-    updateItem[target] = value;  // 動的にプロパティを設定
+    updateItem["_id"] = id; // アイテムのIDを設定
+    updateItem[target] = value; // 動的にプロパティを設定
 
     this.actor.updateEmbeddedDocuments("Item", [updateItem]);
   }
@@ -266,18 +276,20 @@ export class NechronicaActorSheet extends ActorSheet {
   _onItemAction(event) {
     event.preventDefault();
     const a = event.currentTarget;
-    const item = this.actor.getEmbeddedDocument("Item", a.closest(".item").dataset.itemId);
-  console.log(item);
+    const item = this.actor.getEmbeddedDocument(
+      "Item",
+      a.closest(".item").dataset.itemId,
+    );
     // Check rolls
     if (a.classList.contains("check")) {
       item.roll({ rollType: "CHECK", ev: event });
     }
-  
+
     // Attack rolls
     if (a.classList.contains("attack")) {
       item.roll({ rollType: "ATTACK", ev: event });
     }
-  
+
     // Roll to chat
     if (
       a.classList.contains("chat") ||
@@ -296,28 +308,33 @@ export class NechronicaActorSheet extends ActorSheet {
    * @private
    */
   _onCircleClick(event) {
-    console.log(this);
     const actorData = this.actor;
     const index = Number($(event.currentTarget).attr("data-index"));
-    let target = $(event.currentTarget).parents(".circle-row").attr("data-target");
+    let target = $(event.currentTarget)
+      .parents(".circle-row")
+      .attr("data-target");
     if (target === "item") {
       const itemData = actorData.items.find(
-          (i) => i._id === $(event.currentTarget).parents(".item").attr("data-item-id")
-        );
-      target = $(event.currentTarget).parents(".circle-row").attr("data-item-target");
+        (i) =>
+          i._id ===
+          $(event.currentTarget).parents(".item").attr("data-item-id"),
+      );
+      target = $(event.currentTarget)
+        .parents(".circle-row")
+        .attr("data-item-target");
       const value = getProperty(itemData, target);
       let updateItem = {};
-      updateItem["_id"] = itemData._id;  // アイテムのIDを設定
+      updateItem["_id"] = itemData._id;
       if (value === index + 1) {
         // If the last one was clicked, decrease by 1
-        updateItem[target] = index; 
+        updateItem[target] = index;
       } // Otherwise, value = index clicked
-      else updateItem[target] = index + 1; 
-      
+      else updateItem[target] = index + 1;
+
       this.actor.updateEmbeddedDocuments("Item", [updateItem]);
     }
   }
-  
+
   /**
    * Change the "Broken" state of all Parts (belonging to a location)
    *
@@ -329,11 +346,7 @@ export class NechronicaActorSheet extends ActorSheet {
     event.preventDefault();
     const li = $(event.currentTarget).closest(".header")[0];
     const location = li.dataset.location;
-    const state = event.shiftKey
-      ? 1
-      : event.ctrlKey
-      ? "toggle"
-      : 0;
+    const state = event.shiftKey ? 1 : event.ctrlKey ? "toggle" : 0;
 
     const actor = this.actor;
     return actor.setItemBroken({ location }, state);
@@ -351,14 +364,9 @@ export class NechronicaActorSheet extends ActorSheet {
 
     const li = $(event.currentTarget).closest(".header")[0];
     const location = li.dataset.location;
-    const state = event.shiftKey
-      ? 1
-      : event.ctrlKey
-      ? "toggle"
-      : 0;
+    const state = event.shiftKey ? 1 : event.ctrlKey ? "toggle" : 0;
 
     const actor = this.actor;
     return actor.setItemUsed({ location }, state);
   }
 }
-  

@@ -14,7 +14,9 @@
         }
       },
       "npc": {
-        "threat": 0
+        "threat": {
+          "base": 0
+        } 
       }
     },
     "doll": {
@@ -52,7 +54,8 @@
     },
     "legion": {
       "templates": ["common", "npc"],
-      "remaining": 0
+      "remaining": 0,
+      "initialing": 0
     },
     "horror": {
       "templates": ["common", "npc"]
@@ -108,4 +111,3 @@
 
   }
 }
-  

@@ -2,7 +2,6 @@
   {{!-- Item Sheet Header --}}
   <header class="sheet-header flexrow">
     <img class="profile" src="{{item.img}}" title="{{item.name}}" data-edit="img"/>
-
     <div class="header-details flexrow">
       <h1 class="charname">
         <input name="name" type="text" value="{{item.name}}" placeholder="{{localize "NECH.ItemName"}}"/>
@@ -11,11 +10,9 @@
   </header>
 
   {{!-- Sheet content --}}
-
   <div class="form-group">
     <label>{{localize "NECH.Target"}}</label>
     <input class="form-fields" name="system.target" placeholder="{{localize "NECH.Target"}}" value="{{item.system.target}}" data-dtype="String" type="text">
-
     <label>{{localize "NECH.Type"}}</label>
     <input class="form-fields" name="system.content" placeholder="{{localize "NECH.Content"}}" value="{{item.system.content}}" data-dtype="String" type="text">
 

@@ -1,23 +1,47 @@
-<header class="sheet-header {{#if (lookup hiddenElems "npc-header")}}small-sheet-header{{/if}}">
-  <div class="flexrow">
-    <img src="{{actor.img}}" class="{{#if (lookup hiddenElems "npc-header")}}small-img{{/if}}" data-edit="img" title="{{actor.name}}">
-
-    {{!-- Data and Biography --}}
-    <div class="flexcol">
-      <div class="flexrow">
-        <h1><input name="name" type="text" value="{{actor.name}}" placeholder="{{name}}"></h1>
-        <div class="hide-header flexrow" style="flex: 0 5 5%; align-items: center; margin-left: auto; text-align: right;">
-          <label><a class="hide-show"><i class="fas fa-cogs"></i></a></label>
-        </div>
-      </div>
-      <div class="form-group threat">
-        <label>{{localize "NECH.Threat"}}</label>
-        <div>{{actor.system.threat}}</div>
-        {{#if (eq actor.type "legion")}}
-          <label>{{localize "NECH.Remaining"}} </label>
-          <input name="system.remaining" type="text" value="{{actor.system.remaining}}" placeholder="{{localize "NECH.Remaining"}}">
-        {{/if}}
-      </div>
+<header class="enemy-header {{#if (lookup hiddenElems "npc-header")}}small-sheet-header{{/if}}">
+  <div class="icon">
+    <div class="img">
+      <img src="{{actor.img}}" data-edit="img" title="{{actor.name}}"/>
+    </div>
+    <div class="hp-bar">
+      <div class="hp-bar-inner" style="width: {{system.hp.rate}}%; background: {{system.hp.color}};"></div>
+    </div>
+    <div class="hp-value">
+      {{system.hp.value}} / {{system.hp.max}}
     </div>
   </div>
+
+  <div class="name">
+    <h1><input name="name" type="text" value="{{actor.name}}" placeholder="{{name}}"></h1>
+  </div>
+
+  {{!-- Data and Biography --}}
+  <div class="parameter">
+    {{#if (eq actor.type "legion")}}
+      <div class="form-group threat">
+        <label>{{localize "NECH.Threat"}}</label>
+        {{#if actor.system.threat.temp}}
+          <div>{{localize "NECH.LegionBase" name=actor.system.threat.base count=5}} ({{actor.system.threat.temp}}) = {{actor.system.threat.value}}</div>
+        {{else}}
+          <div>{{localize "NECH.LegionBase" name=actor.system.threat.base count=5}} = {{actor.system.threat.value}}</div>
+        {{/if}}
+      </div>
+      <div class="form-group count">
+        <label>{{localize "NECH.LegionCount"}} </label>
+        <input name="system.remaining" type="text" value="{{actor.system.remaining}}" placeholder="{{localize "NECH.Remaining"}}">
+          / 
+        <input name="system.initialing" type="text" value="{{actor.system.initialing}}" placeholder="{{localize "NECH.Initialing"}}">
+      </div>
+    {{else}}
+      <div class="form-group threat">
+        <label>{{localize "NECH.Threat"}}</label>
+        {{#if actor.system.threat.temp}}
+          <div>{{actor.system.threat.value}} ({{actor.system.threat.temp}})</div>
+        {{else}}
+          <div>{{actor.system.threat.value}}</div>
+        {{/if}}
+      </div>
+    {{/if}}
+  </div>
+
 </header>

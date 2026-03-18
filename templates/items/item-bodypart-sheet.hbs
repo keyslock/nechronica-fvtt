@@ -1,8 +1,7 @@
 <form class="{{cssClass}}" flexcol autocomplete="off">
   {{!-- Item Sheet Header --}}
   <header class="sheet-header flexrow">
-    <img class="profile part" src="{{item.img}}" title="{{item.name}}"/>
-
+    <img class="profile part" src="{{item.img}}" title="{{item.name}}" data-edit="img"/>
     <div class="header-details flexrow">
       <h1 class="charname">
         <input name="name" type="text" value="{{item.name}}" placeholder="{{localize "NECH.ItemName"}}"/>
@@ -28,17 +27,16 @@
             <option value="bodypart">{{localize "NECH.BodyPart"}}</option>
           {{/select}}
         </select>
-
-          <label>{{localize "NECH.Location"}}</label>
-          <select name="system.location">
-            {{#select item.system.location}}
-              <option value="any">{{localize "NECH.Locations.Any"}}</option>
-              <option value="head">{{localize "NECH.Locations.Head"}}</option>
-              <option value="arms">{{localize "NECH.Locations.Arms"}}</option>
-              <option value="torso">{{localize "NECH.Locations.Torso"}}</option>
-              <option value="legs">{{localize "NECH.Locations.Legs"}}</option>
-            {{/select}}
-          </select>
+        <label>{{localize "NECH.Location"}}</label>
+        <select name="system.location">
+          {{#select item.system.location}}
+            <option value="any">{{localize "NECH.Locations.Any"}}</option>
+            <option value="head">{{localize "NECH.Locations.Head"}}</option>
+            <option value="arms">{{localize "NECH.Locations.Arms"}}</option>
+            <option value="torso">{{localize "NECH.Locations.Torso"}}</option>
+            <option value="legs">{{localize "NECH.Locations.Legs"}}</option>
+          {{/select}}
+        </select>
       </div>
 
       <div class="form-group">
@@ -81,12 +79,13 @@
             <option value="auto">{{localize "NECH.Timings.Auto"}}</option>
           {{/select}}
         </select>
+        <label>{{localize "NECH.APBonus"}}</label>
+        <input name="system.apBonus" placeholder="{{localize "NECH.APBonus"}}" value="{{item.system.apBonus}}" data-dtype="Number" type="number">
       </div>
 
       <div class="form-group">
         <label>{{localize "NECH.Cost"}}</label>
         <input name="system.cost" placeholder="{{localize "NECH.Cost"}}" value="{{item.system.cost}}" data-dtype="Number" type="number">
-
         <label>{{localize "NECH.Range"}}</label>
         <input name="system.range" placeholder="{{localize "NECH.Range"}}" value="{{item.system.range}}" data-dtype="String" type="text">
       </div>
@@ -110,15 +109,15 @@
       <div class="form-group">
         <label>{{localize "NECH.Threat"}}</label>
         <input name="system.threat" placeholder="{{localize "NECH.Threat"}}" value="{{item.system.threat}}" data-dtype="Number" type="number">
-        <label>{{localize "NECH.APBonus"}}</label>
-        <input name="system.apBonus" placeholder="{{localize "NECH.APBonus"}}" value="{{item.system.apBonus}}" data-dtype="Number" type="number">
+        <label class="checkbox">
+          <input type="checkbox" name="system.threatmulti" data-dtype="Boolean" {{#if item.system.threatmulti}} checked {{/if}}/>
+          {{ localize "NECH.ThreatMulti" }}
+        </label>
       </div>
 
       {{!-- Special Qualities --}}
       <div class="form-group-stacked">
         <label>{{localize "NECH.Effects"}}</label>
-
-
         <label class="checkbox">
           <input type="checkbox" name="system.effects.dismember" data-dtype="Boolean" {{#if item.system.effects.dismember}} checked {{/if}}/> {{ localize "NECH.EffectTypes.Dismember" }}
         </label>

@@ -1,8 +1,15 @@
 {
   "NECH": {
     "System": {
-      "Title": "ネクロニカ",
+      "Title": "永い後日談のネクロニカ",
       "Description": "Nechronica game system for FoundryVTT"
+    },
+
+    "Config": {
+      "TokenTooltip": {
+        "Title": "トークンツールチップ表示",
+        "Hint": "トークンホバー時にツールチップを表示する"
+      }
     },
 
     "Location": "部位",
@@ -20,6 +27,13 @@
       "Damage": "ダメージ",
       "Judge": "ジャッジ",
       "Auto": "オート"
+    },
+    "TimingShort": {
+      "Action": "Act",
+      "Rapid": "Rpd",
+      "Damage": "Dmg",
+      "Judge": "Jdg",
+      "Auto": "Auto"
     },
     "Level": "レベル",
     "Cost": "コスト",
@@ -41,6 +55,7 @@
       "Stagger": "転倒"
     },
     "Threat": "悪意",
+    "ThreatMulti": "レギオンの悪意倍加なし",
     "APBonus": "行動値ボーナス",
     "Effect": "効果",
     "Description": "詳細",
@@ -68,7 +83,7 @@
     "Details": "詳細",
     "Dice": "ダイス",
     "Experience": "寵愛",
-    "Favour": "寵愛",
+    "Favour": "寵愛点",
     "Regret": "未練",
     "Regrets": "未練",
     "FragmentsOfMemory": "記憶の欠片",
@@ -87,7 +102,10 @@
     },
     "Position": "ポジション",
     "Premonitions": "暗示",
+    "LegionCount": "体数",
     "Remaining": "残り数",
+    "Initialing": "初期数",
+    "LegionBase": "{name}で{count}体",
     "Skill": "スキル",
     "Skills": "スキル",
     "SpineCounter": "せぼね",
@@ -154,7 +172,7 @@
     "Warnings": {
       "MissingAP": "{actor}は{part}を使用するための行動値が不足しています。",
       "AlreadyUsed": "{actor}はすでに{part}を使用しています。",
-      "WrongTiming": "You cannot use a part or skill with a timing of '{timing}' right now."
+      "WrongTiming": "現時点では、タイミングが'{timing}'のパーツやスキルは使用できません。"
     },
 
     "DefaultItems":{
@@ -194,12 +212,12 @@
         "savant": "サヴァント"
       },
       "Item": {
-          "bodypart": "パーツ・スキル",
-          "attack": "攻撃",
-          "memory": "記憶",
-          "position": "ポジション",
-          "class": "クラス",
-          "regret": "未練"
+        "bodypart": "パーツ・スキル",
+        "attack": "攻撃",
+        "memory": "記憶",
+        "position": "ポジション",
+        "class": "クラス",
+        "regret": "未練"
       }
     }
 }
