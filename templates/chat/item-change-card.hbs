@@ -1,0 +1,26 @@
+<div class="nech-card {{type}}">
+  <div class="nech-card-header">
+    {{actorName}}｜{{label}}
+  </div>
+
+  <div class="nech-card-body">
+    {{#each changes}}
+      <div class="nech-row">
+        <div class="nech-item">
+          {{this.name}}
+          {{#if this.location}}
+            <span class="loc">({{this.location}})</span>
+          {{/if}}
+        </div>
+
+        <div class="nech-values">
+          <span class="old">{{this.oldLabel}}</span>
+          <span class="arrow">→</span>
+          <span class="new {{#if this.new}}is-true{{else}}is-false{{/if}}">
+            {{this.newLabel}}
+          </span>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+</div>

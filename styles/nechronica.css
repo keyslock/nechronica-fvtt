@@ -735,6 +735,10 @@ span:hover .item-controls {
   color: #9fe870;
 }
 
+.token-tooltip .broken {
+  color: #f88;
+}
+
 .tooltip-manuva {
   display: flex;
   flex-direction: column;
@@ -744,7 +748,7 @@ span:hover .item-controls {
 /* 1行 */
 .tooltip-manuva .row {
   display: grid;
-  grid-template-columns: 
+  grid-template-columns:
     1fr
     2em
     2em
@@ -786,43 +790,43 @@ span:hover .item-controls {
 }
 
 .section .row:nth-child(even) {
-  background-color: rgba(255,255,255,0.05);
+  background-color: rgba(255, 255, 255, 0.05);
 }
 .nechronica.sheet.actor .doll-header {
   position: relative;
 
-	display: grid;
-	grid-template-areas:
-		"icon name name"
-		"icon age age"
-		"icon parameter favour";
-	grid-template-rows: 50px auto auto;
-	grid-template-columns: 100px 2fr 1fr;
+  display: grid;
+  grid-template-areas:
+    "icon name name"
+    "icon age age"
+    "icon parameter favour";
+  grid-template-rows: 50px auto auto;
+  grid-template-columns: 100px 2fr 1fr;
 
-  border-left: 5px inset rgba(var(--main-text-color), 1.0);
+  border-left: 5px inset rgba(var(--main-text-color), 1);
   border-top: 2px inset rgba(var(--main-text-color), 0.5);
   padding-left: 3px;
   margin-top: 5px;
   max-height: fit-content;
 }
 
-.nechronica.sheet.actor .doll-header .icon{
+.nechronica.sheet.actor .doll-header .icon {
   grid-area: icon;
   position: relative;
 }
-.nechronica.sheet.actor .doll-header .itemname{
+.nechronica.sheet.actor .doll-header .itemname {
   grid-area: name;
   position: relative;
 }
-.nechronica.sheet.actor .doll-header .age{
+.nechronica.sheet.actor .doll-header .age {
   grid-area: age;
   position: relative;
 }
-.nechronica.sheet.actor .doll-header .parameter{
+.nechronica.sheet.actor .doll-header .parameter {
   grid-area: parameter;
   position: relative;
 }
-.nechronica.sheet.actor .doll-header .favour{
+.nechronica.sheet.actor .doll-header .favour {
   grid-area: favour;
   position: relative;
 }
@@ -830,36 +834,36 @@ span:hover .item-controls {
 .nechronica.sheet.actor .enemy-header {
   position: relative;
 
-	display: grid;
-	grid-template-areas:
-		"icon name"
-		"icon parameter";
-	grid-template-rows: 50px auto;
-	grid-template-columns: 100px 1fr;
+  display: grid;
+  grid-template-areas:
+    "icon name"
+    "icon parameter";
+  grid-template-rows: 50px auto;
+  grid-template-columns: 100px 1fr;
 
-  border-left: 5px inset rgba(var(--main-text-color), 1.0);
+  border-left: 5px inset rgba(var(--main-text-color), 1);
   border-top: 2px inset rgba(var(--main-text-color), 0.5);
   padding-left: 3px;
   margin-top: 5px;
   max-height: fit-content;
 }
 
-.nechronica.sheet.actor .enemy-header .icon{
+.nechronica.sheet.actor .enemy-header .icon {
   grid-area: icon;
   position: relative;
 }
-.nechronica.sheet.actor .enemy-header .name{
+.nechronica.sheet.actor .enemy-header .name {
   grid-area: name;
   position: relative;
 }
-.nechronica.sheet.actor .enemy-header .parameter{
+.nechronica.sheet.actor .enemy-header .parameter {
   grid-area: parameter;
   position: relative;
 }
-.nechronica.sheet.actor .enemy-header .threat{
+.nechronica.sheet.actor .enemy-header .threat {
   width: 50%;
 }
-.nechronica.sheet.actor .enemy-header .count{
+.nechronica.sheet.actor .enemy-header .count {
   width: 50%;
 }
 
@@ -883,9 +887,78 @@ span:hover .item-controls {
   height: 2px;
   margin: 4px 0;
   border: none;
-  background: linear-gradient(
-    135deg,
-    #FD6585 0%,
-    #FD658500 100%
-  );
+  background: linear-gradient(135deg, #fd6585 0%, #fd658500 100%);
+}
+
+/* カード本体 */
+.nech-card {
+  border: 1px solid var(--color-border-light-primary);
+  border-radius: 6px;
+  background: var(--color-bg);
+  overflow: hidden;
+  font-size: 13px;
+}
+
+/* ヘッダー */
+.nech-card-header {
+  background: #444;
+  color: #fff;
+  padding: 6px 10px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+/* ボディ */
+.nech-card-body {
+  padding: 6px 10px;
+}
+
+/* 行 */
+.nech-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.nech-row:last-child {
+  border-bottom: none;
+}
+
+.nech-item {
+  flex: 1;
+}
+
+.nech-values {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.nech-values .old {
+  color: #888;
+}
+
+.nech-values .new {
+  font-weight: bold;
+}
+
+.nech-values .arrow {
+  color: #aaa;
+}
+
+.nech-values .is-true {
+  color: #e63946;
+}
+.nech-values .is-false {
+  color: #2a9d8f;
+}
+
+.nech-card.used .nech-card-header {
+  background: #3a86ff;
+}
+
+.nech-card.broken .nech-card-header {
+  background: #e63946;
 }

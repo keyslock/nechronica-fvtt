@@ -346,7 +346,9 @@ export class NechronicaItem extends Item {
     // Cost calc
     if (rollType == "MESSAGE") {
       // Set used status
-      await this.update({ "system.used": true });
+      if (this.system.timing && !["action", "auto"].includes(this.system.timing)){
+        await this.update({ "system.used": true });
+      }
       // Decrease AP
       const cost = itemData.cost;
       const spine =

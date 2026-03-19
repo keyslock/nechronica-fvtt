@@ -12,6 +12,19 @@
       }
     },
 
+    "Message": {
+      "Used": {
+        "Name": "使用状態",
+        "True": "使用済",
+        "False": "未使用"
+      },
+      "Broken": {
+        "Name": "損傷状態",
+        "True": "損傷",
+        "False": "未損傷"
+      }
+    },
+
     "Location": "部位",
     "Locations": {
       "Head": "頭部",
@@ -59,6 +72,7 @@
     "APBonus": "行動値ボーナス",
     "Effect": "効果",
     "Description": "詳細",
+    "Status": "状態",
     "Broken": "損傷",
     "Used": "使用",
     "OptionalModifiers": "修正",

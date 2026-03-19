@@ -251,21 +251,69 @@ export class NechronicaActorSheet extends ActorSheet {
    *
    * @param {Event} event - The triggering event
    */
-  _onItemQuickEdit(event) {
+  async _onItemQuickEdit(event) {
     event.preventDefault();
-    const id = $(event.currentTarget).parents(".item").attr("data-item-id");
-    const target = $(event.currentTarget).attr("data-target");
-    if (id == null || target == null) return;
-    const item = duplicate(this.actor.getEmbeddedDocument("Item", id));
-    let value = event.target.value == "on" ? true : false;
-    if (event.currentTarget.type === "checkbox") {
-      value = !getProperty(item, target);
-    }
-    let updateItem = {};
-    updateItem["_id"] = id; // アイテムのIDを設定
-    updateItem[target] = value; // 動的にプロパティを設定
 
-    this.actor.updateEmbeddedDocuments("Item", [updateItem]);
+    const id = $(event.currentTarget).parents(".item").data("itemId");
+    const target = $(event.currentTarget).data("target");
+    if (!id || !target) return;
+
+    const item = this.actor.getEmbeddedDocument("Item", id);
+    const oldValue = getProperty(item, target);
+
+    let value = event.target.value === "on";
+    if (event.currentTarget.type === "checkbox") {
+      value = !oldValue;
+    }
+
+    if (oldValue === value) return;
+
+    await this.actor.updateEmbeddedDocuments("Item", [
+      {
+        _id: id,
+        [target]: value,
+      },
+    ]);
+
+    const config = {
+      "system.used": {
+        label: "NECH.Message.Used.Name",
+        true: "NECH.Message.Used.True",
+        false: "NECH.Message.Used.False",
+        type: "used",
+      },
+      "system.broken": {
+        label: "NECH.Message.Broken.Name",
+        true: "NECH.Message.Broken.True",
+        false: "NECH.Message.Broken.False",
+        type: "broken",
+      },
+    };
+
+    const conf = config[target];
+    if (!conf) return;
+
+    // 👇 ここだけ差し替え
+    const changes = [
+      {
+        name: item.name,
+        location: getProperty(item, "system.location"),
+        old: oldValue,
+        new: value,
+      },
+    ];
+
+    const content = await this.renderItemChangeCard(this.actor, changes, {
+      label: conf.label,
+      type: conf.type,
+      trueKey: conf.true,
+      falseKey: conf.false,
+    });
+
+    ChatMessage.create({
+      speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+      content,
+    });
   }
 
   /**
@@ -347,9 +395,17 @@ export class NechronicaActorSheet extends ActorSheet {
     const li = $(event.currentTarget).closest(".header")[0];
     const location = li.dataset.location;
     const state = event.shiftKey ? 1 : event.ctrlKey ? "toggle" : 0;
+    console.log(location);
 
-    const actor = this.actor;
-    return actor.setItemBroken({ location }, state);
+    await this.logItemStateChange(
+      this.actor,
+      "broken",
+      "NECH.Message.Broken.Name",
+      "NECH.Message.Broken.True",
+      "NECH.Message.Broken.False",
+      () => this.actor.setItemBroken({ location }, state),
+      "broken",
+    );
   }
 
   /**
@@ -366,7 +422,122 @@ export class NechronicaActorSheet extends ActorSheet {
     const location = li.dataset.location;
     const state = event.shiftKey ? 1 : event.ctrlKey ? "toggle" : 0;
 
-    const actor = this.actor;
-    return actor.setItemUsed({ location }, state);
+    await this.logItemStateChange(
+      this.actor,
+      "used",
+      "NECH.Message.Used.Name",
+      "NECH.Message.Used.True",
+      "NECH.Message.Used.False",
+      () => this.actor.setItemUsed({ location }, state),
+      "used",
+    );
+  }
+
+  async logItemStateChange(
+    actor,
+    key,
+    label,
+    trueKey,
+    falseKey,
+    fn,
+    type = "",
+  ) {
+    const before = actor.items.map((i) => ({
+      id: i.id,
+      name: i.name,
+      value: i.system[key],
+      location: i.system.location,
+    }));
+
+    await fn();
+
+    const after = actor.items.map((i) => ({
+      id: i.id,
+      value: i.system[key],
+    }));
+
+    const changes = before
+      .map((b) => {
+        const a = after.find((x) => x.id === b.id);
+        if (!a || b.value === a.value) return null;
+
+        return {
+          name: b.name,
+          location: b.location,
+          old: b.value,
+          new: a.value,
+        };
+      })
+      .filter(Boolean);
+
+    if (!changes.length) return;
+
+    const locationMap = {
+      head: "NECH.Locations.Head",
+      arms: "NECH.Locations.Arms",
+      torso: "NECH.Locations.Torso",
+      legs: "NECH.Locations.Legs",
+      any: "NECH.Locations.Any",
+    };
+
+    const data = {
+      actorName: actor.name,
+      label: game.i18n.localize(label),
+      type,
+
+      changes: changes.map((c) => ({
+        name: c.name,
+        location: c.location
+          ? game.i18n.localize(locationMap[c.location] ?? c.location)
+          : "",
+        old: c.old,
+        new: c.new,
+        oldLabel: game.i18n.localize(c.old ? trueKey : falseKey),
+        newLabel: game.i18n.localize(c.new ? trueKey : falseKey),
+      })),
+    };
+
+    const content = await renderTemplate(
+      "systems/nechronica/templates/chat/item-change-card.hbs",
+      data,
+    );
+
+    ChatMessage.create({
+      speaker: ChatMessage.getSpeaker({ actor }),
+      content,
+    });
+  }
+
+  async renderItemChangeCard(actor, changes, options) {
+    const { label, type, trueKey, falseKey } = options;
+
+    const locationMap = {
+      head: "NECH.Locations.Head",
+      arms: "NECH.Locations.Arms",
+      torso: "NECH.Locations.Torso",
+      legs: "NECH.Locations.Legs",
+      any: "NECH.Locations.Any",
+    };
+
+    const data = {
+      actorName: actor.name,
+      label: game.i18n.localize(label),
+      type,
+      changes: changes.map((c) => ({
+        name: c.name,
+        location: c.location
+          ? game.i18n.localize(locationMap[c.location] ?? c.location)
+          : "",
+        old: c.old,
+        new: c.new,
+        oldLabel: game.i18n.localize(c.old ? trueKey : falseKey),
+        newLabel: game.i18n.localize(c.new ? trueKey : falseKey),
+      })),
+    };
+
+    return await renderTemplate(
+      "systems/nechronica/templates/chat/item-change-card.hbs",
+      data,
+    );
   }
 }

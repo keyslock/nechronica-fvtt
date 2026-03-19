@@ -420,7 +420,6 @@ function buildDollTooltipData(actor) {
       max: items.length,
       current: items.filter((i) => i.system?.broken !== true).length,
       items: items
-        .filter((i) => !i.system.broken)
         .map((i) => ({
           name: i.name,
           timing: getTimingLabel(i.system.timing),
@@ -428,6 +427,7 @@ function buildDollTooltipData(actor) {
           range: i.system.range ?? "-",
           effect: normarizeHtml(i.system.effect),
           used: i.system.used,
+          broken: i.system.broken,
         })),
     };
   });

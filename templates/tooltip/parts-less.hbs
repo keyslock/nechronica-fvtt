@@ -8,7 +8,7 @@
     {{/unless}}
 
     <div class="ap">
-      AP: {{apValue}} / {{apMax}}
+      {{localize "NECH.AP"}}: {{apValue}} / {{apMax}}
       ...{{localize "NECH.SpineCounter"}}: {{spine}}
     </div>
 
@@ -18,7 +18,7 @@
 
     <div class="tooltip-manuva">
       {{#each items}}
-      <div class="row">
+      <div class="row{{#if broken}} broken{{/if}}">
         <div class="itemname">
           {{#if used}}
           <i class="fa-solid fa-ban"></i>

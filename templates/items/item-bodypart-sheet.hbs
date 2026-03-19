@@ -135,6 +135,17 @@
         </label>
       </div>
 
+      {{!-- parts status --}}
+      <div class="form-group-stacked">
+        <label>{{localize "NECH.Status"}}</label>
+        <label class="checkbox">
+          <input type="checkbox" name="system.used" data-dtype="Boolean" {{#if item.system.used}} checked {{/if}}/> {{ localize "NECH.Used" }}
+        </label>
+        <label class="checkbox">
+          <input type="checkbox" name="system.broken" data-dtype="Boolean" {{#if item.system.broken}} checked {{/if}}/> {{ localize "NECH.Broken" }}
+        </label>
+      </div>
+
       <hr>
 
       <section class="effect-body">
