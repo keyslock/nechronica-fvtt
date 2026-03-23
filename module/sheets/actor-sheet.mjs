@@ -64,6 +64,7 @@ export class NechronicaActorSheet extends ActorSheet {
     html.find(".item-add").click((ev) => this._onItemCreate(ev));
     html.find(".item-edit").click(this._onItemEdit.bind(this));
     html.find(".item-delete").click(this._onItemDelete.bind(this));
+    html.find(".item-duplicate").click(this._onItemDuplicate.bind(this));
 
     // Item actions
     html.find(".item-action").click(this._onItemAction.bind(this));
@@ -161,6 +162,25 @@ export class NechronicaActorSheet extends ActorSheet {
         no: () => (button.disabled = false),
       });
     }
+  }
+
+  /**
+   * Handle requests to open an OwnedItems's sheet
+   *
+   * @param {Event} event - The triggering event
+   */
+  _onItemDuplicate(event) {
+    event.preventDefault();
+
+    const li = event.currentTarget.closest(".item");
+    const itemId = li.dataset.itemId;
+
+    const item = this.actor.items.get(itemId);
+    if (!item) return;
+
+    const itemData = item.toObject();
+
+    this.actor.createEmbeddedDocuments("Item", [itemData]);
   }
 
   /**

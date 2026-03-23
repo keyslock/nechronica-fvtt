@@ -57,14 +57,14 @@ export class NechronicaActor extends Actor {
     }
 
     actor.system.hp = {
-      "value": 0,
-      "max": 0
+      value: 0,
+      max: 0,
     };
 
     if (actor.type === "legion") {
       actor.system.hp = {
-        "value": Number(actor.system.remaining) || 0,
-        "max": Number(actor.system.initialing) || 0
+        value: Number(actor.system.remaining) || 0,
+        max: Number(actor.system.initialing) || 0,
       };
     }
 
@@ -84,8 +84,10 @@ export class NechronicaActor extends Actor {
       if (item.type === "bodypart") {
         // HP calculation
         if (actor.type !== "legion") {
-          actor.system.hp.max ++;
-          if(!item.system.broken) actor.system.hp.value ++;
+          if (actor.type !== "doll" || item.system.partType === "bodypart") {
+            actor.system.hp.max++;
+            if (!item.system.broken) actor.system.hp.value++;
+          }
         }
 
         // Threat calculation
@@ -129,13 +131,12 @@ export class NechronicaActor extends Actor {
         actor.system.threat.base = threatValue;
       }
 
-      if (actor.type === "legion"){
+      if (actor.type === "legion") {
         threatValue = threatValue * Math.ceil(actor.system.initialing / 5);
       }
 
       actor.system.threat.value = threatValue;
     }
-
   }
 
   /**

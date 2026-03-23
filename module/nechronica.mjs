@@ -10,7 +10,7 @@ import { preloadHandlebarsTemplates } from "./helpers/templates.mjs";
 import { registerHandlebarsHelpers } from "./handlebars/helpers.mjs";
 import { NECHRONICA } from "./config.mjs";
 
-Hooks.once("init", () => {
+Hooks.once("init", async () => {
   game.settings.register(game.system.id, "tokenTooltip", {
     name: game.i18n.localize("NECH.Config.TokenTooltip.Title"),
     hint: game.i18n.localize("NECH.Config.TokenTooltip.Hint"),
@@ -19,9 +19,14 @@ Hooks.once("init", () => {
     type: Boolean,
     default: true,
   });
-});
 
-Hooks.once("init", async () => {
+  Handlebars.registerHelper("stripHTML", function (html) {
+    if (!html) return "";
+    return normarizeHtml(html);
+  });
+
+  Handlebars.registerHelper("eq", (a, b) => a === b);
+
   // Preload Handlebars templates
   await preloadHandlebarsTemplates();
   // Configure custom Document implementations.
@@ -60,6 +65,18 @@ Hooks.once("init", async () => {
       value: [],
     },
   };
+});
+
+Hooks.once("ready", () => {
+  $(document).on(
+    "mousedown.tooltip-remove contextmenu.tooltip-remove",
+    removeTooltip,
+  );
+  $(window).on("blur.tooltip-remove", removeTooltip);
+  $(window).on("blur.token-tooltip", removeTooltip);
+
+  Hooks.on("renderApplication", removeTooltip);
+  Hooks.on("canvasReady", removeTooltip);
 });
 
 Hooks.on("createActor", (actor, options, userId) => {
@@ -269,14 +286,11 @@ Hooks.on("preCreateActor", (actor, data, options, userId) => {
 
 Hooks.on("updateActor", async (actor, updates) => {
   if (updates.system?.ap?.value !== undefined) {
-
     if (!game.combat) return;
 
     const combat = game.combat;
 
-    const combatant = combat.combatants.find(
-      (c) => c.actorId === actor.id
-    );
+    const combatant = combat.combatants.find((c) => c.actorId === actor.id);
     if (!combatant) return;
 
     const newInitiative = actor.system.ap.value;
@@ -292,7 +306,6 @@ Hooks.on("updateActor", async (actor, updates) => {
 
     if (currentCombatant?.id !== topCombatant?.id) {
       await combat.update({ turn: 0 });
-      // console.log(`手番変更: ${currentCombatant?.name ?? "なし"} → ${topCombatant?.name}`);
     }
   }
 });
@@ -316,19 +329,8 @@ Hooks.on("updateCombat", (combat, updateData, options, userId) => {
     );
     if (newTurnIndex !== -1) {
       combat.update({ turn: newTurnIndex });
-      // console.log(`${highestInitiativeCombatant.token.name} の手番に移動しました。`,);
     }
   }
-});
-
-Hooks.once("init", () => {
-  Handlebars.registerHelper("stripHTML", function (html) {
-    if (!html) return "";
-
-    return normarizeHtml(html);
-  });
-
-  Handlebars.registerHelper("eq", (a, b) => a === b);
 });
 
 Hooks.on("hoverToken", async (token, hovered) => {
@@ -364,8 +366,12 @@ function showTooltip(content) {
 
 function removeTooltip() {
   $("#token-tooltip").remove();
-  $(document).off("mousemove.token-tooltip");
+  $(document).off(".token-tooltip");
 }
+
+Hooks.on("renderApplication", removeTooltip);
+
+Hooks.on("canvasReady", removeTooltip);
 
 async function getTooltip(actor) {
   return await buildTooltipData(actor);
@@ -419,16 +425,15 @@ function buildDollTooltipData(actor) {
       partsHeader: PARTS_HEADER[part],
       max: items.length,
       current: items.filter((i) => i.system?.broken !== true).length,
-      items: items
-        .map((i) => ({
-          name: i.name,
-          timing: getTimingLabel(i.system.timing),
-          cost: i.system.cost ?? "-",
-          range: i.system.range ?? "-",
-          effect: normarizeHtml(i.system.effect),
-          used: i.system.used,
-          broken: i.system.broken,
-        })),
+      items: items.map((i) => ({
+        name: i.name,
+        timing: getTimingLabel(i.system.timing),
+        cost: i.system.cost ?? "-",
+        range: i.system.range ?? "-",
+        effect: normarizeHtml(i.system.effect),
+        used: i.system.used,
+        broken: i.system.broken,
+      })),
     };
   });
 
@@ -444,6 +449,7 @@ function buildDollTooltipData(actor) {
     parts,
   };
 }
+
 function buildPawnTooltipData(actor) {
   const items = actor.items
     .filter((item) => item.type === "bodypart")
@@ -477,6 +483,7 @@ function buildPawnTooltipData(actor) {
     items: items.filter((i) => !i.broken),
   };
 }
+
 function getTimingLabel(timing) {
   switch (timing) {
     case "action":
@@ -488,7 +495,7 @@ function getTimingLabel(timing) {
     case "judge":
       return game.i18n.localize("NECH.TimingShort.Judge");
     case "auto":
-      return game.i18n.localize("NECH.TimingShort.Action");
+      return game.i18n.localize("NECH.TimingShort.Auto");
     default:
       return "";
   }

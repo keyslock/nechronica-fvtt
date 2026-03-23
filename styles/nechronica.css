@@ -682,18 +682,18 @@ span:hover .item-controls {
   justify-content: space-around;
 }
 
-.effect {
-  max-width: 250px; /* 必要なら親の幅制限 */
+.details .effect {
+  max-width: 250px;
   word-break: break-word;
 }
 
-.effect-toggle {
+.details .effect-toggle {
   display: block;
   margin: 0;
   padding: 0;
 }
 
-.effect-summary {
+.details .effect-summary {
   cursor: pointer;
   white-space: nowrap;
   overflow: hidden;
@@ -704,7 +704,7 @@ span:hover .item-controls {
   color: #444;
 }
 
-.effect-full {
+.details .effect-full {
   margin-top: 0.3em;
   padding-left: 1em;
 }
@@ -724,6 +724,8 @@ span:hover .item-controls {
   line-height: 1.4;
 
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
+
+  width: max-content;
 }
 
 .token-tooltip .name {
@@ -745,7 +747,6 @@ span:hover .item-controls {
   gap: 2px;
 }
 
-/* 1行 */
 .tooltip-manuva .row {
   display: grid;
   grid-template-columns:
@@ -757,7 +758,6 @@ span:hover .item-controls {
   gap: 4px;
 }
 
-/* 見出し */
 .tooltip-manuva .header {
   display: flex;
   align-items: center;
@@ -769,9 +769,8 @@ span:hover .item-controls {
   white-space: nowrap;
 }
 
-/* 効果欄 */
 .tooltip-manuva .effect {
-  max-width: 200px;
+  max-width: 400px;
   word-break: break-word;
 }
 

@@ -2,7 +2,7 @@
   "id": "nechronica",
   "title": "Nechronica",
   "description": "『永い後日談ネクロニカ』",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "compatibility": {
     "minimum": 11,
     "verified": 13
@@ -22,10 +22,20 @@
     "name": "日本語",
     "path": "lang/ja.json"
   }],
-  "license": "LICENSE.txt",
-  "readme": "README.md",
-  "changelog": "CHANGELOG.md",
   "socket": false,
+  "initiative": "1d20",
+  "grid": {
+    "distance": 10,
+    "units": "ft"
+  },
+  "packs": [
+    {
+      "name": "macro",
+      "label": "マクロ",
+      "path": "packs/macro",
+      "type": "Macro"
+    }
+  ],
   "primaryTokenAttribute": "hp",
   "secondaryTokenAttribute": "ap",
   "url": "https://github.com/keyslock/nechronica-fvtt",
