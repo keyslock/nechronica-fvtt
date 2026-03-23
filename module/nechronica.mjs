@@ -410,13 +410,43 @@ function buildDollTooltipData(actor) {
   };
 
   const grouped = Object.fromEntries(PARTS.map((p) => [p, []]));
+  const skillList = []; 
 
   for (const item of actor.items) {
     if (item.type !== "bodypart") continue;
+
     const loc = item.system.location;
     if (grouped[loc]) grouped[loc].push(item);
-  }
 
+    if (actor.type === "doll" && item.system?.partType === "skill")
+      skillList.push(item);
+  }
+  const buildPartData = (items, header, key = "skills") => ({
+    key,
+    partsHeader: header,
+    max: items.length,
+    current: items.filter((i) => i.system?.broken !== true).length,
+    items: items.map((i) => ({
+      name: i.name,
+      timing: getTimingLabel(i.system.timing),
+      cost: i.system.cost ?? "-",
+      range: i.system.range ?? "-",
+      effect: normarizeHtml(i.system.effect),
+      used: i.system.used,
+      broken: i.system.broken,
+    })),
+  });
+
+  const skills =
+  actor.type === "doll"
+    ? [
+        buildPartData(
+          skillList,
+          game.i18n.localize("NECH.Skills")
+        ),
+      ]
+    : [];
+  
   const parts = PARTS.map((part) => {
     const items = grouped[part];
 
@@ -447,6 +477,7 @@ function buildDollTooltipData(actor) {
     hpValue: actor.system.hp?.value ?? "-",
     hpMax: actor.system.hp?.max ?? "-",
     parts,
+    skills,
   };
 }
 

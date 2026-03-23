@@ -17,6 +17,32 @@
     </div>
 
     <div class="tooltip-manuva">
+    {{#each skills}}
+      <div class="section">
+        <div class="header">
+          <span class="partsHeader">{{partsHeader}}</span>
+          <span class="count">{{current}}/{{max}}</span>
+        </div>
+
+        {{#each items}}
+          <div class="row{{#if broken}} broken{{/if}}">
+            <div class="itemname">
+              {{#if used}}
+              <i class="fa-solid fa-ban"></i>
+              {{else}}
+              <span class="icon-placeholder"></span>
+              {{/if}}
+              {{name}}
+            </div>
+
+            <div class="timing">{{timing}}</div>
+            <div class="cost">{{cost}}</div>
+            <div class="range">{{range}}</div>
+            <div class="effect">{{effect}}</div>
+          </div>
+        {{/each}}
+      </div>
+    {{/each}}
     {{#each parts}}
       <div class="section">
         <div class="header">
