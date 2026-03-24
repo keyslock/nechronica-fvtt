@@ -1,7 +1,7 @@
 {
   "id": "nechronica",
-  "title": "Nechronica",
-  "description": "『永い後日談のネクロニカ』",
+  "title": "『永い後日談のネクロニカ』(Nechronica)",
+  "description": "『永い後日談のネクロニカ』ゲームシステム（非公式）",
   "version": "0.2.0",
   "compatibility": {
     "minimum": "11",
