@@ -1,11 +1,11 @@
 {
   "id": "nechronica",
   "title": "Nechronica",
-  "description": "『永い後日談ネクロニカ』",
-  "version": "0.1.4",
+  "description": "『永い後日談のネクロニカ』",
+  "version": "0.2.0",
   "compatibility": {
-    "minimum": 11,
-    "verified": 13
+    "minimum": "11",
+    "verified": "13"
   },
   "authors": [{
     "name": "Key"
@@ -23,11 +23,6 @@
     "path": "lang/ja.json"
   }],
   "socket": false,
-  "initiative": "1d20",
-  "grid": {
-    "distance": 10,
-    "units": "ft"
-  },
   "packs": [
     {
       "name": "macro",
@@ -36,9 +31,12 @@
       "type": "Macro"
     }
   ],
-  "primaryTokenAttribute": "hp",
-  "secondaryTokenAttribute": "ap",
   "url": "https://github.com/keyslock/nechronica-fvtt",
-  "manifest": "https://github.com/keyslock/nechronica-fvtt/releases/download/latest/system.json",
-  "download": "https://github.com/keyslock/nechronica-fvtt/releases/download/latest/archive.zip"
+  "license": "LICENSE.txt",
+  "readme": "README.md",
+  "changelog": "CHANGELOG.md",
+  "manifest": "https://raw.githubusercontent.com/keyslock/nechronica-fvtt/main/system.json",
+  "download": "https://github.com/keyslock/nechronica-fvtt/releases/download/0.2.0/nechronica.zip",
+  "primaryTokenAttribute": "hp",
+  "secondaryTokenAttribute": "ap"
 }

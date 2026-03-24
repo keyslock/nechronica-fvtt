@@ -1,3 +1,266 @@
 {
-    
+  "NECH": {
+    "System": {
+      "Title": "Nechronica -The Long Long Sequel-",
+      "Description": "Nechronica game system for Foundry VTT"
+    },
+
+    "Config": {
+      "TokenTooltip": {
+        "Title": "Token Tooltip Display",
+        "Hint": "Show tooltip when hovering over a token"
+      }
+    },
+
+    "Message": {
+      "Used": {
+        "Name": "Usage Status",
+        "True": "Used",
+        "False": "Unused"
+      },
+      "Broken": {
+        "Name": "Damage Status",
+        "True": "Damaged",
+        "False": "Undamaged"
+      }
+    },
+
+    "Location": "Location",
+    "Locations": {
+      "Head": "Head",
+      "Arms": "Arms",
+      "Torso": "Torso",
+      "Legs": "Legs",
+      "Any": "Any"
+    },
+
+    "Timing": "Timing",
+    "Timings": {
+      "Action": "Action",
+      "Rapid": "Rapid",
+      "Damage": "Damage",
+      "Judge": "Judge",
+      "Auto": "Auto"
+    },
+
+    "TimingShort": {
+      "Action": "Act",
+      "Rapid": "Rpd",
+      "Damage": "Dmg",
+      "Judge": "Jdg",
+      "Auto": "Auto"
+    },
+
+    "Level": "Level",
+    "Cost": "Cost",
+    "Range": "Range",
+
+    "AttackType": "Attack Type",
+    "AttackTypes": {
+      "Unarmed": "Unarmed",
+      "Melee": "Melee",
+      "Ranged": "Ranged",
+      "Blast": "Artillery",
+      "Mental": "Mental"
+    },
+
+    "Effects": "Effects",
+    "EffectTypes": {
+      "Dismember": "Dismember",
+      "Explosive": "Explosive",
+      "AreaAttack": "Area Attack",
+      "Chain": "Chain",
+      "Stagger": "Stagger"
+    },
+
+    "Threat": "Malice",
+    "ThreatMulti": "No Legion Malice Multiplier",
+    "APBonus": "Action Point Bonus",
+
+    "Effect": "Effect",
+    "Description": "Description",
+    "Status": "Status",
+    "Broken": "Damaged",
+    "Used": "Used",
+
+    "OptionalModifiers": "Modifiers",
+    "ModifierPlural": "Modifiers",
+
+    "Modifiers": {
+      "Roll": "Roll",
+      "Damage": "Damage",
+      "AlwaysOn": "Always",
+      "Optional": "Optional",
+      "Add": "Add Modifier"
+    },
+
+    "AP": "Action Points",
+    "Age": "Age at Death",
+    "Biography": "Background",
+    "BodyPart": "Body Part",
+    "BodyParts": "Body Parts",
+    "Bonus": "Bonus",
+    "Class": "Class",
+
+    "ContentOfMemory": "Content",
+    "CurrentAP": "Current AP",
+    "Details": "Details",
+    "Dice": "Dice",
+
+    "Experience": "Affection",
+    "Favour": "Favor Points",
+
+    "Regret": "Regret",
+    "Regrets": "Regrets",
+
+    "FragmentsOfMemory": "Fragments of Memory",
+    "Madness": "Madness",
+
+    "MaxAP": "Max AP",
+    "Memory": "Memory Fragment",
+
+    "Name": "Name",
+    "Notes": "Notes",
+    "Number": "Number",
+
+    "Parts": "Parts",
+
+    "Placement": "Initial Placement",
+    "Placements": {
+      "Limbo": "Limbo",
+      "Elysium": "Elysium",
+      "Eden": "Eden"
+    },
+
+    "Position": "Position",
+    "Premonitions": "Premonitions",
+
+    "LegionCount": "Unit Count",
+    "Remaining": "Remaining",
+    "Initialing": "Initial Count",
+
+    "LegionBase": "{name}: {count} units",
+
+    "Skill": "Skill",
+    "Skills": "Skills",
+
+    "SpineCounter": "Spine",
+    "Target": "Target",
+
+    "Content": "Content",
+    "Title": "Name",
+    "Total": "Total",
+    "Type": "Type",
+
+    "UseSpineCounter": "Use stored spine ({spineCounter} AP)",
+
+    "Categorie": "Category",
+    "Categories": {
+      "Alice": "Alice",
+      "Holic": "Holic",
+      "Automaton": "Automaton",
+      "Junk": "Junk",
+      "Coat": "Coat",
+      "Sorority": "Sorority",
+      "Stacey": "Stacey",
+      "Thanatos": "Thanatos",
+      "Gothic": "Gothic",
+      "Requiem": "Requiem",
+      "Baroque": "Baroque",
+      "Romanesque": "Romanesque",
+      "Psychedelic": "Psychedelic",
+      "Armed": "Armed",
+      "Mutation": "Mutation",
+      "Modification": "Modification",
+      "Pawn": "Pawn Only"
+    },
+
+    "Armament": "Armament",
+    "ArmamentAbbrev": "Arm.",
+    "Mutation": "Mutation",
+    "MutationAbbrev": "Mut.",
+    "Enhancement": "Enhancement",
+    "EnhancementAbbrev": "Enh.",
+
+    "AddItem": "Add Item",
+    "DeleteItem": "Delete Item",
+    "DeleteItemConfirmation": "Are you sure you want to delete this item?",
+    "DeleteItemTitle": "Delete {item}",
+    "EditItem": "Edit Item",
+    "DuplicateItem": "Duplicate Item",
+    "NewItem": "New {name}",
+
+    "Damage": "Damage",
+    "RollMode": "Roll Mode",
+    "RollBonus": "Roll Bonus",
+    "DamageBonus": "Damage Bonus",
+
+    "Tags": "Tags",
+    "Attack": "Attack",
+    "Check": "Check",
+
+    "Roll": {
+      "Roll": "Roll",
+      "TargetsChoice": "Defender's Choice",
+      "AttackersChoice": "Attacker's Choice",
+      "Fumble": "Fumble",
+      "Failure": "Failure",
+      "Success": "Success",
+      "Critical": "Critical",
+      "Dismemberment": "Dismemberment"
+    },
+
+    "WasBroken": " Damaged",
+
+    "Warnings": {
+      "MissingAP": "{actor} does not have enough AP to use {part}.",
+      "AlreadyUsed": "{actor} has already used {part}.",
+      "WrongTiming": "Cannot use parts or skills with timing '{timing}' at this moment."
+    },
+
+    "DefaultItems": {
+      "name": {
+        "Precious": "Treasure",
+        "Brain": "Brain",
+        "Eye": "Eye",
+        "Chin": "Jaw",
+        "Fist": "Fist",
+        "Arm": "Arm",
+        "Shoulder": "Shoulder",
+        "Spine": "Spine",
+        "Guts": "Guts",
+        "Bone": "Bone",
+        "Leg": "Leg"
+      },
+      "effect": {
+        "Dependence": "Dependence",
+        "Regression": "Regression",
+        "MaxAp": "Max AP",
+        "Self": "Self",
+        "UnarmedAttack": "Unarmed Attack",
+        "Support": "Support",
+        "Move": "Move",
+        "SpineEffect": "Reduce the cost of one maneuver used next count this turn by 1 (minimum 0)",
+        "None": "None",
+        "Interference": "Interference"
+      }
+    }
+  },
+
+  "TYPES": {
+    "Actor": {
+      "doll": "Doll",
+      "legion": "Legion",
+      "horror": "Horror",
+      "savant": "Savant"
+    },
+    "Item": {
+      "bodypart": "Body Part / Skill",
+      "attack": "Attack",
+      "memory": "Memory",
+      "position": "Position",
+      "class": "Class",
+      "regret": "Regret"
+    }
+  }
 }

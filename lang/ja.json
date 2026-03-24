@@ -131,23 +131,23 @@
     "UseSpineCounter": "溜まったせぼねを使用する({spineCounter} AP)",
     "Categorie": "分類",
     "Categories": {
-      "Alice" : "アリス",
-      "Holic" : "ホリック",
-      "Automaton" : "オートマトン",
-      "Junk" : "ジャンク",
-      "Coat" : "コート",
-      "Sorority" : "ソロリティ",
-      "Stacey" : "ステーシー",
-      "Thanatos" : "タナトス",
-      "Gothic" : "ゴシック",
-      "Requiem" : "レクイエム",
-      "Baroque" : "バロック",
-      "Romanesque" : "ロマネスク",
-      "Psychedelic" : "サイケデリック",
-      "Armed" : "武装",
-      "Mutation" : "変異",
-      "Modification" : "改造",
-      "Pawn" : "手駒専用"
+      "Alice": "アリス",
+      "Holic": "ホリック",
+      "Automaton": "オートマトン",
+      "Junk": "ジャンク",
+      "Coat": "コート",
+      "Sorority": "ソロリティ",
+      "Stacey": "ステーシー",
+      "Thanatos": "タナトス",
+      "Gothic": "ゴシック",
+      "Requiem": "レクイエム",
+      "Baroque": "バロック",
+      "Romanesque": "ロマネスク",
+      "Psychedelic": "サイケデリック",
+      "Armed": "武装",
+      "Mutation": "変異",
+      "Modification": "改造",
+      "Pawn": "手駒専用"
     },
     "Armament": "武装",
     "ArmamentAbbrev": "武装",
@@ -189,49 +189,49 @@
       "WrongTiming": "現時点では、タイミングが'{timing}'のパーツやスキルは使用できません。"
     },
 
-    "DefaultItems":{
-      "name":{
-        "Precious":"たからもの",
+    "DefaultItems": {
+      "name": {
+        "Precious": "たからもの",
         "Brain": "のうみそ",
         "Eye": "めだま",
-        "Chin":"あご",
-        "Fist":"こぶし",
-        "Arm":"うで",
-        "Shoulder":"かた",
-        "Spine":"せぼね",
-        "Guts":"はらわた",
-        "Bone":"ほね",
-        "Leg":"あし"
+        "Chin": "あご",
+        "Fist": "こぶし",
+        "Arm": "うで",
+        "Shoulder": "かた",
+        "Spine": "せぼね",
+        "Guts": "はらわた",
+        "Bone": "ほね",
+        "Leg": "あし"
       },
-      "effect":{
-        "Dependence":"依存",
-        "Regression":"幼児退行",
-        "MaxAp":"最大行動値",
-        "Self":"自身",
-        "UnarmedAttack":"肉弾攻撃",
-        "Support":"支援",
-        "Move":"移動",
-        "SpineEffect":"同ターンの次カウントで使うマニューバ1つのコスト-1（最低0）",
-        "None":"なし",
-        "Interference":"妨害"
+      "effect": {
+        "Dependence": "依存",
+        "Regression": "幼児退行",
+        "MaxAp": "最大行動値",
+        "Self": "自身",
+        "UnarmedAttack": "肉弾攻撃",
+        "Support": "支援",
+        "Move": "移動",
+        "SpineEffect": "同ターンの次カウントで使うマニューバ1つのコスト-1（最低0）",
+        "None": "なし",
+        "Interference": "妨害"
       }
     }
   },
 
   "TYPES": {
-      "Actor": {
-        "doll": "ドール",
-        "legion": "レギオン",
-        "horror": "ホラー",
-        "savant": "サヴァント"
-      },
-      "Item": {
-        "bodypart": "パーツ・スキル",
-        "attack": "攻撃",
-        "memory": "記憶",
-        "position": "ポジション",
-        "class": "クラス",
-        "regret": "未練"
-      }
+    "Actor": {
+      "doll": "ドール",
+      "legion": "レギオン",
+      "horror": "ホラー",
+      "savant": "サヴァント"
+    },
+    "Item": {
+      "bodypart": "パーツ・スキル",
+      "attack": "攻撃",
+      "memory": "記憶",
+      "position": "ポジション",
+      "class": "クラス",
+      "regret": "未練"
     }
+  }
 }

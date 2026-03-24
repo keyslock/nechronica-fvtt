@@ -9,15 +9,14 @@ FVTT用 永い後日談のネクロニカゲームシステム
 「ゲームシステム」タブの「ゲームシステムを入手」からインストール。
 
 ## 使い方
-- [日本語マニュアル](https://github.com/jeannjeann/sw25-fvtt/blob/main/docs/MANUAL.md)
-- [English Manual](https://github.com/jeannjeann/sw25-fvtt/blob/main/docs/MANUAL-en.md)
-
+- [日本語マニュアル](https://github.com/keyslock/nechronica-fvtt/blob/main/docs/MANUAL.md)
 
 ### 推奨モジュール
 Coming soon.
 
 ## 対応言語
 - 日本語（[Key](https://github.com/keyslock)）
+- 英語（[Key](https://github.com/keyslock)）
 
 ## 作者
 - [Key](https://github.com/keyslock)
@@ -25,7 +24,9 @@ Coming soon.
 ## 権利表記
 [MITライセンス](LICENSE.txt)
 
-本作は、「インコグ・ラボ」が権利を有する『永い後日談のネクロニカ』の、二次創作です。 (C)Incog.Lab
+本作は、「インコグ・ラボ」が権利を有する『永い後日談のネクロニカ』の非公式二次創作システムです。
+本システムにはルールブックの内容は含まれておらず、プレイには原作ルールブックが必要です。
+(C)Incog.Lab
 
 ## 検証環境
 - OS:Windows 11
