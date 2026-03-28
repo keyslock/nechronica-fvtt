@@ -274,7 +274,7 @@ async function convertToActorData(data, charaId) {
       let setData = {
         name: manuvaName,
         type: "bodypart",
-        img: `/systems/nechronica/asset/icon/parts_${location}.png`,
+        img: `/systems/nechronica-fvtt/asset/icon/parts_${location}.png`,
         system: {
           description: data.Power_shozoku[i],
           effect: data.Power_memo[i],

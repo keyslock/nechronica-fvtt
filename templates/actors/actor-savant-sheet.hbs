@@ -1,6 +1,6 @@
 <form class="{{cssClass}}" autocomplete="off">
   {{!-- Sheet Header --}}
-  {{> "systems/nechronica/templates/actors/parts/npc-header.hbs"}}
+  {{> "systems/nechronica-fvtt/templates/actors/parts/npc-header.hbs"}}
 
   <hr>
 
@@ -14,7 +14,7 @@
   <div class="sheet-body {{#if (lookup this.hiddenElems "npc-header")}}small-header{{/if}}">
     {{!-- Parts --}}
     <div class="tab parts" data-group="primary" data-tab="parts">
-      {{> "systems/nechronica/templates/actors/parts/parts-ol.hbs"}}
+      {{> "systems/nechronica-fvtt/templates/actors/parts/parts-ol.hbs"}}
     </div>
 
     {{!-- Notes --}}

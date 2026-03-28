@@ -16,7 +16,7 @@ export class NechronicaItemSheet extends ItemSheet {
 
   /** @override */
   get template() {
-    return `systems/nechronica/templates/items/item-${this.item.type}-sheet.hbs`;
+    return `systems/nechronica-fvtt/templates/items/item-${this.item.type}-sheet.hbs`;
   }
 
   getData() {

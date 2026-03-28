@@ -81,7 +81,7 @@ Hooks.once("ready", () => {
 
 Hooks.on("createActor", (actor, options, userId) => {
   actor.update({
-    img: `systems/nechronica/asset/icon/chara_${actor.type}.png`,
+    img: `systems/nechronica-fvtt/asset/icon/chara_${actor.type}.png`,
   });
 });
 
@@ -114,7 +114,7 @@ Hooks.on("preCreateActor", (actor, data, options, userId) => {
           partType: "bodypart",
           threat: 1.5,
         },
-        img: "/systems/nechronica/asset/icon/parts_head.png",
+        img: "/systems/nechronica-fvtt/asset/icon/parts_head.png",
       },
       {
         name: game.i18n.localize("NECH.DefaultItems.name.Eye"),
@@ -128,7 +128,7 @@ Hooks.on("preCreateActor", (actor, data, options, userId) => {
           partType: "bodypart",
           threat: 1,
         },
-        img: "/systems/nechronica/asset/icon/parts_head.png",
+        img: "/systems/nechronica-fvtt/asset/icon/parts_head.png",
       },
       {
         name: game.i18n.localize("NECH.DefaultItems.name.Chin"),
@@ -145,7 +145,7 @@ Hooks.on("preCreateActor", (actor, data, options, userId) => {
           partType: "bodypart",
           threat: 0.5,
         },
-        img: "/systems/nechronica/asset/icon/parts_head.png",
+        img: "/systems/nechronica-fvtt/asset/icon/parts_head.png",
       },
       {
         name: game.i18n.localize("NECH.DefaultItems.name.Fist"),
@@ -163,7 +163,7 @@ Hooks.on("preCreateActor", (actor, data, options, userId) => {
           partType: "bodypart",
           threat: 0.5,
         },
-        img: "/systems/nechronica/asset/icon/parts_arms.png",
+        img: "/systems/nechronica-fvtt/asset/icon/parts_arms.png",
       },
       {
         name: game.i18n.localize("NECH.DefaultItems.name.Arm"),
@@ -177,7 +177,7 @@ Hooks.on("preCreateActor", (actor, data, options, userId) => {
           partType: "bodypart",
           threat: 1,
         },
-        img: "/systems/nechronica/asset/icon/parts_arms.png",
+        img: "/systems/nechronica-fvtt/asset/icon/parts_arms.png",
       },
       {
         name: game.i18n.localize("NECH.DefaultItems.name.Shoulder"),
@@ -191,7 +191,7 @@ Hooks.on("preCreateActor", (actor, data, options, userId) => {
           partType: "bodypart",
           threat: 0.5,
         },
-        img: "/systems/nechronica/asset/icon/parts_arms.png",
+        img: "/systems/nechronica-fvtt/asset/icon/parts_arms.png",
       },
       {
         name: game.i18n.localize("NECH.DefaultItems.name.Spine"),
@@ -205,7 +205,7 @@ Hooks.on("preCreateActor", (actor, data, options, userId) => {
           partType: "bodypart",
           threat: 1,
         },
-        img: "/systems/nechronica/asset/icon/parts_torso.png",
+        img: "/systems/nechronica-fvtt/asset/icon/parts_torso.png",
       },
       {
         name: game.i18n.localize("NECH.DefaultItems.name.Guts"),
@@ -219,7 +219,7 @@ Hooks.on("preCreateActor", (actor, data, options, userId) => {
           partType: "bodypart",
           threat: 0.5,
         },
-        img: "/systems/nechronica/asset/icon/parts_torso.png",
+        img: "/systems/nechronica-fvtt/asset/icon/parts_torso.png",
       },
       {
         name: game.i18n.localize("NECH.DefaultItems.name.Guts"),
@@ -233,7 +233,7 @@ Hooks.on("preCreateActor", (actor, data, options, userId) => {
           partType: "bodypart",
           threat: 0.5,
         },
-        img: "/systems/nechronica/asset/icon/parts_torso.png",
+        img: "/systems/nechronica-fvtt/asset/icon/parts_torso.png",
       },
       {
         name: game.i18n.localize("NECH.DefaultItems.name.Bone"),
@@ -247,7 +247,7 @@ Hooks.on("preCreateActor", (actor, data, options, userId) => {
           partType: "bodypart",
           threat: 1,
         },
-        img: "/systems/nechronica/asset/icon/parts_legs.png",
+        img: "/systems/nechronica-fvtt/asset/icon/parts_legs.png",
       },
       {
         name: game.i18n.localize("NECH.DefaultItems.name.Bone"),
@@ -261,7 +261,7 @@ Hooks.on("preCreateActor", (actor, data, options, userId) => {
           partType: "bodypart",
           threat: 1,
         },
-        img: "/systems/nechronica/asset/icon/parts_legs.png",
+        img: "/systems/nechronica-fvtt/asset/icon/parts_legs.png",
       },
       {
         name: game.i18n.localize("NECH.DefaultItems.name.Leg"),
@@ -276,7 +276,7 @@ Hooks.on("preCreateActor", (actor, data, options, userId) => {
           partType: "bodypart",
           threat: 1,
         },
-        img: "/systems/nechronica/asset/icon/parts_legs.png",
+        img: "/systems/nechronica-fvtt/asset/icon/parts_legs.png",
       },
     ];
 
@@ -387,13 +387,13 @@ async function buildTooltipData(actor) {
   if (actor.type === "doll" || actor.type === "savant") {
     const data = buildDollTooltipData(actor);
     return await renderTemplate(
-      "systems/nechronica/templates/tooltip/parts-on.hbs",
+      "systems/nechronica-fvtt/templates/tooltip/parts-on.hbs",
       data,
     );
   } else {
     const data = buildPawnTooltipData(actor);
     return await renderTemplate(
-      "systems/nechronica/templates/tooltip/parts-less.hbs",
+      "systems/nechronica-fvtt/templates/tooltip/parts-less.hbs",
       data,
     );
   }

@@ -19,7 +19,7 @@ export class NechronicaActorSheet extends ActorSheet {
 
   /** @override */
   get template() {
-    return `systems/nechronica/templates/actors/actor-${this.actor.type}-sheet.hbs`;
+    return `systems/nechronica-fvtt/templates/actors/actor-${this.actor.type}-sheet.hbs`;
   }
 
   getData() {
@@ -113,7 +113,7 @@ export class NechronicaActorSheet extends ActorSheet {
         itemData.system.partType = "bodypart";
         itemData.system.location = location;
         if (location && ["doll", "savant"].includes(this.actor.type)) {
-          itemData.img = `/systems/nechronica/asset/icon/parts_${location}.png`;
+          itemData.img = `/systems/nechronica-fvtt/asset/icon/parts_${location}.png`;
         }
       }
     }
@@ -518,7 +518,7 @@ export class NechronicaActorSheet extends ActorSheet {
     };
 
     const content = await renderTemplate(
-      "systems/nechronica/templates/chat/item-change-card.hbs",
+      "systems/nechronica-fvtt/templates/chat/item-change-card.hbs",
       data,
     );
 
@@ -556,7 +556,7 @@ export class NechronicaActorSheet extends ActorSheet {
     };
 
     return await renderTemplate(
-      "systems/nechronica/templates/chat/item-change-card.hbs",
+      "systems/nechronica-fvtt/templates/chat/item-change-card.hbs",
       data,
     );
   }

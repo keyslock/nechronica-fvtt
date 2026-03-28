@@ -1,5 +1,5 @@
 {{!-- AP Management --}}
-{{> "systems/nechronica/templates/actors/parts/ap-form.hbs"}}
+{{> "systems/nechronica-fvtt/templates/actors/parts/ap-form.hbs"}}
 
 <div class="parts-body">
   {{!-- BodyParts --}}
@@ -79,7 +79,7 @@
       {{#each bodyParts as |bodyPart|}}
         <li class="location header" data-location="{{@key}}" data-type="bodypart">
           <div class="location-header flexrow">
-            <div class="partsicon" style="background-image: url(/systems/nechronica/asset/icon/parts_{{@key}}.png)"></div>
+            <div class="partsicon" style="background-image: url(/systems/nechronica-fvtt/asset/icon/parts_{{@key}}.png)"></div>
             <div class="location-header-details flexcol">
               <div class="flexrow">
                 <h3 class="label">{{localize label}}</h3>

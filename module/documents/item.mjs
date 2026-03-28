@@ -110,7 +110,7 @@ export class NechronicaItem extends Item {
     if (actor === null) return;
     const token = actor?.token;
     const itemData = this.system;
-    const template = "systems/nechronica/templates/chat/item-card.hbs";
+    const template = "systems/nechronica-fvtt/templates/chat/item-card.hbs";
     const rollData = this.getRollData();
     skipDialog = ev.shiftKey ?? false;
     const isAttack = rollType === "ATTACK";
@@ -186,7 +186,7 @@ export class NechronicaItem extends Item {
       if (!skipDialog) {
     console.trace("DEBUG");
         const dialogContent = await renderTemplate(
-          "systems/nechronica/templates/roll-dialog.hbs",
+          "systems/nechronica-fvtt/templates/roll-dialog.hbs",
           templateData,
         );
     console.trace("DEBUG");
