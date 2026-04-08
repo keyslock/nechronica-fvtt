@@ -384,6 +384,17 @@ function normarizeHtml(html) {
 }
 
 async function buildTooltipData(actor) {
+
+  if (!actor.testUserPermission(game.user, CONST.DOCUMENT_OWNERSHIP_LEVELS.OBSERVER)) {
+    const data =  {
+      name: actor.name,
+    };
+    return await renderTemplate(
+      "systems/nechronica-fvtt/templates/tooltip/permission-less.hbs",
+      data,
+    );
+  }
+  
   if (actor.type === "doll" || actor.type === "savant") {
     const data = buildDollTooltipData(actor);
     return await renderTemplate(
@@ -412,7 +423,8 @@ function buildDollTooltipData(actor) {
   const grouped = Object.fromEntries(PARTS.map((p) => [p, []]));
   const skillList = []; 
 
-  for (const item of actor.items) {
+  const sortedItems = actor.items.contents.sort((a, b) => a.sort - b.sort);
+  for (const item of sortedItems) {
     if (item.type !== "bodypart") continue;
 
     const loc = item.system.location;
@@ -494,9 +506,11 @@ function buildPawnTooltipData(actor) {
       effect: normarizeHtml(item.system.effect),
       used: item.system.used,
     }));
+  const sortedItems = items.contents.sort((a, b) => a.sort - b.sort);
+  
 
-  const max = items.length;
-  const current = items.filter((i) => !i.broken).length;
+  const max = sortedItems.length;
+  const current = sortedItems.filter((i) => !i.broken).length;
 
   return {
     name: actor.name,
@@ -511,7 +525,7 @@ function buildPawnTooltipData(actor) {
     max,
     current,
 
-    items: items.filter((i) => !i.broken),
+    items: sortedItems.filter((i) => !i.broken),
   };
 }
 
