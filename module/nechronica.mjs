@@ -494,7 +494,8 @@ function buildDollTooltipData(actor) {
 }
 
 function buildPawnTooltipData(actor) {
-  const items = actor.items
+  const sortedItems = actor.items.contents.sort((a, b) => a.sort - b.sort);
+  const items = sortedItems
     .filter((item) => item.type === "bodypart")
     .map((item) => ({
       name: item.name,
@@ -506,11 +507,10 @@ function buildPawnTooltipData(actor) {
       effect: normarizeHtml(item.system.effect),
       used: item.system.used,
     }));
-  const sortedItems = items.contents.sort((a, b) => a.sort - b.sort);
   
 
-  const max = sortedItems.length;
-  const current = sortedItems.filter((i) => !i.broken).length;
+  const max = items.length;
+  const current = items.filter((i) => !i.broken).length;
 
   return {
     name: actor.name,
@@ -525,7 +525,7 @@ function buildPawnTooltipData(actor) {
     max,
     current,
 
-    items: sortedItems.filter((i) => !i.broken),
+    items: items.filter((i) => !i.broken),
   };
 }
 
