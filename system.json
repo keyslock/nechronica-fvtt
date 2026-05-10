@@ -36,7 +36,7 @@
   "readme": "README.md",
   "changelog": "CHANGELOG.md",
   "manifest": "https://raw.githubusercontent.com/keyslock/nechronica-fvtt/main/system.json",
-  "download": "https://github.com/keyslock/nechronica-fvtt/releases/download/0.2.3/nechronica.zip",
+  "download": "https://github.com/keyslock/nechronica-fvtt/releases/download/0.2.4/nechronica.zip",
   "primaryTokenAttribute": "hp",
   "secondaryTokenAttribute": "ap"
 }
