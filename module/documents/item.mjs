@@ -182,14 +182,14 @@ export class NechronicaItem extends Item {
       }
 
       // Show dialog when not skipping
-    console.trace("DEBUG");
+      console.trace("DEBUG");
       if (!skipDialog) {
-    console.trace("DEBUG");
+        console.trace("DEBUG");
         const dialogContent = await renderTemplate(
           "systems/nechronica-fvtt/templates/roll-dialog.hbs",
           templateData,
         );
-    console.trace("DEBUG");
+        console.trace("DEBUG");
         form = await new Promise((resolve) => {
           new Dialog({
             title:
@@ -209,7 +209,7 @@ export class NechronicaItem extends Item {
         // Cancel roll on dialog closing
         if (form === undefined) return;
       }
-    console.trace("DEBUG");
+      console.trace("DEBUG");
 
       if ((isAttack && hasAttack) || isCheck) {
         const parts = [];
@@ -270,44 +270,47 @@ export class NechronicaItem extends Item {
         templateData.roll = await roll.render();
 
         let fumbleFlg = false;
-        for (let d of roll.dice[0].results) {
-          if (d.result == 1) {
-            fumbleFlg = true;
+
+        const modifier = roll.terms.reduce((sum, term, i, terms) => {
+          if (term.constructor.name !== "NumericTerm") return sum;
+
+          const operator = terms[i - 1]?.operator ?? "+";
+
+          return sum + (operator === "-" ? -term.number : term.number);
+        }, 0);
+
+        for (const die of roll.dice) {
+          for (const result of die.results) {
+            const value = result.result + modifier;
+
+            if (value <= 1) {
+              fumbleFlg = true;
+              break;
+            }
           }
+          if (fumbleFlg) break;
         }
 
         // Add roll result and failure/success details
         templateData.result.type = game.i18n.localize(
           `${isCheck ? "NECH.Check" : "NECH.Attack"}`,
         );
-        if (roll.total != null && roll.total <= 1) {
-          templateData.result.roll = game.i18n.localize("NECH.Roll.Fumble");
-        } else if (
-          roll.total &&
-          roll.total > 1 &&
-          roll.total <= 5 &&
-          fumbleFlg
-        ) {
-          templateData.result.roll = game.i18n.localize("NECH.Roll.Fumble");
-        } else if (
-          roll.total &&
-          roll.total > 1 &&
-          roll.total <= 5 &&
-          !fumbleFlg
-        ) {
-          templateData.result.roll = game.i18n.localize("NECH.Roll.Failure");
-        } else if (roll.total && roll.total >= 6 && roll.total < 11) {
-          templateData.result.roll = game.i18n.localize("NECH.Roll.Success");
-          const locKey = NECHRONICA.hitLocations?.[roll.total];
-          templateData.result.location = locKey
-            ? game.i18n.localize(locKey)
-            : "";
-        } else if (roll.total && roll.total >= 11) {
+        if (roll.total && roll.total >= 11) {
           templateData.result.roll = game.i18n.localize("NECH.Roll.Critical");
           const critKey = NECHRONICA.hitLocations?.crit;
           templateData.result.location = critKey
             ? game.i18n.localize(critKey)
             : "";
+        } else if (roll.total && roll.total >= 6) {
+          templateData.result.roll = game.i18n.localize("NECH.Roll.Success");
+          const locKey = NECHRONICA.hitLocations?.[roll.total];
+          templateData.result.location = locKey
+            ? game.i18n.localize(locKey)
+            : "";
+        } else if (fumbleFlg) {
+          templateData.result.roll = game.i18n.localize("NECH.Roll.Fumble");
+        } else {
+          templateData.result.roll = game.i18n.localize("NECH.Roll.Failure");
         }
 
         // Damage calculation
@@ -346,7 +349,10 @@ export class NechronicaItem extends Item {
     // Cost calc
     if (rollType == "MESSAGE") {
       // Set used status
-      if (this.system.timing && !["action", "auto"].includes(this.system.timing)){
+      if (
+        this.system.timing &&
+        !["action", "auto"].includes(this.system.timing)
+      ) {
         await this.update({ "system.used": true });
       }
       // Decrease AP
@@ -359,7 +365,7 @@ export class NechronicaItem extends Item {
     }
     const rollMode = form?.find('[name="rollMode"]')?.val();
     const sound =
-      game.dice3d && game.dice3d.enabled || rollType === "MESSAGE"
+      (game.dice3d && game.dice3d.enabled) || rollType === "MESSAGE"
         ? undefined
         : CONFIG.sounds.dice;
     const type =

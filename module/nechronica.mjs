@@ -86,6 +86,7 @@ Hooks.on("createActor", (actor, options, userId) => {
 });
 
 Hooks.on("preCreateActor", (actor, data, options, userId) => {
+  if (actor.items.size !== 0) return;
   if (actor.type === "doll") {
     const defaultItems = [
       {
@@ -98,7 +99,7 @@ Hooks.on("preCreateActor", (actor, data, options, userId) => {
             game.i18n.localize("NECH.DefaultItems.effect.MaxAp") +
             "-2)",
           target: game.i18n.localize("NECH.DefaultItems.name.Precious"),
-          madness: 2,
+          madness: 3,
           content: game.i18n.localize("NECH.DefaultItems.effect.Dependence"),
         },
       },
@@ -278,8 +279,21 @@ Hooks.on("preCreateActor", (actor, data, options, userId) => {
         },
         img: "/systems/nechronica-fvtt/asset/icon/parts_legs.png",
       },
+      {
+        name: game.i18n.localize("NECH.DefaultItems.name.Precious"),
+        type: "bodypart",
+        system: {
+          effect: game.i18n.localize("NECH.DefaultItems.name.Precious"),
+          location: "any",
+          timing: "auto",
+          range: game.i18n.localize("NECH.DefaultItems.effect.None"),
+          partType: "bodypart",
+          threat: 0,
+        },
+        img: "icons/svg/chest.svg",
+      },
     ];
-
+    if (options.fromCompendium || options.keepId) return;
     actor.updateSource({ items: defaultItems });
   }
 });
@@ -500,7 +514,7 @@ function buildPawnTooltipData(actor) {
     .map((item) => ({
       name: item.name,
       location: item.system.location,
-      broken: item.system.broken === true,
+      broken: item.system.broken,
       timing: getTimingLabel(item.system.timing),
       cost: item.system.cost ?? "-",
       range: item.system.range ?? "-",
@@ -525,7 +539,7 @@ function buildPawnTooltipData(actor) {
     max,
     current,
 
-    items: items.filter((i) => !i.broken),
+    items: items,
   };
 }
 
