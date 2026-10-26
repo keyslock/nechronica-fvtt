@@ -55,10 +55,26 @@ export class NechronicaActor extends Actor {
       default:
         break;
     }
-
+    
     actor.system.hp = {
       value: 0,
       max: 0,
+      head: {
+        value: 0,
+        max: 0,
+      },
+      torso: {
+        value: 0,
+        max: 0,
+      },
+      arms: {
+        value: 0,
+        max: 0,
+      },
+      legs: {
+        value: 0,
+        max: 0,
+      },
     };
 
     if (actor.type === "legion") {
@@ -85,8 +101,23 @@ export class NechronicaActor extends Actor {
         // HP calculation
         if (actor.type !== "legion") {
           if (actor.type !== "doll" || item.system.partType === "bodypart") {
+            // Total HP
             actor.system.hp.max++;
-            if (!item.system.broken) actor.system.hp.value++;
+
+            if (!item.system.broken) {
+              actor.system.hp.value++;
+            }
+
+            // Location HP
+            const location = item.system.location;
+
+            if (actor.system.hp[location]) {
+              actor.system.hp[location].max++;
+
+              if (!item.system.broken) {
+                actor.system.hp[location].value++;
+              }
+            }
           }
         }
 
@@ -96,7 +127,8 @@ export class NechronicaActor extends Actor {
             if (item.system.threatmulti) {
               actor.system.threat.base += item.system.threat;
             } else {
-              actor.system.threat.base += item.system.threat * threatMulti;
+              actor.system.threat.base +=
+                item.system.threat * threatMulti;
             }
           }
         }
@@ -104,7 +136,10 @@ export class NechronicaActor extends Actor {
         // Benefits granted by intact parts
         if (!item.system.broken) {
           // Add max AP
-          const apBonus = "apBonus" in item.system ? item.system.apBonus : null;
+          const apBonus = "apBonus" in item.system
+            ? item.system.apBonus
+            : null;
+
           if (apBonus) {
             actor.system.ap.max += apBonus;
           }

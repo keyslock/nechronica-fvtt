@@ -8,13 +8,13 @@ export const addCircles = function (
   context.circles = [];
   for (let i = 0; i < circleMax; i++) {
     context.circles.push({
-      filled: i + 1 <= getProperty(context, valueAttribute),
+      filled: i + 1 <= foundry.utils.getProperty(context, valueAttribute),
     });
   }
 
-  if (getProperty(context, "max")) {
+  if (foundry.utils.getProperty(context, "max")) {
     for (let i = 0; i < circleMax; i++) {
-      context.circles[i].locked = i + 1 > getProperty(context, "max");
+      context.circles[i].locked = i + 1 > foundry.utils.getProperty(context, "max");
     }
   }
 

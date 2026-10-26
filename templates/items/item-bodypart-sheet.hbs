@@ -22,46 +22,19 @@
       <div class="form-group">
         <label>{{localize "NECH.Type"}}</label>
         <select name="system.partType" {{#if disableType}}disabled{{/if}}>
-          {{#select item.system.partType}}
-            <option value="skill">{{localize "NECH.Skill"}}</option>
-            <option value="bodypart">{{localize "NECH.BodyPart"}}</option>
-          {{/select}}
+          {{selectOptions partTypeOptions selected=item.system.partType localize=true}}
         </select>
         <label>{{localize "NECH.Location"}}</label>
         <select name="system.location">
-          {{#select item.system.location}}
-            <option value="any">{{localize "NECH.Locations.Any"}}</option>
-            <option value="head">{{localize "NECH.Locations.Head"}}</option>
-            <option value="arms">{{localize "NECH.Locations.Arms"}}</option>
-            <option value="torso">{{localize "NECH.Locations.Torso"}}</option>
-            <option value="legs">{{localize "NECH.Locations.Legs"}}</option>
-          {{/select}}
+          {{selectOptions locationOptions selected=item.system.location localize=true}}
         </select>
       </div>
 
       <div class="form-group">
         <label>{{localize "NECH.Categorie"}}</label>
         <select name="system.categorie">
-          {{#select item.system.categorie}}
-            <option value="">-</option>
-            <option value="alice">{{localize "NECH.Categories.Alice"}}</option>
-            <option value="holic">{{localize "NECH.Categories.Holic"}}</option>
-            <option value="automaton">{{localize "NECH.Categories.Automaton"}}</option>
-            <option value="junk">{{localize "NECH.Categories.Junk"}}</option>
-            <option value="coat">{{localize "NECH.Categories.Coat"}}</option>
-            <option value="sorority">{{localize "NECH.Categories.Sorority"}}</option>
-            <option value="stacey">{{localize "NECH.Categories.Stacey"}}</option>
-            <option value="thanatos">{{localize "NECH.Categories.Thanatos"}}</option>
-            <option value="gothic">{{localize "NECH.Categories.Gothic"}}</option>
-            <option value="requiem">{{localize "NECH.Categories.Requiem"}}</option>
-            <option value="baroque">{{localize "NECH.Categories.Baroque"}}</option>
-            <option value="romanesque">{{localize "NECH.Categories.Romanesque"}}</option>
-            <option value="armed">{{localize "NECH.Categories.Armed"}}</option>
-            <option value="mutation">{{localize "NECH.Categories.Mutation"}}</option>
-            <option value="modification">{{localize "NECH.Categories.Modification"}}</option>
-            <option value="psychedelic">{{localize "NECH.Categories.Psychedelic"}}</option>
-            <option value="pawn">{{localize "NECH.Categories.Pawn"}}</option>
-          {{/select}}
+          <option value="">-</option>
+          {{selectOptions categorieOptions selected=item.system.categorie localize=true}}
         </select>
 
         <label>{{localize "NECH.Level"}}</label>
@@ -71,13 +44,7 @@
       <div class="form-group">
         <label>{{localize "NECH.Timing"}}</label>
         <select name="system.timing">
-          {{#select item.system.timing}}
-            <option value="action">{{localize "NECH.Timings.Action"}}</option>
-            <option value="rapid">{{localize "NECH.Timings.Rapid"}}</option>
-            <option value="damage">{{localize "NECH.Timings.Damage"}}</option>
-            <option value="judge">{{localize "NECH.Timings.Judge"}}</option>
-            <option value="auto">{{localize "NECH.Timings.Auto"}}</option>
-          {{/select}}
+          {{selectOptions timingOptions selected=item.system.timing localize=true}}
         </select>
         <label>{{localize "NECH.APBonus"}}</label>
         <input name="system.apBonus" placeholder="{{localize "NECH.APBonus"}}" value="{{item.system.apBonus}}" data-dtype="Number" type="number">
@@ -93,14 +60,8 @@
       <div class="form-group">
         <label>{{localize "NECH.AttackType"}}</label>
         <select name="system.attack">
-          {{#select item.system.attack}}
-            <option value="">-</option>
-            <option value="unarmed">{{localize "NECH.AttackTypes.Unarmed"}}</option>
-            <option value="melee">{{localize "NECH.AttackTypes.Melee"}}</option>
-            <option value="ranged">{{localize "NECH.AttackTypes.Ranged"}}</option>
-            <option value="blast">{{localize "NECH.AttackTypes.Blast"}}</option>
-            <option value="mental">{{localize "NECH.AttackTypes.Mental"}}</option>
-          {{/select}}
+          <option value="">-</option>
+          {{selectOptions attackOptions selected=item.system.attack localize=true}}
         </select>
         <label class="form-field">{{localize "NECH.Damage"}}</label>
         <input name="system.damage" type="number" data-dtype="Number" value="{{item.system.damage}}">
@@ -172,24 +133,10 @@
               <input class="tag" type="text" name="system.modifiers.{{m}}.tag" value="{{tag}}" placeholder="{{../item.name}}">
               <input class="formula" type="text" name="system.modifiers.{{m}}.formula" value="{{formula}}" placeholder="{{localize "NECH.Formula"}}">
               <select class="optional" name="system.modifiers.{{m}}.optional">
-                  {{#select optional}}
-                    <option value="0" data-dtype="Boolean">{{localize "NECH.Modifiers.AlwaysOn"}}</option>
-                    <option value="1" data-dtype="Boolean">{{localize "NECH.Modifiers.Optional"}}</option>
-                  {{/select}}
               </select>
               <select class="target" name="system.modifiers.{{m}}.target">
-                  {{#select target}}
-                    {{#each ../modifierGlobals.targets as |target t|}}
-                      <option value="{{t}}">{{localize target}}</option>
-                    {{/each}}
-                  {{/select}}
               </select>
               <select class="type" name="system.modifiers.{{m}}.type">
-                  {{#select type}}
-                    {{#each ../modifierGlobals.types as |type t|}}
-                      <option value="{{t}}">{{localize type}}</option>
-                    {{/each}}
-                  {{/select}}
               </select>
               <a class="modifier-control delete"><i class="fas fa-trash"></i></a>
           </li>

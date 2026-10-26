@@ -1,0 +1,241 @@
+<div class="status-sheet">
+  <section class="status-section role-section">
+
+    <div class="status-section-header">
+      <h3>{{localize "NECH.Role"}}</h3>
+    </div>
+
+    <div class="role-panel">
+
+      {{! Position }}
+      <div class="role-row">
+
+        <span class="role-label">
+          {{localize "NECH.Position"}}
+        </span>
+
+        {{#if position}}
+
+          <div class="role-value item" data-item-id="{{position._id}}">
+            <strong>{{position.name}}</strong>
+
+            <span class="item-controls">
+
+              <a
+                class="item-control item-edit"
+                title="{{localize 'NECH.EditItem'}}"
+              >
+                <i class="fas fa-edit"></i>
+              </a>
+
+              <a
+                class="item-control item-delete"
+                title="{{localize 'NECH.DeleteItem'}}"
+              >
+                <i class="fas fa-trash"></i>
+              </a>
+
+            </span>
+          </div>
+
+        {{else}}
+
+          <a
+            class="item-control item-add role-empty"
+            title="{{localize 'NECH.AddItem'}}"
+            data-type="position"
+          >
+            <i class="fas fa-plus"></i>
+          </a>
+
+        {{/if}}
+
+      </div>
+
+      {{! Class }}
+      <div class="role-row class-row">
+
+        <span class="role-label">
+          {{localize "NECH.Class"}}
+        </span>
+
+        <div class="class-values">
+          {{! MainClass }}
+          <div class="class-entry">
+            <span class="class-entry-label">{{localize "NECH.MainClass"}}</span>
+
+            {{#if class}}
+              <div class="class-value item" data-item-id="{{class._id}}">
+                <span>
+                  <strong class="class-name">{{class.name}}</strong>
+                </span>
+
+                <span class="parameter-mini">
+                  <span>
+                    <small>{{localize "NECH.Armament"}}</small>
+                    <b>{{class.system.parameter.armament}}</b>
+                  </span>
+                  <span>
+                    <small>{{localize "NECH.Mutation"}}</small>
+                    <b>{{class.system.parameter.mutation}}</b>
+                  </span>
+                  <span>
+                    <small>{{localize "NECH.Enhancement"}}</small>
+                    <b>{{class.system.parameter.enhancement}}</b>
+                  </span>
+                </span>
+
+                <span class="item-controls">
+                  <a
+                    class="item-control item-edit"
+                    title="{{localize 'NECH.EditItem'}}"
+                  >
+                    <i class="fas fa-edit"></i>
+                  </a>
+
+                  <a
+                    class="item-control item-delete"
+                    title="{{localize 'NECH.DeleteItem'}}"
+                  >
+                    <i class="fas fa-trash"></i>
+                  </a>
+                </span>
+              </div>
+            {{else}}
+              <a
+                class="item-control item-add role-empty"
+                title="{{localize 'NECH.AddItem'}}"
+                data-type="class"
+              >
+                <i class="fas fa-plus"></i>
+              </a>
+            {{/if}}
+          </div>
+
+          {{! SubClass }}
+          <div class="class-entry">
+            <span class="class-entry-label">{{localize "NECH.SubClass"}}</span>
+
+            {{#if subClass}}
+              <div class="class-value item" data-item-id="{{subClass._id}}">
+                <span>
+                  <strong class="class-name">{{subClass.name}}</strong>
+                </span>
+
+                <span class="parameter-mini">
+                  <span>
+                    <small>{{localize "NECH.Armament"}}</small>
+                    <b>{{subClass.system.parameter.armament}}</b>
+                  </span>
+                  <span>
+                    <small>{{localize "NECH.Mutation"}}</small>
+                    <b>{{subClass.system.parameter.mutation}}</b>
+                  </span>
+                  <span>
+                    <small>{{localize "NECH.Enhancement"}}</small>
+                    <b>{{subClass.system.parameter.enhancement}}</b>
+                  </span>
+                </span>
+
+                <span class="item-controls">
+                  <a
+                    class="item-control item-edit"
+                    title="{{localize 'NECH.EditItem'}}"
+                  >
+                    <i class="fas fa-edit"></i>
+                  </a>
+
+                  <a
+                    class="item-control item-delete"
+                    title="{{localize 'NECH.DeleteItem'}}"
+                  >
+                    <i class="fas fa-trash"></i>
+                  </a>
+                </span>
+              </div>
+            {{else}}
+              <a
+                class="item-control item-add role-empty"
+                title="{{localize 'NECH.AddItem'}}"
+                data-type="class"
+              >
+                <i class="fas fa-plus"></i>
+              </a>
+            {{/if}}
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="status-section attribute-section">
+
+    <div class="status-section-header">
+      <h3>{{localize "NECH.Parameter"}}</h3>
+    </div>
+
+    <div class="attribute-panel">
+
+      <div class="attribute-parameters">
+
+        <div class="attribute-parameter-labels">
+          <span>{{localize "NECH.Armament"}}</span>
+          <span>{{localize "NECH.Mutation"}}</span>
+          <span>{{localize "NECH.Enhancement"}}</span>
+        </div>
+
+        <div class="attribute-grid bonus-grid">
+          {{nechRadioBoxesRow
+            "attribute bonusAttribute"
+            system.attributes
+            checked=system.bonusAttribute
+          }}
+        </div>
+
+      </div>
+
+      {{! Experience }}
+      <div class="attribute-title">
+        {{localize "NECH.Experience"}}
+      </div>
+
+      <div class="attribute-grid">
+
+        {{#each actor.system.attributes as |attribute key|}}
+
+          <label class="attribute-cell">
+            <input
+              name="system.attributes.{{key}}.experience"
+              value="{{attribute.experience}}"
+              data-dtype="Number"
+              type="number"
+            />
+          </label>
+
+        {{/each}}
+
+      </div>
+
+      {{! Total }}
+      <div class="attribute-title">
+        {{localize "NECH.Total"}}
+      </div>
+
+      <div class="attribute-grid totals">
+
+        {{#each actor.system.attributes as |attribute key|}}
+
+          <div class="attribute-cell total-cell">
+            {{attribute.total}}
+          </div>
+
+        {{/each}}
+
+      </div>
+
+    </div>
+  </section>
+
+</div>

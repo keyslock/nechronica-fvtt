@@ -80,7 +80,7 @@ export class NechronicaItem extends Item {
    */
   getEffectData(rollData) {
     rollData = rollData ?? this.getRollData();
-    const effect = getProperty(this.system, "effect") ?? "";
+    const effect = foundry.utils.getProperty(this.system, "effect") ?? "";
     const result = TextEditor.enrichHTML(effect, { rollData });
     return result;
   }
@@ -93,7 +93,7 @@ export class NechronicaItem extends Item {
    */
   getDescriptionData(rollData) {
     rollData = rollData ?? this.getRollData();
-    const description = getProperty(this.system, "description") ?? "";
+    const description = foundry.utils.getProperty(this.system, "description") ?? "";
     const result = TextEditor.enrichHTML(description, { rollData });
     return result;
   }
@@ -125,7 +125,7 @@ export class NechronicaItem extends Item {
       tokenId: token ? `${token.object?.scene.id}.${token.id}` : undefined,
       item: this,
       rollMode: game.settings.get("core", "rollMode"),
-      rollModes: normalizeRollModes(CONFIG.Dice.rollModes),
+      rollModes: normalizeRollModes(CONFIG.ChatMessage.modes),
       config: NECHRONICA,
       system: this.getChatData(),
       isAttack,
@@ -182,14 +182,13 @@ export class NechronicaItem extends Item {
       }
 
       // Show dialog when not skipping
-      console.trace("DEBUG");
       if (!skipDialog) {
         console.trace("DEBUG");
         const dialogContent = await renderTemplate(
           "systems/nechronica-fvtt/templates/roll-dialog.hbs",
           templateData,
         );
-        console.trace("DEBUG");
+
         form = await new Promise((resolve) => {
           new Dialog({
             title:
@@ -209,7 +208,6 @@ export class NechronicaItem extends Item {
         // Cancel roll on dialog closing
         if (form === undefined) return;
       }
-      console.trace("DEBUG");
 
       if ((isAttack && hasAttack) || isCheck) {
         const parts = [];
@@ -220,7 +218,7 @@ export class NechronicaItem extends Item {
         // General modifier
         if (
           isAttack &&
-          getProperty(rollData, `modifiers.${itemData.attack}.attack`)
+          foundry.utils.getProperty(rollData, `modifiers.${itemData.attack}.attack`)
         ) {
           parts.push(`@modifiers.${itemData.attack}.attack`);
           templateData.system.extraProps.push(
@@ -318,7 +316,7 @@ export class NechronicaItem extends Item {
           damageParts.push(itemData.damage);
           if (roll.total > 10) damageParts.push(roll.total - 10);
           if (rollData.damageBonus) damageParts.push(rollData.damageBonus);
-          if (getProperty(rollData, `modifiers.${itemData.attack}.damage`)) {
+          if (foundry.utils.getProperty(rollData, `modifiers.${itemData.attack}.damage`)) {
             damageParts.push(`@modifiers.${itemData.attack}.damage`);
           }
           damageParts.push(
@@ -368,17 +366,14 @@ export class NechronicaItem extends Item {
       (game.dice3d && game.dice3d.enabled) || rollType === "MESSAGE"
         ? undefined
         : CONFIG.sounds.dice;
-    const type =
-      isCheck || isAttack
-        ? CONST.CHAT_MESSAGE_TYPES.ROLL
-        : CONST.CHAT_MESSAGE_TYPES.IC;
 
     // Handle chat message
     const chatData = {
       user: game.user?.id,
-      speaker: ChatMessage.getSpeaker({ actor: this.actor ?? undefined }),
-      rollMode: rollMode,
-      type: type,
+      speaker: ChatMessage.getSpeaker({
+        actor: this.actor ?? undefined
+      }),
+      rollMode,
       rolls: roll ? [roll] : [],
       content: await renderTemplate(template, templateData),
       flags: { roll, damageRoll },

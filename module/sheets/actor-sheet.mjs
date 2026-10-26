@@ -3,7 +3,7 @@ import { addCircles } from "../lib/utils.mjs";
 
 export class NechronicaActorSheet extends ActorSheet {
   static get defaultOptions() {
-    return mergeObject(super.defaultOptions, {
+    return foundry.utils.mergeObject(super.defaultOptions, {
       classes: ["nechronica", "sheet", "actor"],
       width: 600,
       height: 400,
@@ -279,7 +279,7 @@ export class NechronicaActorSheet extends ActorSheet {
     if (!id || !target) return;
 
     const item = this.actor.getEmbeddedDocument("Item", id);
-    const oldValue = getProperty(item, target);
+    const oldValue = foundry.utils.getProperty(item, target);
 
     let value = event.target.value === "on";
     if (event.currentTarget.type === "checkbox") {
@@ -317,7 +317,7 @@ export class NechronicaActorSheet extends ActorSheet {
     const changes = [
       {
         name: item.name,
-        location: getProperty(item, "system.location"),
+        location: foundry.utils.getProperty(item, "system.location"),
         old: oldValue,
         new: value,
       },
@@ -390,7 +390,7 @@ export class NechronicaActorSheet extends ActorSheet {
       target = $(event.currentTarget)
         .parents(".circle-row")
         .attr("data-item-target");
-      const value = getProperty(itemData, target);
+      const value = foundry.utils.getProperty(itemData, target);
       let updateItem = {};
       updateItem["_id"] = itemData._id;
       if (value === index + 1) {

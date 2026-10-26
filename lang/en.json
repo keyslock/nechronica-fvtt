@@ -25,6 +25,7 @@
       }
     },
 
+    "HP": "Parts",
     "Location": "Location",
     "Locations": {
       "Head": "Head",
@@ -33,6 +34,13 @@
       "Legs": "Legs",
       "Any": "Any"
     },
+
+    "Params": "Parameter",
+    "Role": "Role",
+    "MainClass": "MainClass",
+    "SubClass": "SubClass",
+    "Parameter": "Parameter",
+    "Personality": "Personality",
 
     "Timing": "Timing",
     "Timings": {
@@ -151,6 +159,7 @@
     "Title": "Name",
     "Total": "Total",
     "Type": "Type",
+    "ItemName": "ItemName",
 
     "UseSpineCounter": "Use stored spine ({spineCounter} AP)",
 
@@ -243,6 +252,19 @@
         "SpineEffect": "Reduce the cost of one maneuver used next count this turn by 1 (minimum 0)",
         "None": "None",
         "Interference": "Interference"
+      }
+    },
+
+    "Tooltips": {
+      "Used": {
+        "Click": "Mark all as unused",
+        "Shift": "Mark all as used",
+        "Ctrl": "Toggle used/unused"
+      },
+      "Broken": {
+        "Click": "Mark all as undamaged",
+        "Shift": "Mark all as damaged",
+        "Ctrl": "Toggle damaged/undamaged"
       }
     }
   },

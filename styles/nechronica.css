@@ -2,31 +2,35 @@
 :root {
   --colorTan: #7a7971;
 }
+
 .hidden {
   display: none;
 }
+
 .small-img {
   flex: 0 0 64px;
   height: 64px !important;
   max-width: 64px;
 }
+
 .small-sheet-header {
   height: unset !important;
 }
+
 .small-header {
   height: calc(100% - 110px) !important;
 }
+
 .nechronica.sheet.actor.doll .small-header {
   height: calc(100% - 120px) !important;
   overflow-y: unset;
 }
-.nechronica.sheet.actor.doll .sheet-body {
-  height: calc(100% - 300px);
-}
+
 .circle-row {
   display: flex;
   flex-direction: row;
 }
+
 .circle {
   height: 9px;
   width: 9px;
@@ -38,151 +42,186 @@
   position: relative;
   top: 20%;
 }
+
 .circle.black {
   background-color: black;
 }
+
 .window-app .window-content {
   background: #e1e1e1;
 }
+
 .chat-message {
   background: #e1e1e1;
 }
+
 .nechronica.sheet.actor {
   min-width: 700px;
   min-height: 800px;
 }
+
 .nechronica.sheet.actor > .window-content {
   box-shadow: inset 0 0 10px #000000;
 }
+
 .nechronica.sheet.actor h3,
 .nechronica.sheet.actor h4 {
   font-weight: bold;
   margin: 0 0 0.25em;
 }
+
 .nechronica.sheet.actor .sheet-tabs {
   font-weight: bold;
 }
+
 .nechronica.sheet.actor .max-ap {
   white-space: nowrap;
 }
+
 .nechronica.sheet.actor .max-ap label {
   background: rgba(0, 0, 0, 0.1);
 }
+
 .nechronica.sheet.actor .max-ap input {
   border-radius: 0;
   border: 2px solid rgba(0, 0, 0, 0.2);
+  max-width: 40px;
 }
+
 .nechronica.sheet.actor.horror .sheet-header,
 .nechronica.sheet.actor.savant .sheet-header,
 .nechronica.sheet.actor.legion .sheet-header {
   height: 320px;
 }
+
 .nechronica.sheet.actor.horror .sheet-header img,
 .nechronica.sheet.actor.savant .sheet-header img,
 .nechronica.sheet.actor.legion .sheet-header img {
   height: 320px;
 }
+
 .nechronica.sheet.actor.horror .sheet-header .description-group,
 .nechronica.sheet.actor.savant .sheet-header .description-group,
 .nechronica.sheet.actor.legion .sheet-header .description-group {
   flex: 1 0 180px;
 }
+
 .nechronica.sheet.actor.horror .sheet-header .editor,
 .nechronica.sheet.actor.savant .sheet-header .editor,
 .nechronica.sheet.actor.legion .sheet-header .editor {
   height: 220px;
 }
+
 .nechronica.sheet.actor.horror .sheet-header .threat,
 .nechronica.sheet.actor.savant .sheet-header .threat,
 .nechronica.sheet.actor.legion .sheet-header .threat {
   margin-right: 40px;
   margin-left: 15px;
 }
+
 .nechronica.sheet.actor.legion .sheet-header .count {
   margin-right: 40px;
   margin-left: 15px;
 }
+
 .nechronica.sheet.actor .item-control:hover {
   color: #000;
   text-shadow: 0 0 10px red;
   cursor: pointer;
 }
+
 .nechronica.sheet.actor form {
   overflow: hidden;
   height: 100%;
   padding: 2px;
 }
+
 .nechronica.sheet.actor form .sheet-header {
   max-height: fit-content;
 }
+
 .nechronica.sheet.actor form .sheet-body {
-  height: calc(100% - 340px);
+  height: calc(100% - 200px);
 }
+
 .nechronica.sheet.actor form .tab.active {
   height: 100%;
 }
+
 .nechronica.sheet.actor form .parts-body {
   height: calc(100% - 30px);
   overflow-y: auto;
 }
+
 .nechronica.sheet.actor form .bodyParts-all {
   height: calc(100% - 30px);
   overflow-y: auto;
 }
+
 .nechronica.sheet.actor form .tab.biography.active {
   display: flex;
   flex-direction: column;
   height: 100%;
 }
+
 .nechronica.sheet.actor form .tab.biography.active .biography.body {
   height: calc(100% - 320px);
   overflow-y: auto;
 }
+
 .nechronica.sheet.actor form .tab.biography.active .editor {
   height: calc(100% - 200px);
   overflow: visible;
 }
+
 .nechronica.sheet.actor form .tab.biography.active .editor .editor-content {
   overflow-y: visible;
 }
-.nechronica.sheet.actor .max-ap input {
-  max-width: 40px;
-}
+
 .nechronica.sheet.actor .max-ap .form-fields {
   justify-content: center;
 }
+
 .nechronica.sheet.actor .source {
   line-height: 18px;
 }
+
 .nechronica.sheet.actor .source .attribute {
   text-align: center;
 }
+
 .nechronica.sheet.actor .align-end {
   text-align: end;
 }
+
 .nechronica.sheet.actor .position,
 .nechronica.sheet.actor .class {
   margin: 4px;
   background: rgba(0, 0, 0, 0.1);
 }
+
 .nechronica.sheet.actor .position .name .item-controls,
 .nechronica.sheet.actor .class .name .item-controls {
-  flex: 0 1 36px;
+  flex: 0 1 42px;
   visibility: hidden;
 }
+
 .nechronica.sheet.actor .position .name:hover h4,
 .nechronica.sheet.actor .class .name:hover h4 {
   color: #000;
   text-shadow: 0 0 10px red;
   cursor: pointer;
 }
+
 .nechronica.sheet.actor .position .name:hover .item-controls,
 .nechronica.sheet.actor .class .name:hover .item-controls {
   visibility: visible;
 }
+
 .nechronica.sheet.actor .experience input {
   max-width: 24px;
 }
+
 .nechronica.sheet.actor .regrets,
 .nechronica.sheet.actor .memories,
 .nechronica.sheet.actor .bodyParts-all,
@@ -190,23 +229,27 @@
   list-style: none;
   padding: 0 0 0 0.5em;
 }
+
 .nechronica.sheet.actor .regrets h4,
 .nechronica.sheet.actor .memories h4,
 .nechronica.sheet.actor .bodyParts-all h4,
 .nechronica.sheet.actor .locations h4 {
   margin-bottom: 1px;
 }
+
 .nechronica.sheet.actor .regrets,
 .nechronica.sheet.actor .memories,
 .nechronica.sheet.actor .location {
   margin-right: 5px;
   margin-bottom: 5px;
 }
+
 .nechronica.sheet.actor .regrets p,
 .nechronica.sheet.actor .memories p,
 .nechronica.sheet.actor .location p {
   margin: 0;
 }
+
 .nechronica.sheet.actor .regrets .range,
 .nechronica.sheet.actor .regrets .cost,
 .nechronica.sheet.actor .regrets .number,
@@ -219,6 +262,7 @@
   flex: 0 0 40px;
   text-align: center;
 }
+
 .nechronica.sheet.actor .regrets .cost,
 .nechronica.sheet.actor .regrets .range,
 .nechronica.sheet.actor .memories .cost,
@@ -227,17 +271,20 @@
 .nechronica.sheet.actor .location .range {
   text-align: center;
 }
+
 .nechronica.sheet.actor .regrets .type,
 .nechronica.sheet.actor .memories .type,
 .nechronica.sheet.actor .location .type {
   max-width: 150px;
   flex: 0 0 90px;
 }
+
 .nechronica.sheet.actor .regrets .madness,
 .nechronica.sheet.actor .memories .madness,
 .nechronica.sheet.actor .location .madness {
   max-width: 90px;
 }
+
 .nechronica.sheet.actor .regrets .target,
 .nechronica.sheet.actor .regrets .name,
 .nechronica.sheet.actor .memories .target,
@@ -246,22 +293,19 @@
 .nechronica.sheet.actor .location .name {
   flex: 0 0 120px;
 }
-.nechronica.sheet.actor .regrets .broken,
-.nechronica.sheet.actor .memories .broken,
-.nechronica.sheet.actor .location .broken {
-  margin: 0px;
-  max-width: 25px;
-}
+
 .nechronica.sheet.actor .regrets .timing,
 .nechronica.sheet.actor .memories .timing,
 .nechronica.sheet.actor .location .timing {
   flex: 0 0 75px;
 }
+
 .nechronica.sheet.actor .regrets .timing input,
 .nechronica.sheet.actor .memories .timing input,
 .nechronica.sheet.actor .location .timing input {
   margin: 3px;
 }
+
 .nechronica.sheet.actor .regrets .checkbox,
 .nechronica.sheet.actor .memories .checkbox,
 .nechronica.sheet.actor .location .checkbox {
@@ -269,11 +313,13 @@
   display: flex;
   place-content: space-evenly;
 }
+
 .nechronica.sheet.actor .regrets .item.broken,
 .nechronica.sheet.actor .memories .item.broken,
 .nechronica.sheet.actor .location .item.broken {
-  background: red;
+  background: #ff8080a0;
 }
+
 .nechronica.sheet.actor .regrets .item .target:hover,
 .nechronica.sheet.actor .regrets .item .name:hover,
 .nechronica.sheet.actor .memories .item .target:hover,
@@ -284,6 +330,7 @@
   text-shadow: 0 0 10px red;
   cursor: pointer;
 }
+
 .nechronica.sheet.actor .regrets .item-controls,
 .nechronica.sheet.actor .memories .item-controls,
 .nechronica.sheet.actor .location .item-controls {
@@ -293,6 +340,7 @@
   justify-content: flex-end;
   flex: 0 0 48px;
 }
+
 .nechronica.sheet.actor .regrets .rollable,
 .nechronica.sheet.actor .memories .rollable,
 .nechronica.sheet.actor .location .rollable {
@@ -305,14 +353,15 @@
   background-repeat: no-repeat;
   background-position: bottom;
 }
+
 .nechronica.sheet.actor .regrets .rollable:hover,
 .nechronica.sheet.actor .memories .rollable:hover,
 .nechronica.sheet.actor .location .rollable:hover {
   background-image: url(../../../icons/dice/d10black.svg) !important;
 }
+
 .nechronica.sheet.actor .location .partsicon {
   flex: 0 0 50px;
-  display: inline-block;
   background-size: 100%;
   height: 50px;
   place-self: flex-end;
@@ -320,6 +369,7 @@
   background-repeat: no-repeat;
   background-position: bottom;
 }
+
 .nechronica.sheet.actor .regrets .location-header-details,
 .nechronica.sheet.actor .regrets .skill-header-details,
 .nechronica.sheet.actor .memories .location-header-details,
@@ -329,6 +379,7 @@
   padding-top: 13px;
   margin-left: 8px;
 }
+
 .nechronica.sheet.actor .regrets .location-header-details .label,
 .nechronica.sheet.actor .regrets .skill-header-details .label,
 .nechronica.sheet.actor .memories .location-header-details .label,
@@ -339,6 +390,7 @@
   max-width: max-content;
   margin-right: 10px;
 }
+
 .nechronica.sheet.actor .regrets .location-header-details .details,
 .nechronica.sheet.actor .regrets .skill-header-details .details,
 .nechronica.sheet.actor .memories .location-header-details .details,
@@ -348,12 +400,14 @@
   font-size: 10pt;
   line-height: 7px;
 }
+
 .nechronica.sheet.actor .regrets .item-actions,
 .nechronica.sheet.actor .memories .item-actions,
 .nechronica.sheet.actor .location .item-actions {
-  flex: 0 0 56px;
+  flex: 0 0 64px;
   text-align: center;
 }
+
 .nechronica.sheet.actor .regrets .memory .details,
 .nechronica.sheet.actor .regrets .regret .details,
 .nechronica.sheet.actor .memories .memory .details,
@@ -363,6 +417,7 @@
   font-size: 10pt;
   line-height: 10px;
 }
+
 .nechronica.sheet.actor .regrets .regret-list,
 .nechronica.sheet.actor .regrets .memory-list,
 .nechronica.sheet.actor .regrets .skill-list,
@@ -378,6 +433,7 @@
   padding: 0px;
   margin: 0px;
 }
+
 .nechronica.sheet.actor .regrets .regret-list .details,
 .nechronica.sheet.actor .regrets .memory-list .details,
 .nechronica.sheet.actor .regrets .skill-list .details,
@@ -392,6 +448,7 @@
 .nechronica.sheet.actor .location .bodyParts.list .details {
   line-height: 24px;
 }
+
 .nechronica.sheet.actor .regrets .regret-list .details:nth-child(odd),
 .nechronica.sheet.actor .regrets .memory-list .details:nth-child(odd),
 .nechronica.sheet.actor .regrets .skill-list .details:nth-child(odd),
@@ -406,6 +463,7 @@
 .nechronica.sheet.actor .location .bodyParts.list .details:nth-child(odd) {
   background-color: rgba(0, 0, 0, 0.1);
 }
+
 .nechronica.sheet.actor .regrets .regret-list .details:not(:last-of-type),
 .nechronica.sheet.actor .regrets .memory-list .details:not(:last-of-type),
 .nechronica.sheet.actor .regrets .skill-list .details:not(:last-of-type),
@@ -420,6 +478,7 @@
 .nechronica.sheet.actor .location .bodyParts.list .details:not(:last-of-type) {
   border-bottom: 1px solid rgba(1, 1, 1, 0.3);
 }
+
 .nechronica.sheet.actor .regrets .regret-list .regret.details,
 .nechronica.sheet.actor .regrets .regret-list .memory.details,
 .nechronica.sheet.actor .regrets .memory-list .regret.details,
@@ -446,6 +505,7 @@
 .nechronica.sheet.actor .location .bodyParts.list .memory.details {
   padding-left: 0px;
 }
+
 .nechronica.sheet.actor .regrets .regret-list .madness,
 .nechronica.sheet.actor .regrets .memory-list .madness,
 .nechronica.sheet.actor .regrets .skill-list .madness,
@@ -460,6 +520,7 @@
 .nechronica.sheet.actor .location .bodyParts.list .madness {
   display: flex;
 }
+
 .nechronica.sheet.actor .regrets .regret-list .rollable,
 .nechronica.sheet.actor .regrets .memory-list .rollable,
 .nechronica.sheet.actor .regrets .skill-list .rollable,
@@ -478,53 +539,66 @@
   height: 24px;
   place-self: baseline;
 }
+
 .nechronica.sheet.actor .bodyPart img {
   max-width: 24px;
 }
+
 .nechronica.sheet.item {
   min-width: 580px;
   min-height: 620px;
   max-height: calc(100% - 24px);
 }
+
 .nechronica.sheet.item .form-group button {
   max-width: 200px;
 }
+
 .nechronica.sheet.item .effect-group {
   min-height: 100px;
 }
+
 .nechronica.sheet.item .description-group {
   min-height: 300px;
 }
+
 .nechronica.sheet.item .editor,
 .nechronica.sheet.item .editor-content {
   height: 100%;
 }
+
 .nechronica.sheet.item .editor .tox-toolbar-overlord,
 .nechronica.sheet.item .editor .tox-toolbar__primary,
 .nechronica.sheet.item .editor-content .tox-toolbar-overlord,
 .nechronica.sheet.item .editor-content .tox-toolbar__primary {
   background: none;
 }
+
 .nechronica.sheet.item .editor .tox-tinymce,
 .nechronica.sheet.item .editor-content .tox-tinymce {
   min-height: 300px;
 }
+
 .locked .sheet-header {
   max-height: 70px;
 }
+
 .locked img.sheet-profile {
   max-height: 360px;
   max-width: 240px;
   float: left;
 }
+
 .radio-circles {
   float: right;
 }
+
 .radio-circles:not(:checked) > input {
   position: absolute;
   top: -9999px;
   clip: rect(0, 0, 0, 0);
 }
+
 .radio-circles:not(:checked) > label {
   float: right;
   width: 1em;
@@ -539,45 +613,55 @@
   border: 1px solid black;
   border-radius: 50%;
 }
+
 .radio-circles > input:checked ~ label {
   background-color: black;
 }
+
 .modifier-control {
   min-width: 15px;
   max-width: fit-content;
   display: flex;
   justify-content: flex-end;
 }
+
 .modifier-grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
 }
+
 .item-card {
   font-style: normal;
   font-size: 14px;
 }
+
 .item-card .card-header {
   padding: 3px 0;
   border-top: 2px groove #fff;
   border-bottom: 2px groove #fff;
 }
+
 .item-card .card-header img {
   flex: 0 0 36px;
   margin-right: 5px;
 }
+
 .item-card .card-header h3 {
   flex: 1;
   margin: 0;
   line-height: 28px;
 }
+
 .item-card .card-content {
   margin: 5px 0;
 }
+
 .item-card .card-content h3 {
   font-size: 12px;
   margin: 0;
   font-weight: bold;
 }
+
 .item-card .card-content .effect > *,
 .item-card .card-content .description > * {
   -webkit-user-select: text;
@@ -585,11 +669,13 @@
   -ms-user-select: text;
   user-select: text;
 }
+
 .item-card .nechronica-damage-location,
 .item-card .roll-result {
   line-height: 30px;
   font-weight: bold;
 }
+
 .item-card .nechronica-damage-total {
   position: relative;
   margin: 0;
@@ -603,19 +689,24 @@
   font-size: 20px;
   font-weight: bold;
 }
+
 .item-card .dice-roll .dice-total.success {
   color: blue;
 }
+
 .item-card .dice-roll .dice-total.critical {
   color: green;
 }
+
 .item-card .dice-roll .dice-total.failure,
 .item-card .dice-roll .dice-total.fumble {
   color: red;
 }
+
 .item-card .property-group {
   flex: 0 0 24px;
 }
+
 .item-card .property-group .tag {
   display: inline-block;
   margin: 0 2px 1px 0;
@@ -627,53 +718,68 @@
   background: rgba(0, 0, 0, 0.05);
   flex: 0 1 auto;
 }
+
 .token-tooltip-alt-tooltip-column {
   max-width: 40rem !important;
 }
+
 .token-tooltip-alt-tooltip-item {
   grid-template-columns: 0px auto !important;
   align-items: start !important;
 }
+
 .token-tooltip-alt-tooltip-item .fas {
   margin-top: 3px;
 }
+
 .token-tooltip-alt-tooltip-item .nechronica .tooltip-header {
   font-weight: bold;
 }
+
 .token-tooltip-alt-tooltip-item .nechronica dt {
   text-decoration: underline;
 }
+
 .token-tooltip-alt-tooltip-item .nechronica dd {
   line-height: 20px;
   padding-left: 0px;
 }
+
 .token-tooltip-alt-tooltip-item .nechronica dd.used {
   color: darkred;
 }
+
 .token-tooltip-alt-tooltip-item .nechronica dd.used span {
   color: darkred;
 }
+
 .token-tooltip-alt-tooltip-item .nechronica dd span {
   font-weight: bold;
   color: inherit;
 }
+
 .token-tooltip-alt-tooltip-item .nechronica dd:not(:first-child) {
   margin-top: 3px;
 }
+
 .token-tooltip-alt-tooltip-container.default {
   background: #e1e1e1 !important;
 }
+
 span:hover .item-controls {
   visibility: visible;
 }
+
 .doll-content > .svelte-tabs li.svelte-tabs__selected {
   border-bottom: 2px solid #782e22;
   text-shadow: 0 0 8px red;
   color: black;
 }
+
 .doll-content > .svelte-tabs li.svelte-tabs__tab:focus {
   outline: none;
 }
+
 .doll-content > .svelte-tabs ul {
   border-top: 1px solid #cccccc;
   margin-top: 1em;
@@ -683,7 +789,7 @@ span:hover .item-controls {
 }
 
 .details .effect {
-  max-width: 250px;
+  max-width: 230px;
   word-break: break-word;
 }
 
@@ -791,40 +897,59 @@ span:hover .item-controls {
 .section .row:nth-child(even) {
   background-color: rgba(255, 255, 255, 0.05);
 }
+
 .nechronica.sheet.actor .doll-header {
   position: relative;
 
   display: grid;
   grid-template-areas:
-    "icon name name"
-    "icon age age"
-    "icon parameter favour";
-  grid-template-rows: 50px auto auto;
-  grid-template-columns: 100px 2fr 1fr;
+    "portrait name place"
+    "portrait hp place";
+  grid-template-rows: auto auto;
+  grid-template-columns: 150px 2fr 100px;
 
   border-left: 5px inset rgba(var(--main-text-color), 1);
   border-top: 2px inset rgba(var(--main-text-color), 0.5);
   padding-left: 3px;
-  margin-top: 5px;
   max-height: fit-content;
+}
+
+.nechronica.sheet.actor .doll-header .portrait-block {
+  grid-area: portrait;
+}
+
+.nechronica.sheet.actor .doll-header .name-block {
+  grid-area: name;
+}
+
+.nechronica.sheet.actor .doll-header .place-block {
+  grid-area: place;
+}
+
+.nechronica.sheet.actor .doll-header .hp-block {
+  grid-area: hp;
 }
 
 .nechronica.sheet.actor .doll-header .icon {
   grid-area: icon;
   position: relative;
 }
+
 .nechronica.sheet.actor .doll-header .itemname {
   grid-area: name;
   position: relative;
 }
+
 .nechronica.sheet.actor .doll-header .age {
   grid-area: age;
   position: relative;
 }
+
 .nechronica.sheet.actor .doll-header .parameter {
   grid-area: parameter;
   position: relative;
 }
+
 .nechronica.sheet.actor .doll-header .favour {
   grid-area: favour;
   position: relative;
@@ -851,17 +976,21 @@ span:hover .item-controls {
   grid-area: icon;
   position: relative;
 }
+
 .nechronica.sheet.actor .enemy-header .name {
   grid-area: name;
   position: relative;
 }
+
 .nechronica.sheet.actor .enemy-header .parameter {
   grid-area: parameter;
   position: relative;
 }
+
 .nechronica.sheet.actor .enemy-header .threat {
   width: 50%;
 }
+
 .nechronica.sheet.actor .enemy-header .count {
   width: 50%;
 }
@@ -889,7 +1018,6 @@ span:hover .item-controls {
   background: linear-gradient(135deg, #fd6585 0%, #fd658500 100%);
 }
 
-/* カード本体 */
 .nech-card {
   border: 1px solid var(--color-border-light-primary);
   border-radius: 6px;
@@ -898,7 +1026,6 @@ span:hover .item-controls {
   font-size: 13px;
 }
 
-/* ヘッダー */
 .nech-card-header {
   background: #444;
   color: #fff;
@@ -907,12 +1034,10 @@ span:hover .item-controls {
   font-size: 14px;
 }
 
-/* ボディ */
 .nech-card-body {
   padding: 6px 10px;
 }
 
-/* 行 */
 .nech-row {
   display: flex;
   align-items: center;
@@ -950,6 +1075,7 @@ span:hover .item-controls {
 .nech-values .is-true {
   color: #e63946;
 }
+
 .nech-values .is-false {
   color: #2a9d8f;
 }
@@ -960,4 +1086,1036 @@ span:hover .item-controls {
 
 .nech-card.broken .nech-card-header {
   background: #e63946;
+}
+
+.nechronica-sheet {
+  --nc-bg: #eee9df;
+  --nc-panel: #f7f4ee;
+  --nc-panel-2: #e4ded2;
+  --nc-line: #9b9386;
+  --nc-line-soft: #c9c2b7;
+  --nc-ink: #2c2a27;
+  --nc-muted: #716c63;
+  --nc-accent: #514d47;
+  --nc-danger: #76504d;
+  --nc-shadow: 0 2px 8px rgba(40, 35, 28, .10);
+
+  color: var(--nc-ink);
+  background: var(--nc-bg);
+  font-size: 13px;
+  overflow: hidden;
+}
+
+.nechronica-sheet input,
+.nechronica-sheet select,
+.nechronica-sheet textarea {
+  color: var(--nc-ink);
+}
+
+.nechronica-sheet .doll-header {
+  display: grid;
+  grid-template-columns: 150px minmax(250px, 1.25fr) minmax(280px, 1.5fr) 145px;
+  gap: 10px;
+  background:
+    linear-gradient(135deg, rgba(255,255,255,.45), transparent 45%),
+    var(--nc-panel);
+  border-bottom: 1px solid var(--nc-line);
+  box-shadow: var(--nc-shadow);
+}
+
+.portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.hp-panel {
+  padding: 7px 8px;
+  border: 1px solid var(--nc-line-soft);
+  background: rgba(255,255,255,.45);
+}
+
+.resource-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 5px;
+  color: var(--nc-muted);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
+
+.resource-label strong {
+  color: var(--nc-ink);
+  font-size: 13px;
+  letter-spacing: 0;
+}
+
+.resource-bar {
+  height: 9px;
+  border: 1px solid var(--nc-line);
+  background: #d4cec3;
+  overflow: hidden;
+}
+
+.resource-bar-fill {
+  height: 100%;
+  transition: width .2s ease;
+}
+
+.identity-block,
+.attribute-panel,
+.favour-panel {
+  min-width: 0;
+  padding: 2px;
+}
+
+.character-name {
+  width: 100%;
+  height: 43px;
+  padding: 0 8px;
+  border: 0;
+  border-bottom: 2px solid var(--nc-accent);
+  border-radius: 0;
+  background: transparent;
+  font-size: 25px;
+  font-weight: 700;
+  letter-spacing: .04em;
+}
+
+.identity-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin: 10px 0;
+}
+
+.identity-fields label,
+.resource-box {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 7px;
+  min-width: 0;
+}
+
+.identity-fields label > span,
+.resource-box > span,
+.role-label,
+.attribute-title,
+.placement-box > span {
+  color: var(--nc-muted);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .08em;
+}
+
+.identity-fields input,
+.resource-box input {
+  min-width: 0;
+  height: 27px;
+  border: 1px solid var(--nc-line-soft);
+  background: rgba(255,255,255,.5);
+}
+
+.role-panel {
+  border-top: 1px solid var(--nc-line-soft);
+}
+
+.role-row {
+  display: grid;
+  grid-template-columns: 62px minmax(0, 1fr);
+  align-items: center;
+  min-height: 38px;
+  border-bottom: 1px solid var(--nc-line-soft);
+  padding: 0 8px;
+}
+
+.role-value {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  gap: 8px;
+  padding-left: 60px;
+}
+
+.role-value strong,
+.class-value strong {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.class-values {
+  display: flex;
+  gap: 6px;
+  min-width: 0;
+  flex-direction: column;
+}
+
+.class-value {
+  display: grid;
+  grid-template-columns: 1fr 80px auto;
+  gap: 8px;
+  align-items: center;
+  min-width: 0;
+  flex: 1 1 0;
+}
+
+.class-name {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.parameter-mini {
+  display: flex;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  width: 150px;
+  margin-left: auto;
+}
+
+.parameter-mini > span {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+}
+
+.parameter-mini small {
+  font-size: 0.65em;
+  line-height: 1;
+  opacity: 0.7;
+}
+
+.parameter-mini b {
+  line-height: 1.2;
+  display: grid;
+  place-items: center;
+  min-width: 20px;
+  height: 20px;
+  border: 1px solid var(--nc-line-soft);
+  background: var(--nc-panel-2);
+  font-size: 10px;
+}
+
+.class-value .item-controls {
+  display: flex;
+  gap: 3px;
+  white-space: nowrap;
+}
+
+.role-empty {
+  color: var(--nc-muted);
+}
+
+.nechronica-sheet .item-controls {
+  display: flex;
+  gap: 3px;
+  align-items: center;
+  margin-left: auto;
+  flex: 0 0 auto;
+}
+
+.nechronica-sheet .item-controls a {
+  width: 22px;
+  height: 22px;
+  display: grid;
+  place-items: center;
+  color: var(--nc-muted);
+  border-radius: 3px;
+}
+
+.nechronica-sheet .item-controls a:hover {
+  color: var(--nc-ink);
+  background: var(--nc-panel-2);
+}
+
+.total-cell {
+  display: grid;
+  place-items: center;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.favour-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border-left: 1px solid var(--nc-line-soft);
+  padding-left: 10px;
+}
+
+.resource-box {
+  grid-template-columns: 1fr;
+  gap: 3px;
+}
+
+.resource-box input {
+  width: 100%;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.placement-box {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.placement-options {
+  display: grid;
+  gap: 2px;
+}
+
+.placement-options label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+}
+
+.nechronica-sheet .sheet-tabs {
+  display: flex;
+  gap: 2px;
+  padding: 7px 10px 0;
+  background: var(--nc-panel-2);
+  border-bottom: 1px solid var(--nc-line);
+}
+
+.nechronica-sheet .sheet-tabs .item {
+  flex: 0 0 auto;
+  padding: 8px 18px;
+  border: 1px solid transparent;
+  border-bottom: 0;
+  color: var(--nc-muted);
+  font-weight: 700;
+  letter-spacing: .04em;
+}
+
+.nechronica-sheet .sheet-tabs .item.active {
+  color: var(--nc-ink);
+  background: var(--nc-bg);
+  border-color: var(--nc-line);
+  margin-bottom: -1px;
+}
+
+.nechronica-sheet .sheet-body {
+  min-height: 0;
+  overflow: hidden auto;
+  background: var(--nc-bg);
+}
+
+.nechronica-sheet .tab {
+  padding: 10px;
+}
+
+.parts-body,
+.parts-body .locations {
+  min-width: 0;
+}
+
+.parts-body .locations {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.parts-body .location {
+  margin: 0;
+  border: 1px solid var(--nc-line);
+  background: var(--nc-panel);
+  box-shadow: 0 1px 4px rgba(40,35,28,.07);
+}
+
+.location-header {
+  display: grid;
+  grid-template:
+    "icon title" auto
+    "icon header" auto
+    / 80px minmax(0, 1fr);
+  min-width: 0;
+  background: var(--nc-panel-2);
+  border-bottom: 1px solid var(--nc-line-soft);
+}
+
+.location-title {
+  grid-area: title;
+}
+
+.location-icon {
+  grid-area: icon;
+}
+
+.partsicon {
+  width: 43px;
+  min-height: 56px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 34px 34px;
+  border-right: 1px solid var(--nc-line-soft);
+}
+
+.skill-icon {
+  display: grid;
+  place-items: center;
+  font-size: 18px;
+  color: var(--nc-muted);
+}
+
+.location-header-details {
+  min-width: 0;
+  grid-area: header;
+}
+
+.location-title-row {
+  display: flex;
+  align-items: center;
+  min-height: 29px;
+  padding: 2px 5px 2px 8px;
+}
+
+.location-title-row h3 {
+  margin: 0;
+  font-size: 14px;
+  letter-spacing: .06em;
+}
+
+.header-controls {
+  display: flex;
+  gap: 3px;
+  margin-left: auto;
+}
+
+.header-controls a,
+.location-title-row > .item-controls a {
+  width: 25px;
+  height: 25px;
+  display: grid;
+  place-items: center;
+  color: var(--nc-muted);
+}
+
+.parts-column-header {
+  display: grid;
+  grid-template-columns: 90px 30px 80px 30px 50px 50px auto;
+  align-items: center;
+  min-height: 25px;
+  padding: 0 5px;
+  color: var(--nc-muted);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+.part-row {
+  display: grid;
+  grid-template-columns: 80px 100px 30px 80px 30px 50px 50px auto 80px;
+  align-items: center;
+  min-height: 42px;
+  border-top: 1px solid var(--nc-line-soft);
+  background: rgba(255,255,255,.28);
+  transition: background .12s ease;
+}
+
+.parts-column-header > div {
+  padding: 0 4px;
+  text-align: center;
+}
+
+.parts-column-header .name,
+.part-row .name,
+.parts-column-header .effect,
+.part-row .effect {
+  text-align: left;
+}
+
+.item-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.part-row:hover {
+  background: rgba(255,255,255,.72);
+}
+
+.part-row.used {
+  opacity: .62;
+}
+
+.part-row.broken {
+  background: rgba(118,80,77,.10);
+}
+
+.part-row > div {
+  min-width: 0;
+  padding: 5px 4px;
+  text-align: center;
+}
+
+.part-row .name h4 {
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 12px;
+}
+
+.part-row .effect {
+  overflow: hidden;
+}
+
+.item-actions {
+  display: flex;
+  justify-content: center;
+  gap: 3px;
+  width: 80px;
+}
+
+.item-action {
+  width: 22px;
+  height: 22px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--nc-line-soft);
+  background: var(--nc-panel);
+  color: var(--nc-muted);
+  background-position: center;
+  background-size: cover;
+}
+
+.item-action.check {
+  background-size: cover;
+}
+
+.part-row input[type="checkbox"] {
+  margin: 0;
+}
+
+.effect-toggle summary {
+  cursor: pointer;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--nc-muted);
+  font-size: 11px;
+}
+
+.effect-full {
+  margin-top: 5px;
+  padding: 7px;
+  border: 1px solid var(--nc-line-soft);
+  background: var(--nc-panel);
+  text-align: left;
+  font-size: 11px;
+}
+
+
+.biography.body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.bio-section,
+.bio-editor {
+  border: 1px solid var(--nc-line);
+  background: var(--nc-panel);
+  box-shadow: 0 1px 4px rgba(40,35,28,.07);
+}
+
+.bio-section-header {
+  display: flex;
+  align-items: center;
+  min-height: 37px;
+  padding: 0 8px 0 12px;
+  background: var(--nc-panel-2);
+  border-bottom: 1px solid var(--nc-line-soft);
+}
+
+.bio-section-header h3 {
+  margin: 0;
+  font-size: 14px;
+  letter-spacing: .06em;
+}
+
+.bio-section-header > .item-add {
+  margin-left: auto;
+  width: 25px;
+  height: 25px;
+  display: grid;
+  place-items: center;
+  color: var(--nc-muted);
+}
+
+.bio-column-header,
+.bio-row {
+  display: grid;
+  align-items: center;
+  min-width: 0px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.memory-section .bio-column-header,
+.memory-section .bio-row {
+  grid-template-columns: minmax(130px, 1fr) 40px minmax(240px, 3fr) 76px;
+}
+
+.regret-section .bio-column-header,
+.regret-section .bio-row {
+  grid-template-columns: minmax(120px, 1fr) minmax(80px, 1fr) 105px minmax(240px, 3fr) 76px;
+}
+
+.bio-column-header {
+  min-height: 26px;
+  padding: 0 6px;
+  color: var(--nc-muted);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+.bio-column-header > div {
+  padding: 0 5px;
+  text-align: center;
+}
+
+.bio-column-header .content {
+  text-align: left;
+}
+
+.bio-row {
+  min-height: 46px;
+  padding: 3px 6px;
+  border-top: 1px solid var(--nc-line-soft);
+  background: rgba(255,255,255,.28);
+}
+
+.bio-row:hover {
+  background: rgba(255,255,255,.72);
+}
+
+.bio-row > div {
+  min-width: 0;
+  padding: 4px 5px;
+}
+
+.bio-row .name h4,
+.bio-row .target h4 {
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.bio-row .content {
+  font-size: 11px;
+}
+
+.nechronica-sheet .circle-row {
+  display: flex;
+  justify-content: center;
+  gap: 3px;
+}
+
+.circles {
+  display: block;
+  padding: 2px;
+}
+
+.nechronica-sheet .circle {
+  width: 15px;
+  height: 15px;
+  border: 1px solid var(--nc-line);
+  border-radius: 50%;
+  background: transparent;
+}
+
+.nechronica-sheet .circle.black {
+  background: var(--nc-ink);
+}
+
+.bio-editor {
+  min-height: 260px;
+  padding: 8px;
+}
+
+.bio-editor .editor {
+  min-height: 230px;
+}
+
+
+.nechronica-sheet .sheet-body.small-header {
+}
+
+@media (max-width: 950px) {
+  .nechronica-sheet .doll-header {
+    grid-template-columns: 125px minmax(220px, 1fr);
+  }
+
+  .attribute-panel,
+  .favour-panel {
+    grid-column: span 1;
+    border-left: 0;
+    border-top: 1px solid var(--nc-line-soft);
+    padding: 8px 0 0;
+  }
+
+  .favour-panel {
+    flex-direction: row;
+  }
+}
+
+@media (max-width: 650px) {
+  .nechronica-sheet .doll-header {
+    grid-template-columns: 1fr;
+  }
+
+  .portrait {
+    height: 100px;
+  }
+
+  .class-values {
+    flex-direction: column;
+  }
+}
+
+.status-sheet {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+  gap: 8px;
+  align-items: start;
+}
+
+.role-section,
+.attribute-section {
+  min-width: 0;
+}
+
+.status-section {
+  border: 1px solid var(--nc-line);
+  background: var(--nc-panel);
+  box-shadow: 0 1px 4px rgba(40, 35, 28, .07);
+}
+
+.status-section-header {
+  display: flex;
+  align-items: center;
+  min-height: 37px;
+  padding: 0 12px;
+
+  background: var(--nc-panel-2);
+  border-bottom: 1px solid var(--nc-line-soft);
+}
+
+.status-section-header h3 {
+  margin: 0;
+  font-size: 14px;
+  letter-spacing: .06em;
+}
+
+.hp-section {
+  padding-bottom: 10px;
+}
+
+.hp-overview {
+  padding: 12px;
+}
+
+.hp-total {
+  margin-bottom: 12px;
+}
+
+.hp-total .hp-label {
+  color: var(--nc-muted);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .08em;
+}
+
+.hp-total strong {
+  float: right;
+  font-size: 16px;
+}
+
+.hp-total .resource-bar {
+  clear: both;
+  margin-top: 7px;
+}
+
+.hp-locations {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 3px;
+}
+
+.hp-location {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 48px;
+
+  border: 1px solid var(--nc-line-soft);
+  background: rgba(255,255,255,.4);
+
+  transition:
+    background-color .15s ease,
+    border-color .15s ease;
+}
+
+.hp-location-name {
+  color: var(--nc-muted);
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.hp-location strong {
+  margin-top: 4px;
+  font-size: 15px;
+}
+
+.hp-location.is-zero {
+  position: relative;
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(118, 80, 77, .16),
+      rgba(118, 80, 77, .06)
+    );
+  border-color: rgba(118, 80, 77, .55);
+}
+
+.hp-location.is-zero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      112deg,
+      transparent 0 42%,
+      rgba(70, 55, 50, .65) 42.5%,
+      transparent 43%
+    ),
+    linear-gradient(
+      72deg,
+      transparent 0 55%,
+      rgba(70, 55, 50, .55) 55.5%,
+      transparent 56%
+    ),
+    linear-gradient(
+      128deg,
+      transparent 0 63%,
+      rgba(70, 55, 50, .5) 63.5%,
+      transparent 64%
+    );
+  opacity: .8;
+}
+
+.hp-location.is-zero .hp-location-name,
+.hp-location.is-zero strong {
+  position: relative;
+  z-index: 1;
+  color: #7a3030;
+}
+
+.role-panel {
+  padding: 0;
+}
+
+.role-row:last-child {
+  border-bottom: 0;
+}
+
+.attribute-panel {
+  padding: 10px 12px 12px;
+}
+
+.attribute-title {
+  margin: 4px 0;
+
+  color: var(--nc-muted);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .08em;
+}
+
+.attribute-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3px;
+
+  margin-bottom: 9px;
+}
+
+.attribute-cell {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+
+  min-width: 0;
+  min-height: 30px;
+  padding: 2px 5px;
+
+  border: 1px solid var(--nc-line-soft);
+  background: rgba(255,255,255,.4);
+}
+
+.attribute-cell span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  font-size: 10px;
+}
+
+.attribute-cell input {
+  width: 100%;
+  height: 22px;
+  padding: 0 2px;
+
+  text-align: center;
+
+  border: 0;
+  background: transparent;
+}
+
+@media (max-width: 950px) {
+
+  .hp-locations {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+}
+
+@media (max-width: 650px) {
+
+  .hp-locations {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .attribute-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .class-values {
+    flex-direction: column;
+  }
+
+}
+
+.class-row {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 8px;
+  align-items: start;
+}
+
+.class-entry {
+  display: grid;
+  grid-template-columns: 6em minmax(0, 1fr);
+  gap: 6px;
+  align-items: center;
+}
+
+.class-entry-label {
+  font-size: 0.8em;
+  font-weight: 700;
+  opacity: 0.75;
+  white-space: nowrap;
+}
+
+.attribute-parameters {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.attribute-parameter-labels {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 4px;
+  text-align: center;
+  font-size: 0.75em;
+  font-weight: 700;
+  opacity: 0.7;
+}
+
+.attribute-parameter-labels span {
+  min-width: 0;
+}
+
+.bonus-grid {
+  justify-items: center;
+}
+
+.bonus-grid > * {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.tooltip-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 180px;
+}
+
+.tooltip-control-row {
+  display: grid;
+  grid-template-columns: 90px minmax(0, 1fr);
+  align-items: center;
+  gap: 10px;
+}
+
+.tooltip-control-key {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  white-space: nowrap;
+}
+
+.tooltip-control-action {
+  text-align: left;
+  white-space: nowrap;
+}
+
+.tooltip-control-key kbd {
+  padding: 2px 5px;
+  border: 1px solid var(--color-border-light-2);
+  border-radius: 3px;
+  background: var(--color-bg-option);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
+  font-size: 0.85em;
+  line-height: 1.2;
+  background-color: #eeeeee;
+  border-radius: 3px;
+
+  color: #333333;
+  display: inline-block;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.key-plus {
+  margin: 0 3px;
 }

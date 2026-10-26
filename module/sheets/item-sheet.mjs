@@ -1,6 +1,8 @@
+import { NECHRONICA } from "../config.mjs";
+
 export class NechronicaItemSheet extends ItemSheet {
   static get defaultOptions() {
-    return mergeObject(super.defaultOptions, {
+    return foundry.utils.mergeObject(super.defaultOptions, {
       classes: ["nechronica", "sheet", "item"],
       width: 600,
       height: 400,
@@ -30,6 +32,12 @@ export class NechronicaItemSheet extends ItemSheet {
     context.flags = itemData.flags;
     // Add roll data for TinyMCE editors.
     context.rollData = context.item.getRollData();
+
+    context.partTypeOptions = NECHRONICA.partTypes;
+    context.locationOptions = NECHRONICA.locations;
+    context.categorieOptions = NECHRONICA.categories;
+    context.timingOptions = NECHRONICA.timings;
+    context.attackOptions = NECHRONICA.attackTypes;
 
     return {
       ...context,

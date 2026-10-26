@@ -25,6 +25,7 @@
       }
     },
 
+    "HP": "HP",
     "Location": "部位",
     "Locations": {
       "Head": "頭部",
@@ -33,6 +34,14 @@
       "Legs": "脚部",
       "Any": "任意"
     },
+    
+    "Params": "ステータス",
+    "Role": "役割",
+    "MainClass": "メインクラス",
+    "SubClass": "サブクラス",
+    "Parameter": "能力値",
+    "Personality": "パーソナリティ",
+
     "Timing": "タイミング",
     "Timings": {
       "Action": "アクション",
@@ -41,6 +50,7 @@
       "Judge": "ジャッジ",
       "Auto": "オート"
     },
+
     "TimingShort": {
       "Action": "Act",
       "Rapid": "Rpd",
@@ -48,9 +58,11 @@
       "Judge": "Jdg",
       "Auto": "Auto"
     },
+
     "Level": "レベル",
     "Cost": "コスト",
     "Range": "レンジ",
+
     "AttackType": "攻撃種別",
     "AttackTypes": {
       "Unarmed": "肉弾",
@@ -59,6 +71,7 @@
       "Blast": "砲撃",
       "Mental": "精神"
     },
+
     "Effects": "効果",
     "EffectTypes": {
       "Dismember": "切断",
@@ -67,16 +80,20 @@
       "Chain": "連撃",
       "Stagger": "転倒"
     },
+
     "Threat": "悪意",
     "ThreatMulti": "レギオンの悪意倍加なし",
     "APBonus": "行動値ボーナス",
+
     "Effect": "効果",
     "Description": "詳細",
     "Status": "状態",
     "Broken": "損傷",
     "Used": "使用",
+
     "OptionalModifiers": "修正",
     "ModifierPlural": "修正",
+
     "Modifiers": {
       "Roll": "ロール",
       "Damage": "ダメージ",
@@ -92,43 +109,60 @@
     "BodyParts": "パーツ",
     "Bonus": "ボーナス",
     "Class": "クラス",
+
     "ContentOfMemory": "内容",
     "CurrentAP": "現在行動値",
     "Details": "詳細",
     "Dice": "ダイス",
+
     "Experience": "寵愛",
     "Favour": "寵愛点",
+
     "Regret": "未練",
     "Regrets": "未練",
+
     "FragmentsOfMemory": "記憶の欠片",
     "Madness": "狂気",
+
     "MaxAP": "最大行動値",
     "Memory": "記憶の欠片",
+
     "Name": "名前",
     "Notes": "ノート",
     "Number": "番号",
+
     "Parts": "パーツ",
+
     "Placement": "初期配置",
     "Placements": {
       "Limbo": "煉獄",
       "Elysium": "花園",
       "Eden": "楽園"
     },
+
     "Position": "ポジション",
     "Premonitions": "暗示",
+
     "LegionCount": "体数",
     "Remaining": "残り数",
     "Initialing": "初期数",
+
     "LegionBase": "{name}で{count}体",
+
     "Skill": "スキル",
     "Skills": "スキル",
+
     "SpineCounter": "せぼね",
     "Target": "対象",
+
     "Content": "内容",
     "Title": "名称",
     "Total": "合計",
     "Type": "種別",
+    "ItemName": "アイテム名",
+
     "UseSpineCounter": "溜まったせぼねを使用する({spineCounter} AP)",
+
     "Categorie": "分類",
     "Categories": {
       "Alice": "アリス",
@@ -149,6 +183,7 @@
       "Modification": "改造",
       "Pawn": "手駒専用"
     },
+
     "Armament": "武装",
     "ArmamentAbbrev": "武装",
     "Mutation": "変異",
@@ -168,9 +203,11 @@
     "RollMode": "ロールモード",
     "RollBonus": "判定修正",
     "DamageBonus": "ダメージ修正",
+
     "Tags": "タグ",
     "Attack": "攻撃",
     "Check": "判定",
+
     "Roll": {
       "Roll": "ロール",
       "TargetsChoice": "防御側任意",
@@ -181,6 +218,7 @@
       "Critical": "大成功",
       "Dismemberment": "切断"
     },
+
     "WasBroken": "　損傷",
 
     "Warnings": {
@@ -214,6 +252,19 @@
         "SpineEffect": "同ターンの次カウントで使うマニューバ1つのコスト-1（最低0）",
         "None": "なし",
         "Interference": "妨害"
+      }
+    },
+    
+    "Tooltips": {
+      "Used": {
+        "Click": "全て未使用に変更",
+        "Shift": "全て使用済に変更",
+        "Ctrl": "未使用/使用済を切替"
+      },
+      "Broken": {
+        "Click": "全て未損傷に変更",
+        "Shift": "全て損傷に変更",
+        "Ctrl": "損傷/未損傷を切替"
       }
     }
   },

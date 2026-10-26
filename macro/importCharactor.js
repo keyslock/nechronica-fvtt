@@ -254,10 +254,14 @@ async function convertToActorData(data, charaId) {
   ];
   for (let i = 0; i < data.Power_name.length; i++) {
     const manuvaName = data.Power_name[i];
-    if (manuvaName === "" || basicParts.includes(manuvaName)) continue;
+    if (manuvaName === "") continue;
     let matchItem = await findEntryInCompendium("Item", manuvaName);
     if (matchItem) {
       let setData = await foundry.utils.duplicate(matchItem);
+      delete setData._id;
+      if (setData.system.location == "any") {
+        setData.system.location = locationMap[data.V_Power_hantei[i]] ?? "any";
+      }
       actor.items.push(setData);
     } else {
       const timing = timingMap[data.Power_timing[i]] ?? "auto";
@@ -306,7 +310,8 @@ async function convertToActorData(data, charaId) {
   // regret
   for (let i = 0; i < data.roice_name.length; i++) {
     const itemName = data.roice_name[i];
-    if (itemName === "" || itemName === "たからもの") continue;
+    // if (itemName === "" || itemName === "たからもの") continue;
+    if (itemName === "") continue;
     let setData = {
       name: itemName,
       type: "regret",
@@ -314,7 +319,7 @@ async function convertToActorData(data, charaId) {
         description: "",
         effect: `${data.roice_neg[i]}(${data.roice_break[i]}`,
         target: itemName,
-        madness: Number(data.roice_damage[i]) - 1,
+        madness: Number(data.roice_damage[i]),
         content: data.roice_pos[i],
       },
     };
