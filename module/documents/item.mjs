@@ -115,6 +115,7 @@ export class NechronicaItem extends Item {
     skipDialog = ev.shiftKey ?? false;
     const isAttack = rollType === "ATTACK";
     const isCheck = rollType === "CHECK";
+    const isTalk = rollType === "TALK";
     const hasAttack = itemData.attack != "";
     let roll, damageRoll, form;
     const combatant = actor?.combatant;
@@ -130,6 +131,7 @@ export class NechronicaItem extends Item {
       system: this.getChatData(),
       isAttack,
       isCheck,
+      isTalk,
       hasAttack,
       spineCounter: this.actor?.spineCounter ?? 0,
       roll: undefined,
@@ -152,7 +154,7 @@ export class NechronicaItem extends Item {
     };
 
     // Handle rolls
-    if (itemData.type === "bodypart" && (isAttack || isCheck)) {
+    if ((itemData.type === "bodypart" && (isAttack || isCheck)) || isTalk) {
       let ap;
 
       if (combatant && isAttack) {
@@ -192,7 +194,7 @@ export class NechronicaItem extends Item {
         form = await new Promise((resolve) => {
           new Dialog({
             title:
-              game.i18n.localize(`${isAttack ? "NECH.Attack" : "NECH.Check"}`) +
+              game.i18n.localize(`${isAttack ? "NECH.Checks.Attack" : "NECH.Checks.Check"}`) +
               `: ${this.name}`,
             content: dialogContent,
             buttons: {
@@ -209,7 +211,7 @@ export class NechronicaItem extends Item {
         if (form === undefined) return;
       }
 
-      if ((isAttack && hasAttack) || isCheck) {
+      if ((isAttack && hasAttack) || isCheck || isTalk) {
         const parts = [];
         const damageParts = [];
         const nd = Number(form?.find('[name="dice"]:checked').val() ?? dice);
@@ -291,7 +293,11 @@ export class NechronicaItem extends Item {
 
         // Add roll result and failure/success details
         templateData.result.type = game.i18n.localize(
-          `${isCheck ? "NECH.Check" : "NECH.Attack"}`,
+          isCheck
+            ? "NECH.Checks.Check"
+            : isTalk
+              ? "NECH.Checks.Talk"
+              : "NECH.Checks.Attack",
         );
         if (roll.total && roll.total >= 11) {
           templateData.result.roll = game.i18n.localize("NECH.Roll.Critical");
@@ -344,6 +350,7 @@ export class NechronicaItem extends Item {
       }
     }
 
+    
     // Cost calc
     if (rollType == "MESSAGE") {
       // Set used status
@@ -358,7 +365,7 @@ export class NechronicaItem extends Item {
       const spine =
         this.name == game.i18n.localize("NECH.DefaultItems.name.Spine");
       if (actor && typeof actor.spendAp === "function") {
-        actor.spendAp(cost, spine);
+        actor.spendAp(cost, spine, !skipDialog);
       }
     }
     const rollMode = form?.find('[name="rollMode"]')?.val();

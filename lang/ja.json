@@ -123,6 +123,7 @@
 
     "FragmentsOfMemory": "記憶の欠片",
     "Madness": "狂気",
+    "MadnessPoint": "狂気点",
 
     "MaxAP": "最大行動値",
     "Memory": "記憶の欠片",
@@ -207,6 +208,12 @@
     "Tags": "タグ",
     "Attack": "攻撃",
     "Check": "判定",
+    "Checks": {
+      "Check": "判定",
+      "Attack": "攻撃判定",
+      "Talk": "対話判定",
+      "Insane": "狂気判定"
+    },
 
     "Roll": {
       "Roll": "ロール",
@@ -256,6 +263,20 @@
     },
     
     "Tooltips": {
+      "Insane": "狂気判定",
+      "Modifier": "補正",
+      "Check": {
+        "Click": "判定（ダイアログ表示）",
+        "Shift": "判定（ダイアログ非表示）"
+      },
+      "Attack": {
+        "Click": "判定（ダイアログ表示）",
+        "Shift": "判定（ダイアログ非表示）"
+      },
+      "Chat": {
+        "Click": "マニューバ宣言（せぼね使用）",
+        "Shift": "マニューバ宣言"
+      },
       "Used": {
         "Click": "全て未使用に変更",
         "Shift": "全て使用済に変更",

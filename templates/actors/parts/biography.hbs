@@ -50,6 +50,7 @@
       <a class="item-control item-add" title="{{localize "NECH.AddItem"}}" data-type="regret"><i class="fas fa-plus"></i></a>
     </div>
     <div class="bio-column-header">
+      <div class="reg-actions"></div>
       <div class="target">{{localize "NECH.Target"}}</div>
       <div class="type">{{localize "NECH.Type"}}</div>
       <div class="madness">{{localize "NECH.Madness"}}</div>
@@ -59,6 +60,7 @@
     <ul class="regret-list item-list">
       {{#each regrets as |regret|}}
         <li class="regret item bio-row" data-item-id="{{regret._id}}">
+          <div class="reg-actions"><a class="item-action talk"><i class="fa-regular fa-comments"></i></a></div>
           <div class="target"><h4>{{regret.system.target}}</h4></div>
           <div class="type">{{regret.system.content}}</div>
           <div class="circle-position madness">

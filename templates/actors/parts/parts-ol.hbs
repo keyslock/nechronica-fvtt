@@ -71,9 +71,69 @@
             {{#each skills as |skill|}}
               <li class="skill item part-row {{#if skill.system.used}}used{{/if}} {{#if skill.system.broken}}broken{{/if}}" data-item-id="{{skill._id}}">
                 <div class="item-actions">
-                  <a class="item-action check rollable" style="background-image: url({{skill.img}})" title="{{skill.name}}"></a>
-                  <a class="item-action attack"><i class="fas fa-fist-raised"></i></a>
-                  <a class="item-action chat"><i class="fas fa-comment"></i></a>
+                  <a class="item-action check rollable" style="background-image: url({{skill.img}})" title="{{skill.name}}" data-tooltip-html='
+                    <div class="tooltip-controls">
+                      <div class="tooltip-control-row">
+                        <span class="tooltip-control-key">
+                          <kbd>Click</kbd>
+                        </span>
+                        <span class="tooltip-control-action">
+                          {{localize "NECH.Tooltips.Check.Click"}}
+                        </span>
+                      </div>
+
+                      <div class="tooltip-control-row">
+                        <span class="tooltip-control-key">
+                          <kbd>Shift</kbd><span class="key-plus">+</span><kbd>Click</kbd>
+                        </span>
+                        <span class="tooltip-control-action">
+                          {{localize "NECH.Tooltips.Check.Shift"}}
+                        </span>
+                      </div>
+                    </div>
+                    '></a>
+                  <a class="item-action attack" data-tooltip-html='
+                    <div class="tooltip-controls">
+                      <div class="tooltip-control-row">
+                        <span class="tooltip-control-key">
+                          <kbd>Click</kbd>
+                        </span>
+                        <span class="tooltip-control-action">
+                          {{localize "NECH.Tooltips.Attack.Click"}}
+                        </span>
+                      </div>
+
+                      <div class="tooltip-control-row">
+                        <span class="tooltip-control-key">
+                          <kbd>Shift</kbd><span class="key-plus">+</span><kbd>Click</kbd>
+                        </span>
+                        <span class="tooltip-control-action">
+                          {{localize "NECH.Tooltips.Attack.Shift"}}
+                        </span>
+                      </div>
+                    </div>
+                    '><i class="fas fa-fist-raised"></i></a>
+                  <a class="item-action chat" data-tooltip-html='
+                    <div class="tooltip-controls">
+                      <div class="tooltip-control-row">
+                        <span class="tooltip-control-key">
+                          <kbd>Click</kbd>
+                        </span>
+                        <span class="tooltip-control-action">
+                          {{localize "NECH.Tooltips.Chat.Click"}}
+                        </span>
+                      </div>
+
+                      <div class="tooltip-control-row">
+                        <span class="tooltip-control-key">
+                          <kbd>Shift</kbd><span class="key-plus">+</span><kbd>Click</kbd>
+                        </span>
+                        <span class="tooltip-control-action">
+                          {{localize "NECH.Tooltips.Chat.Shift"}}
+                        </span>
+                      </div>
+                    </div>
+                    '><i class="fas fa-comment"></i></a>
                 </div>
                 <div class="name"><h4>{{skill.name}}</h4></div>
                 <div class="broken"></div>
@@ -193,9 +253,69 @@
             {{#each parts as |part|}}
               <li class="bodyPart item part-row {{#if part.system.broken}}broken{{/if}} {{#if part.system.used}}used{{/if}}" data-item-id="{{part._id}}">
                 <div class="item-actions">
-                  <a class="item-action check rollable" style="background-image: url({{part.img}})" title="{{part.name}}"></a>
-                  <a class="item-action attack"><i class="fas fa-fist-raised"></i></a>
-                  <a class="item-action chat"><i class="fas fa-comment"></i></a>
+                  <a class="item-action check rollable" style="background-image: url({{part.img}})" title="{{part.name}}" data-tooltip-html='
+                    <div class="tooltip-controls">
+                      <div class="tooltip-control-row">
+                        <span class="tooltip-control-key">
+                          <kbd>Click</kbd>
+                        </span>
+                        <span class="tooltip-control-action">
+                          {{localize "NECH.Tooltips.Check.Click"}}
+                        </span>
+                      </div>
+
+                      <div class="tooltip-control-row">
+                        <span class="tooltip-control-key">
+                          <kbd>Shift</kbd><span class="key-plus">+</span><kbd>Click</kbd>
+                        </span>
+                        <span class="tooltip-control-action">
+                          {{localize "NECH.Tooltips.Check.Shift"}}
+                        </span>
+                      </div>
+                    </div>
+                    '></a>
+                  <a class="item-action attack" data-tooltip-html='
+                    <div class="tooltip-controls">
+                      <div class="tooltip-control-row">
+                        <span class="tooltip-control-key">
+                          <kbd>Click</kbd>
+                        </span>
+                        <span class="tooltip-control-action">
+                          {{localize "NECH.Tooltips.Attack.Click"}}
+                        </span>
+                      </div>
+
+                      <div class="tooltip-control-row">
+                        <span class="tooltip-control-key">
+                          <kbd>Shift</kbd><span class="key-plus">+</span><kbd>Click</kbd>
+                        </span>
+                        <span class="tooltip-control-action">
+                          {{localize "NECH.Tooltips.Attack.Shift"}}
+                        </span>
+                      </div>
+                    </div>
+                    '><i class="fas fa-fist-raised"></i></a>
+                  <a class="item-action chat" data-tooltip-html='
+                    <div class="tooltip-controls">
+                      <div class="tooltip-control-row">
+                        <span class="tooltip-control-key">
+                          <kbd>Click</kbd>
+                        </span>
+                        <span class="tooltip-control-action">
+                          {{localize "NECH.Tooltips.Chat.Click"}}
+                        </span>
+                      </div>
+
+                      <div class="tooltip-control-row">
+                        <span class="tooltip-control-key">
+                          <kbd>Shift</kbd><span class="key-plus">+</span><kbd>Click</kbd>
+                        </span>
+                        <span class="tooltip-control-action">
+                          {{localize "NECH.Tooltips.Chat.Shift"}}
+                        </span>
+                      </div>
+                    </div>
+                    '><i class="fas fa-comment"></i></a>
                 </div>
                 <div class="name"><h4>{{part.name}}</h4></div>
                 <div class="broken checkbox"><input class="item-quick-edit" type="checkbox" data-target="system.broken" title="{{localize "NECH.Broken"}}" {{checked part.system.broken}}></div>

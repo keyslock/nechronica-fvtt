@@ -123,6 +123,7 @@
 
     "FragmentsOfMemory": "Fragments of Memory",
     "Madness": "Madness",
+    "MadnessPoint": "Madness",
 
     "MaxAP": "Max AP",
     "Memory": "Memory Fragment",
@@ -208,6 +209,13 @@
     "Attack": "Attack",
     "Check": "Check",
 
+    "Checks": {
+      "Check": "Check",
+      "Attack": "Attach Check",
+      "Talk": "Talk Check",
+      "Insane": "Insane Check"
+    },
+
     "Roll": {
       "Roll": "Roll",
       "TargetsChoice": "Defender's Choice",
@@ -256,6 +264,20 @@
     },
 
     "Tooltips": {
+      "Insane": "Insane Check",
+      "Modifier": "Modifier",
+      "Check": {
+        "Click": "Check (Show Dialog)",
+        "Shift": "Check (Skip Dialog)"
+      },
+      "Attack": {
+        "Click": "Check (Show Dialog)",
+        "Shift": "Check (Skip Dialog)"
+      },
+      "Chat": {
+        "Click": "Use Manuva (use spine)",
+        "Shift": "Use Manuva"
+      },
       "Used": {
         "Click": "Mark all as unused",
         "Shift": "Mark all as used",

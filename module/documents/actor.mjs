@@ -276,18 +276,22 @@ export class NechronicaActor extends Actor {
    * @param options - Optional parameters
    * @returns Number of AP spent from pool and spine counter
    */
-  async spendAp(cost, spine) {
+  async spendAp(cost, spine, useSpine) {
     let ap = this.system.ap.value;
     let spineCounter = this.system.spineCounter.value;
     if (spine) {
       ap -= cost;
       spineCounter += cost;
     } else {
-      if (cost >= spineCounter) {
-        ap -= cost - spineCounter;
-        spineCounter = 0;
+      if (useSpine) {
+        if (cost >= spineCounter) {
+          ap -= cost - spineCounter;
+          spineCounter = 0;
+        } else {
+          spineCounter -= cost;
+        }
       } else {
-        spineCounter -= cost;
+        ap -= cost;
       }
     }
     await this.update({

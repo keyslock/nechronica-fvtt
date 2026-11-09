@@ -78,6 +78,11 @@ export class NechronicaActorSheet extends ActorSheet {
     // Circle listener
     html.find(".circles").click((ev) => this._onCircleClick(ev));
 
+    // Insane Check
+    html.find(".insane-check").click(this._onInsaneCheck.bind(this));
+    html.find(".insane-modifier-minus").click(this._onInsaneModifier.bind(this));
+    html.find(".insane-modifier-plus").click(this._onInsaneModifier.bind(this));
+
     // Edit items directly from sheet
     html.find(".item-quick-edit").change((ev) => this._onItemQuickEdit(ev));
   }
@@ -358,6 +363,11 @@ export class NechronicaActorSheet extends ActorSheet {
       item.roll({ rollType: "ATTACK", ev: event });
     }
 
+    // Talk rolls
+    if (a.classList.contains("talk")) {
+      item.roll({ rollType: "TALK", ev: event });
+    }
+
     // Roll to chat
     if (
       a.classList.contains("chat") ||
@@ -378,28 +388,47 @@ export class NechronicaActorSheet extends ActorSheet {
   _onCircleClick(event) {
     const actorData = this.actor;
     const index = Number($(event.currentTarget).attr("data-index"));
+
     let target = $(event.currentTarget)
       .parents(".circle-row")
       .attr("data-target");
+
     if (target === "item") {
       const itemData = actorData.items.find(
         (i) =>
           i._id ===
           $(event.currentTarget).parents(".item").attr("data-item-id"),
       );
+
       target = $(event.currentTarget)
         .parents(".circle-row")
         .attr("data-item-target");
-      const value = foundry.utils.getProperty(itemData, target);
-      let updateItem = {};
-      updateItem["_id"] = itemData._id;
-      if (value === index + 1) {
-        // If the last one was clicked, decrease by 1
-        updateItem[target] = index;
-      } // Otherwise, value = index clicked
-      else updateItem[target] = index + 1;
 
-      this.actor.updateEmbeddedDocuments("Item", [updateItem]);
+      const before = foundry.utils.getProperty(itemData, target);
+
+      let updateItem = { _id: itemData._id, };
+
+      const after = before === index + 1 ? index : index + 1;
+
+      updateItem[target] = after;
+
+      this.actor.updateEmbeddedDocuments("Item", [updateItem]).then(() => {
+        renderTemplate(
+          "systems/nechronica-fvtt/templates/chat/item-madness.hbs",
+          {
+            itemName: itemData.name,
+            before,
+            after,
+          },
+        ).then((content) => {
+          ChatMessage.create({
+            speaker: ChatMessage.getSpeaker({
+              actor: this.actor,
+            }),
+            content,
+          });
+        });
+      });
     }
   }
 
@@ -559,5 +588,77 @@ export class NechronicaActorSheet extends ActorSheet {
       "systems/nechronica-fvtt/templates/chat/item-change-card.hbs",
       data,
     );
+  }
+  
+/**
+ * Insane Check
+ *
+ * @param {Event} event - The click event triggering the action
+ */
+  _onInsaneCheck(event) {
+    const actor = this.actor;
+    const bonus = Number(actor.system.roll?.insane ?? 0);
+
+    const roll = new Roll("1d10 + @bonus", {
+      bonus,
+    });
+
+    roll.evaluate({ async: true }).then(async () => {
+      const total = roll.total ?? 0;
+      const diceResult = roll.dice[0]?.results[0]?.result ?? 0;
+
+      let result;
+
+      if (total >= 11) {
+        result = game.i18n.localize("NECH.Roll.Critical");
+      } else if (diceResult === 1) {
+        result = game.i18n.localize("NECH.Roll.Fumble");
+      } else if (total >= 6) {
+        result = game.i18n.localize("NECH.Roll.Success");
+      } else {
+        result = game.i18n.localize("NECH.Roll.Failure");
+      }
+
+      const content = await renderTemplate(
+        "systems/nechronica-fvtt/templates/chat/insane-check.hbs",
+        {
+          actor: actor.name,
+          bonus,
+          roll: await roll.render(),
+          total,
+          result,
+        },
+      );
+
+      ChatMessage.create({
+        speaker: ChatMessage.getSpeaker({
+          actor,
+        }),
+        content,
+      });
+    });
+  }
+
+  _onInsaneModifier(event) {
+    const button = event.currentTarget;
+    const input = button.parentElement.querySelector(
+      ".insane-modifier-value",
+    );
+
+    let value = Number(input.value) || 0;
+
+    if (button.classList.contains("insane-modifier-minus")) {
+      value--;
+    }
+
+    if (button.classList.contains("insane-modifier-plus")) {
+      value++;
+    }
+
+    input.value = value;
+
+    this.actor.update({
+      "system.roll.insane": value,
+    });
   }
 }

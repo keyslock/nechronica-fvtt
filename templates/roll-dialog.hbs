@@ -13,7 +13,7 @@
     </div>
   {{/if}}
   {{!-- Roll bonus --}}
-  {{#if (or isCheck isAttack isRoll)}}
+  {{#if (or isCheck isAttack isRoll isTalk)}}
     <div class="form-group">
       <label>{{localize "NECH.RollBonus"}}</label>
       <input type="text" name="roll-bonus" value="" placeholder=""/>
@@ -25,13 +25,6 @@
       <label>{{localize "NECH.DamageBonus"}}</label>
       <input type="text" name="damage-bonus" value="" placeholder=""/>
     </div>
-    {{#if spineCounter}}
-      <div class="form-group">
-        <label>{{format "NECH.UseSpineCounter" spineCounter=spineCounter}}
-          <input type="checkbox" name="spine-counter">
-        </label>
-      </div>
-    {{/if}}
   {{/if}}
 
   {{!-- Modifiers --}}

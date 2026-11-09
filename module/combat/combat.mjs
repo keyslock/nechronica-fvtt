@@ -32,6 +32,8 @@ export class NechronicaCombat extends Combat {
      * start combat
      */
     async startCombat() {
+        if (!game.user.isGM) return super.startCombat();
+
         await super.startCombat();
 
         for (let combatant of this.combatants) {
@@ -55,6 +57,8 @@ export class NechronicaCombat extends Combat {
      * round activate
      */
     async nextRound() {
+        if (!game.user.isGM) return super.startCombat();
+        
         await super.nextRound();
 
         for (let combatant of this.combatants) {

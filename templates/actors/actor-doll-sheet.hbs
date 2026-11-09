@@ -10,6 +10,27 @@
       <input class="character-name" name="name" type="text" value="{{actor.name}}" placeholder="{{localize "NECH.Name"}}"/>
     </div>
 
+    <div class="insane-block">
+      <div class="insane-box">
+        <a class="insane-check"
+          data-tooltip-html='{{localize "NECH.Tooltips.Insane"}}'>
+          <i class="fa-solid fa-heart-crack"></i>
+        </a>
+
+        <div class="insane-modifier">
+          <button type="button" class="insane-modifier-minus">−</button>
+          <input
+            type="number"
+            name="system.roll.insane"
+            value="{{actor.system.roll.insane}}"
+            class="insane-modifier-value"
+            data-tooltip-html='{{localize "NECH.Tooltips.Modifier"}}'
+          />
+          <button type="button" class="insane-modifier-plus">＋</button>
+        </div>
+      </div>
+    </div>
+
     <div class="place-block">
       <div class="placement-box">
         <span>{{localize "NECH.Placement"}}</span>

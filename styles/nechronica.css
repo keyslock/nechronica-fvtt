@@ -903,7 +903,7 @@ span:hover .item-controls {
 
   display: grid;
   grid-template-areas:
-    "portrait name place"
+    "portrait name insane"
     "portrait hp place";
   grid-template-rows: auto auto;
   grid-template-columns: 150px 2fr 100px;
@@ -920,6 +920,10 @@ span:hover .item-controls {
 
 .nechronica.sheet.actor .doll-header .name-block {
   grid-area: name;
+}
+
+.nechronica.sheet.actor .doll-header .insane-block {
+  grid-area: insane;
 }
 
 .nechronica.sheet.actor .doll-header .place-block {
@@ -953,6 +957,35 @@ span:hover .item-controls {
 .nechronica.sheet.actor .doll-header .favour {
   grid-area: favour;
   position: relative;
+}
+
+.nechronica.sheet.actor .insane-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25em;
+}
+
+.nechronica.sheet.actor .insane-box .insane-check {
+  font-size: 1.5em;
+}
+
+.nechronica.sheet.actor .insane-modifier {
+  display: flex;
+  align-items: center;
+  gap: 0.1em;
+}
+
+.nechronica.sheet.actor .insane-modifier button {
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.nechronica.sheet.actor .insane-modifier-value {
+  width: 2em;
+  text-align: center;
 }
 
 .nechronica.sheet.actor .enemy-header {
@@ -1675,7 +1708,7 @@ span:hover .item-controls {
 
 .regret-section .bio-column-header,
 .regret-section .bio-row {
-  grid-template-columns: minmax(120px, 1fr) minmax(80px, 1fr) 105px minmax(240px, 3fr) 76px;
+  grid-template-columns: 30px minmax(120px, 1fr) minmax(80px, 1fr) 105px minmax(210px, 3fr) 76px;
 }
 
 .bio-column-header {
