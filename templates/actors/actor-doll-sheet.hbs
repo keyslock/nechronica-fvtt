@@ -17,16 +17,10 @@
           <i class="fa-solid fa-heart-crack"></i>
         </a>
 
-        <div class="insane-modifier">
-          <button type="button" class="insane-modifier-minus">−</button>
-          <input
-            type="number"
-            name="system.roll.insane"
-            value="{{actor.system.roll.insane}}"
-            class="insane-modifier-value"
-            data-tooltip-html='{{localize "NECH.Tooltips.Modifier"}}'
-          />
-          <button type="button" class="insane-modifier-plus">＋</button>
+        <div class="numeric-modifier" data-target="system.insane.modifier">
+          <button type="button" data-action="minus">-</button>
+          <input type="number" name="system.roll.insane" value="{{system.roll.insane}}" data-tooltip-html='{{localize "NECH.Tooltips.Modifier"}}'/>
+          <button type="button" data-action="plus">+</button>
         </div>
       </div>
     </div>

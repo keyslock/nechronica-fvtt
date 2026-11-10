@@ -57,7 +57,7 @@
 
 .nechronica.sheet.actor {
   min-width: 700px;
-  min-height: 800px;
+  min-height: 600px;
 }
 
 .nechronica.sheet.actor > .window-content {
@@ -970,20 +970,20 @@ span:hover .item-controls {
   font-size: 1.5em;
 }
 
-.nechronica.sheet.actor .insane-modifier {
+.nechronica.sheet.actor .numeric-modifier {
   display: flex;
   align-items: center;
   gap: 0.1em;
 }
 
-.nechronica.sheet.actor .insane-modifier button {
+.nechronica.sheet.actor .numeric-modifier button {
   padding: 0;
   border: none;
   background: none;
   cursor: pointer;
 }
 
-.nechronica.sheet.actor .insane-modifier-value {
+.nechronica.sheet.actor .numeric-modifier-value {
   width: 2em;
   text-align: center;
 }
@@ -1376,12 +1376,91 @@ span:hover .item-controls {
   font-weight: 700;
 }
 
-.favour-panel {
+.memory-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: end;
+  column-gap: 6px;
+
+  padding-left: 10px;
+}
+
+.memory-panel .numeric-modifier {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 3px;
+}
+
+.memory-panel .numeric-label {
+  font-size: 0.8em;
+  line-height: 1;
+}
+
+.memory-panel .numeric-input {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.memory-divider {
+  align-self: end;
+  line-height: 1;
+  padding-bottom: 4px;
+}
+
+.memory-button {
+  width: 20%;
+}
+
+.memory-current,
+.memory-total {
+  width: 50%;
+  text-align: center;
+}
+
+.favour-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: end;
+  column-gap: 6px;
+
   border-left: 1px solid var(--nc-line-soft);
   padding-left: 10px;
+}
+
+.favour-panel .numeric-modifier {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.favour-panel .numeric-label {
+  font-size: 0.8em;
+  line-height: 1;
+}
+
+.favour-panel .numeric-input {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.favour-divider {
+  align-self: end;
+  line-height: 1;
+  padding-bottom: 4px;
+}
+
+.favour-button {
+  width: 20%;
+}
+
+.favour-current,
+.favour-total {
+  width: 50%;
+  text-align: center;
 }
 
 .resource-box {
@@ -1836,6 +1915,11 @@ span:hover .item-controls {
 .role-section,
 .attribute-section {
   min-width: 0;
+}
+
+.attribute-section {
+  grid-column: 2;
+  grid-row: 1 / 3;
 }
 
 .status-section {

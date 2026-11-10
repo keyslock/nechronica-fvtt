@@ -116,7 +116,12 @@
     "Dice": "ダイス",
 
     "Experience": "寵愛",
-    "Favour": "寵愛点",
+    
+    "Favour": {
+      "Name": "寵愛点",
+      "Current": "残",
+      "Total": "取得合計"
+    },
 
     "Regret": "未練",
     "Regrets": "未練",
@@ -127,6 +132,11 @@
 
     "MaxAP": "最大行動値",
     "Memory": "記憶の欠片",
+    
+    "Memories": {
+      "Current": "残",
+      "Total": "欠片合計"
+    },
 
     "Name": "名前",
     "Notes": "ノート",

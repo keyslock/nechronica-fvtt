@@ -116,7 +116,12 @@
     "Dice": "Dice",
 
     "Experience": "Affection",
-    "Favour": "Favor Points",
+
+    "Favour": {
+      "Name": "Favor Points",
+      "Current": "Current",
+      "Total": "Total"
+    },
 
     "Regret": "Regret",
     "Regrets": "Regrets",
@@ -127,6 +132,11 @@
 
     "MaxAP": "Max AP",
     "Memory": "Memory Fragment",
+
+    "Memories": {
+      "Current": "Current",
+      "Total": "Total"
+    },
 
     "Name": "Name",
     "Notes": "Notes",

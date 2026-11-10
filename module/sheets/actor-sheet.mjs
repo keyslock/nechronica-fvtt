@@ -6,7 +6,7 @@ export class NechronicaActorSheet extends ActorSheet {
     return foundry.utils.mergeObject(super.defaultOptions, {
       classes: ["nechronica", "sheet", "actor"],
       width: 600,
-      height: 400,
+      height: 300,
       tabs: [
         {
           navSelector: ".sheet-tabs",
@@ -79,9 +79,10 @@ export class NechronicaActorSheet extends ActorSheet {
     html.find(".circles").click((ev) => this._onCircleClick(ev));
 
     // Insane Check
-    html.find(".insane-check").click(this._onInsaneCheck.bind(this));
-    html.find(".insane-modifier-minus").click(this._onInsaneModifier.bind(this));
-    html.find(".insane-modifier-plus").click(this._onInsaneModifier.bind(this));
+    html.find(".insane-check").click((ev) => this._onInsaneCheck(ev));
+
+    // Numeric modifier
+    html.find(".numeric-modifier [data-action]").click((ev) => this._onNumericModifier(ev));
 
     // Edit items directly from sheet
     html.find(".item-quick-edit").change((ev) => this._onItemQuickEdit(ev));
@@ -318,7 +319,6 @@ export class NechronicaActorSheet extends ActorSheet {
     const conf = config[target];
     if (!conf) return;
 
-    // 👇 ここだけ差し替え
     const changes = [
       {
         name: item.name,
@@ -639,26 +639,42 @@ export class NechronicaActorSheet extends ActorSheet {
     });
   }
 
-  _onInsaneModifier(event) {
+  _onNumericModifier(event) {
+    event.preventDefault();
     const button = event.currentTarget;
-    const input = button.parentElement.querySelector(
-      ".insane-modifier-value",
-    );
+    const modifier = button.closest(".numeric-modifier");
 
-    let value = Number(input.value) || 0;
+    if (!modifier) return;
 
-    if (button.classList.contains("insane-modifier-minus")) {
-      value--;
+    const input = modifier.querySelector('input[type="number"]');
+    if (!input) return;
+
+    const action = button.dataset.action;
+    const step = Number(input.step) || 1;
+    const current = Number(input.value) || 0;
+
+    let value = current;
+
+    if (action === "plus") {
+      value += step;
+    } else if (action === "minus") {
+      value -= step;
+    } else {
+      return;
     }
 
-    if (button.classList.contains("insane-modifier-plus")) {
-      value++;
+    if (input.min !== "") {
+      value = Math.max(value, Number(input.min));
+    }
+
+    if (input.max !== "") {
+      value = Math.min(value, Number(input.max));
     }
 
     input.value = value;
-
+    const param = input.name;
     this.actor.update({
-      "system.roll.insane": value,
+      param : value,
     });
   }
 }

@@ -18,6 +18,36 @@
   <section class="bio-section memory-section">
     <div class="bio-section-header">
       <h3>{{localize "NECH.FragmentsOfMemory"}}</h3>
+      <div class="memory-panel">
+        <div class="numeric-modifier">
+          <span class="numeric-label">
+            {{localize "NECH.Memories.Current"}}
+          </span>
+
+          <div class="numeric-input">
+            <button class="memory-button" type="button" data-action="minus">-</button>
+            <input
+              class="memory-current"
+              type="number"
+              name="system.memory.value"
+              value="{{system.memory.value}}"
+            />
+            <button class="memory-button" type="button" data-action="plus">+</button>
+          </div>
+        </div>
+
+        <span class="memory-divider">/</span>
+
+        <div class="numeric-modifier">
+          <span class="numeric-label">
+            {{localize "NECH.Memories.Total"}}
+          </span>
+
+          <div class="numeric-input">
+            {{system.memory.max}}
+          </div>
+        </div>
+      </div>
       <a class="item-control item-add" title="{{localize "NECH.AddItem"}}" data-type="memory"><i class="fas fa-plus"></i></a>
     </div>
     <div class="bio-column-header">

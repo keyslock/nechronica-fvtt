@@ -77,6 +77,11 @@ export class NechronicaActor extends Actor {
       },
     };
 
+    actor.system.memory = {
+      value: actor.system.memory.value,
+      max: 0
+    };
+
     if (actor.type === "legion") {
       actor.system.hp = {
         value: Number(actor.system.remaining) || 0,
@@ -93,6 +98,11 @@ export class NechronicaActor extends Actor {
             actor.system.attributes[attribute].total +=
               item.system.parameter[attribute];
           }
+        }
+
+        if (item.type === "memory") {
+          if (actor.system.memory.max < 6)
+            actor.system.memory.max ++;
         }
       }
 
